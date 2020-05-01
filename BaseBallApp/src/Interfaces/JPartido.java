@@ -49,7 +49,8 @@ public class JPartido extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuEliminarEquipo = new javax.swing.JMenuItem();
         jMenuEliminarJugadores = new javax.swing.JMenuItem();
-        jMenuIniciarEnfrentamiento = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuIniciarEnfrentamiento = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -255,8 +256,18 @@ public class JPartido extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenuIniciarEnfrentamiento.setText("Iniciar enfrentamiento");
-        jMenuBar1.add(jMenuIniciarEnfrentamiento);
+        jMenu4.setText("Iniciar");
+
+        jMenuIniciarEnfrentamiento.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_J, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuIniciarEnfrentamiento.setText("Iniciar Enfrentamiento");
+        jMenuIniciarEnfrentamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuIniciarEnfrentamientoActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuIniciarEnfrentamiento);
+
+        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -290,10 +301,14 @@ public class JPartido extends javax.swing.JFrame {
         team.setVisible(true);
     }//GEN-LAST:event_jMenuAgregarEquipoActionPerformed
 
-    private void jMenuIniciarEnfrentamientoActionPerformed(java.awt.event.ActionEvent evt) {
-        JEnfrentamientos vs = new JEnfrentamientos(this, true);
-        vs.setVisible(true);
-    }
+    private void jMenuIniciarEnfrentamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuIniciarEnfrentamientoActionPerformed
+        // TODO add your handling code here:
+        JEnfrentamientos enfrentamientos = new JEnfrentamientos(this, true);
+            enfrentamientos.setVisible(true);
+            
+    }//GEN-LAST:event_jMenuIniciarEnfrentamientoActionPerformed
+
+
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -342,11 +357,12 @@ public class JPartido extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuItem jMenuAgregarEquipo;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuEliminarEquipo;
     private javax.swing.JMenuItem jMenuEliminarJugadores;
-    private javax.swing.JMenu jMenuIniciarEnfrentamiento;
+    private javax.swing.JMenuItem jMenuIniciarEnfrentamiento;
     private javax.swing.JMenuItem jMenuMostrarCoachs;
     private javax.swing.JMenuItem jMenuMostrarEquipos;
     private javax.swing.JMenuItem jMenuMostrarJugadores;
