@@ -1,23 +1,26 @@
-
 package Interfaces;
 
 import java.util.ArrayList;
 import objetos.Equipo;
+import objetos.Jugador;
 
-/** Este JDialog sirve para mostrar la ventana de creación de equipo.
+/**
+ * Este JDialog sirve para mostrar la ventana de creación de equipo.
+ *
  * @author equipo Maravilla Z
  * @version 01/05/2020
  */
 public class JEquipos extends javax.swing.JDialog {
-ArrayList<Equipo> equipos = new ArrayList<Equipo>();
-    
+
+    ArrayList<Equipo> equipos = new ArrayList<Equipo>();
+    ArrayList<Jugador> jugador = new ArrayList<Jugador>();
+
     public JEquipos(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos) {
         super(parent, modal);
         initComponents();
-        this.equipos = equipos; 
+        this.equipos = equipos;
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -90,6 +93,11 @@ ArrayList<Equipo> equipos = new ArrayList<Equipo>();
 
         btnAgregarJugadores.setFont(new java.awt.Font("Trebuchet MS", 2, 18)); // NOI18N
         btnAgregarJugadores.setText("Agregar Jugador");
+        btnAgregarJugadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarJugadoresActionPerformed(evt);
+            }
+        });
 
         tblTablaJugadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -178,11 +186,15 @@ ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarCoachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCoachActionPerformed
-        // TODO add your handling code here:
-        JCoach Jcoach = new JCoach(null, true, equipos);
-        Jcoach.setVisible(true);
-        
+    JCoach Jcoach = new JCoach(null, true, equipos);
+    Jcoach.setVisible(true);
+
     }//GEN-LAST:event_btnAgregarCoachActionPerformed
+
+    private void btnAgregarJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarJugadoresActionPerformed
+        JJugador player = new JJugador(null, true, jugador);
+        player.setVisible(true);
+    }//GEN-LAST:event_btnAgregarJugadoresActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
@@ -202,4 +214,4 @@ ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     private javax.swing.JTextField txfNombreEquipo;
     // End of variables declaration//GEN-END:variables
 
-   }
+}
