@@ -47,8 +47,8 @@ public class JEquipos extends javax.swing.JDialog {
 
         jPanel2.setBackground(new java.awt.Color(102, 255, 102));
 
-        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 2, 48)); // NOI18N
-        jLabel2.setText("Agregar equipo");
+        jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 48)); // NOI18N
+        jLabel2.setText("Agregar EQUIPO");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -57,7 +57,7 @@ public class JEquipos extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(66, 66, 66))
+                .addGap(80, 80, 80))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,9 +186,8 @@ public class JEquipos extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarCoachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCoachActionPerformed
-    JCoach Jcoach = new JCoach(null, true, equipos);
-    Jcoach.setVisible(true);
-
+        JCoach Jcoach = new JCoach(null, true, equipos);
+        Jcoach.setVisible(true);
     }//GEN-LAST:event_btnAgregarCoachActionPerformed
 
     private void btnAgregarJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarJugadoresActionPerformed
