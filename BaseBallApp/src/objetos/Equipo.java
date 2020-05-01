@@ -21,12 +21,15 @@ public class Equipo {
        * @param nombre Guarda el nombre del equipo.
        * @param estadio Guarda el nombre del estadio perteneciente al equipo.
        * @param jugadores Arreglo de jugador.
+       * @param coach guarda el objeto coach
        */
-    public void Equipo (String nombre, String estadio, ArrayList jugadores){
+    public void Equipo (String nombre, String estadio, ArrayList jugadores, Coach coach){
         this.nombre = nombre;
         this.estadio = estadio;
         this.jugadores = jugadores;
+        this.coach = coach;
     }
+    
     
     
     public String getNombre() {
