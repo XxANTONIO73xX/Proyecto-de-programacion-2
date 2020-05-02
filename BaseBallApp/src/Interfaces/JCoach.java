@@ -6,7 +6,9 @@
 package Interfaces;
 
 import java.util.ArrayList;
+import objetos.Coach;
 import objetos.Equipo;
+import objetos.Estrategia;
 
 /**
  *
@@ -14,13 +16,25 @@ import objetos.Equipo;
  */
 public class JCoach extends javax.swing.JDialog {
 ArrayList<Equipo> equipos = new ArrayList<Equipo>();
+ArrayList<Estrategia> estrategias = new ArrayList<Estrategia>();
+ArrayList<Estrategia> estrategiasDelCaoch = new ArrayList<Estrategia>(); 
+Equipo equipo = new Equipo();
+
     /**
      * Creates new form JCoach
      */
-    public JCoach(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos) {
+    public JCoach(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos, Equipo equipo, ArrayList<Estrategia> estrategias) {
         super(parent, modal);
         initComponents();
         this.equipos = equipos;
+        this.equipo = equipo;
+        this.estrategias = estrategias;
+    }
+    
+    public void cbxEstrategias(){
+        for(Estrategia estrategias: estrategias){
+            cbxEstrategias.addItem(estrategias.getNombreEstrategia());
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -38,23 +52,24 @@ ArrayList<Equipo> equipos = new ArrayList<Equipo>();
         btnAgregar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        cbxEstrategias = new javax.swing.JComboBox<>();
-        txfAltura = new javax.swing.JTextField();
+        cbxEstrategias = new javax.swing.JComboBox<String>();
+        txfPeso = new javax.swing.JTextField();
         txfNombre = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        txfNombre1 = new javax.swing.JTextField();
+        txfApellido = new javax.swing.JTextField();
         txfEdad = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        txfAltura1 = new javax.swing.JTextField();
+        txfAltura = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
+        btnAgregarEstrategia = new javax.swing.JButton();
 
         jLabel13.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -124,10 +139,18 @@ ArrayList<Equipo> equipos = new ArrayList<Equipo>();
         jLabel5.setFont(new java.awt.Font("Trebuchet MS", 2, 24)); // NOI18N
         jLabel5.setText("Estrategias:");
 
-        cbxEstrategias.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        cbxEstrategias.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+
+        txfPeso.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+
+        txfNombre.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Trebuchet MS", 2, 24)); // NOI18N
         jLabel10.setText("Altura:");
+
+        txfApellido.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+
+        txfEdad.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Trebuchet MS", 2, 24)); // NOI18N
         jLabel6.setText("Apellido:");
@@ -140,6 +163,8 @@ ArrayList<Equipo> equipos = new ArrayList<Equipo>();
 
         jLabel11.setFont(new java.awt.Font("Trebuchet MS", 2, 24)); // NOI18N
         jLabel11.setText("Peso:");
+
+        txfAltura.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
 
         jLabel15.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -168,6 +193,15 @@ ArrayList<Equipo> equipos = new ArrayList<Equipo>();
         jLabel23.setFocusable(false);
         jLabel23.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        btnAgregarEstrategia.setBackground(new java.awt.Color(102, 255, 102));
+        btnAgregarEstrategia.setFont(new java.awt.Font("Trebuchet MS", 2, 18)); // NOI18N
+        btnAgregarEstrategia.setText("Agregar Estrategia ");
+        btnAgregarEstrategia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarEstrategiaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -179,7 +213,7 @@ ArrayList<Equipo> equipos = new ArrayList<Equipo>();
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txfAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txfPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -191,34 +225,40 @@ ArrayList<Equipo> equipos = new ArrayList<Equipo>();
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txfAltura1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txfAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel22)
                         .addGap(24, 24, 24))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txfApellido))
+                            .addComponent(jLabel15))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txfNombre1))
-                                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(cbxEstrategias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cbxEstrategias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnAgregarEstrategia, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabel4))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,14 +271,14 @@ ArrayList<Equipo> equipos = new ArrayList<Equipo>();
                     .addComponent(jLabel7)
                     .addComponent(txfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(txfNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel11)
-                        .addComponent(txfAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txfPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel18)
                     .addComponent(txfEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20)
@@ -246,31 +286,31 @@ ArrayList<Equipo> equipos = new ArrayList<Equipo>();
                         .addGap(4, 4, 4)
                         .addComponent(jLabel9))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txfAltura1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txfAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel10))
                     .addComponent(jLabel22))
+                .addGap(24, 24, 24)
+                .addComponent(jLabel23)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel4)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 13, Short.MAX_VALUE)
-                        .addComponent(jLabel23)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbxEstrategias, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))))
+                    .addComponent(jLabel5)
+                    .addComponent(cbxEstrategias, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAgregarEstrategia, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,13 +322,34 @@ ArrayList<Equipo> equipos = new ArrayList<Equipo>();
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
+        Coach coach = new Coach(estrategiasDelCaoch, 
+                txfNombre.getText(), 
+                txfApellido.getText(),
+                Integer.parseInt(txfEdad.getText()),
+                Float.parseFloat(txfAltura.getText()),
+                Float.parseFloat(txfPeso.getText()));
+        equipo.setCoach(coach);
+        
         
         
     }//GEN-LAST:event_btnAgregarActionPerformed
 
+    private void btnAgregarEstrategiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEstrategiaActionPerformed
+        // TODO add your handling code here:
+        String nombreEstrategia = cbxEstrategias.getSelectedItem().toString();
+        for(Estrategia e: estrategias){
+            if(nombreEstrategia.equals(e.getNombreEstrategia())){
+                estrategiasDelCaoch.add(e);
+            }
+        }
+        
+        
+    }//GEN-LAST:event_btnAgregarEstrategiaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnAgregarEstrategia;
     private javax.swing.JComboBox<String> cbxEstrategias;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -312,9 +373,9 @@ ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txfAltura;
-    private javax.swing.JTextField txfAltura1;
+    private javax.swing.JTextField txfApellido;
     private javax.swing.JTextField txfEdad;
     private javax.swing.JTextField txfNombre;
-    private javax.swing.JTextField txfNombre1;
+    private javax.swing.JTextField txfPeso;
     // End of variables declaration//GEN-END:variables
 }
