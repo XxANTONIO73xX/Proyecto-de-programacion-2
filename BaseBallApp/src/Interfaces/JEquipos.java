@@ -16,20 +16,33 @@ public class JEquipos extends javax.swing.JDialog {
 
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     ArrayList<Estrategia> estrategias = new ArrayList<Estrategia>();
+    Estrategia una = new Estrategia("Toque de bola (Ofensiva)", "Golpe ligero a la pelota");
+    Estrategia dos = new Estrategia("Robo de base (Ofensiva)", "Roba la base en el momento oportuno");
+    Estrategia tres = new Estrategia("Doble Play (Defensiva)", "Doble OUT en una misma jugada");
+    Estrategia cuatro = new Estrategia("Base por bola (Defensiva)", "Golpea al jugador con la bola, y asi evitar que bateé");
     Equipo equipo = new Equipo();
     DefaultTableModel MtblJugadores;
-    
+
     public JEquipos(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos) {
         super(parent, modal);
         initComponents();
+        estrategias.add(una);
+        estrategias.add(dos);
+        estrategias.add(tres);
+        estrategias.add(cuatro);
         this.equipos = equipos;
         MtblJugadores = (DefaultTableModel) tblJugadores.getModel();
         cargarTabla(equipo);
+
     }
-   
-    public void cargarTabla(Equipo equipo){
-        for(Jugador jugadores: equipo.getJugadores()){
-            MtblJugadores.addRow(new Object[]{jugadores.getNumero(), jugadores.getNombre(), jugadores.getPosicion(), jugadores.getBrazo()});
+
+    public void cargarTabla(Equipo equipo) {
+        for (Jugador jugadores : equipo.getJugadores()) {
+            MtblJugadores.addRow(new Object[]{
+                jugadores.getNumero(),
+                jugadores.getNombre(),
+                jugadores.getPosicion(),
+                jugadores.getBrazo()});
         }
     }
 
@@ -209,7 +222,7 @@ public class JEquipos extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarCoachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCoachActionPerformed
-        JCoach Jcoach = new JCoach(null, true, equipos, equipo,estrategias);
+        JCoach Jcoach = new JCoach(null, true, equipos, equipo, estrategias);
         Jcoach.setVisible(true);
     }//GEN-LAST:event_btnAgregarCoachActionPerformed
 

@@ -1,6 +1,8 @@
 
 package objetos;
 
+import java.util.ArrayList;
+
 /**
  * Esta se usará como base para las estrategias del coach.
  * @author jose_
@@ -10,6 +12,7 @@ public class Estrategia {
     
     private String nombreEstrategia;
     private String Descripcion;
+
     
     /**
      * Constructor de Estrategia
@@ -38,4 +41,6 @@ public class Estrategia {
     public void setDescripcion(String Descripcion) {
         this.Descripcion = Descripcion;
     }
+    
+    
 }
