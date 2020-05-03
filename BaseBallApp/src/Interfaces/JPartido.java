@@ -1,5 +1,6 @@
 package Interfaces;
 
+import Interfaces.agregar.JEquipos;
 import java.util.ArrayList;
 import objetos.Equipo;
 
@@ -13,6 +14,7 @@ public class JPartido extends javax.swing.JFrame {
 
     public JPartido() {
         initComponents();
+        equipos = new ArrayList<Equipo>();
     }
 
     @SuppressWarnings("unchecked")
