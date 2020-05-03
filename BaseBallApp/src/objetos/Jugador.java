@@ -4,8 +4,8 @@ package objetos;
  * En esta clase se van a crear los jugadores heredando atributos de la clase
  * persona.
  *
- * @author Pablo Ojeda
- * @version 29/04/2020 9:13 AM
+ * @author equipo Maravilla Z
+ * @version 02/05/2020
  */
 public class Jugador extends Persona {
 
@@ -15,7 +15,6 @@ public class Jugador extends Persona {
 
     /**
      * constructor de jugador
-     *
      * @param posicion la posicion del jugador
      * @param brazo el brazo que domina
      * @param numero numero del jugador
@@ -31,7 +30,7 @@ public class Jugador extends Persona {
         this.brazo = brazo;
         this.numero = numero;
     }
-
+    //setters y getters
     public String getPosicion() {
         return posicion;
     }

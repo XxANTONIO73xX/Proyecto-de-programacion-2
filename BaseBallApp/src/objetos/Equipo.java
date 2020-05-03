@@ -4,8 +4,8 @@ package objetos;
 import java.util.ArrayList;
 
 /** Esta clase se usara como base para la creación de equipos.
- * @author Pablo Ojeda 
- * @version 29/04/2020 9:13 AM
+ * @author equipo Maravilla z
+ * @version 02/05/2020 
  */
 public class Equipo {
     
@@ -14,10 +14,8 @@ public class Equipo {
     private ArrayList<Jugador> jugadores = new ArrayList<>();
     private Coach coach = new Coach();
     
-    public void Equipo (Coach coachDelEquipo){
-        
-    }
       /**
+       * constructor de Equipo
        * @param nombre Guarda el nombre del equipo.
        * @param estadio Guarda el nombre del estadio perteneciente al equipo.
        * @param jugadores Arreglo de jugador.
@@ -30,7 +28,7 @@ public class Equipo {
         this.coach = coach;
     }
     
-    
+    //setters y getters
     public String getNombre() {
         return nombre;
     }
