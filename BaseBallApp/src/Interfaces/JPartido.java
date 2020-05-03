@@ -237,12 +237,27 @@ public class JPartido extends javax.swing.JFrame {
         jMenu2.setText("Mostrar/Buscar");
 
         jMenuMostrarEquipos.setText("Mostrar/Buscar Equipos");
+        jMenuMostrarEquipos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuMostrarEquiposActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuMostrarEquipos);
 
         jMenuMostrarJugadores.setText("Mostrar/Buscar Jugadores");
+        jMenuMostrarJugadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuMostrarJugadoresActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuMostrarJugadores);
 
         jMenuMostrarCoachs.setText("Mostrar/Buscar Coachs");
+        jMenuMostrarCoachs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuMostrarCoachsActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuMostrarCoachs);
 
         jMenuBar1.add(jMenu2);
@@ -292,10 +307,17 @@ public class JPartido extends javax.swing.JFrame {
         team.setVisible(true);
     }//GEN-LAST:event_jMenuAgregarEquipoActionPerformed
 
-    private void jMenuIniciarEnfrentamientoActionPerformed(java.awt.event.ActionEvent evt) {
-        JEnfrentamientos vs = new JEnfrentamientos(this, true);
-        vs.setVisible(true);
-    }
+    private void jMenuMostrarJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMostrarJugadoresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuMostrarJugadoresActionPerformed
+
+    private void jMenuMostrarEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMostrarEquiposActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuMostrarEquiposActionPerformed
+
+    private void jMenuMostrarCoachsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMostrarCoachsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuMostrarCoachsActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
