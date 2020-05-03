@@ -8,21 +8,26 @@ import objetos.Jugador;
 
 /**
  * Este JDialog sirve para mostrar la ventana de creación de equipo.
- *
  * @author equipo Maravilla Z
- * @version 01/05/2020
+ * @version 02/05/2020
  */
 public class JEquipos extends javax.swing.JDialog {
 
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     ArrayList<Estrategia> estrategias = new ArrayList<Estrategia>();
+    //estrategias predeterminadas
     Estrategia una = new Estrategia("Toque de bola (Ofensiva)", "Golpe ligero a la pelota");
     Estrategia dos = new Estrategia("Robo de base (Ofensiva)", "Roba la base en el momento oportuno");
     Estrategia tres = new Estrategia("Doble Play (Defensiva)", "Doble OUT en una misma jugada");
     Estrategia cuatro = new Estrategia("Base por bola (Defensiva)", "Golpea al jugador con la bola, y asi evitar que bateé");
     Equipo equipo = new Equipo();
     DefaultTableModel MtblJugadores;
-
+    /**
+     * Constructor de JEquipos
+     * @param parent parametro que se extiende de Jdialog
+     * @param modal parametro que se extiende de Jdialog
+     * @param equipos es el ArrayList en donde se guardaran los equipos
+     */
     public JEquipos(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos) {
         super(parent, modal);
         initComponents();
@@ -35,7 +40,10 @@ public class JEquipos extends javax.swing.JDialog {
         cargarTabla(equipo);
 
     }
-
+    /**
+     * Metodo para mostrar en la tabla de este JDialog
+     * @param equipo el objeto equipo de donde se sacara el ArrayList de Jugadores para cargar la lista con los datos
+     */
     public void cargarTabla(Equipo equipo) {
         for (Jugador jugadores : equipo.getJugadores()) {
             MtblJugadores.addRow(new Object[]{
@@ -222,17 +230,19 @@ public class JEquipos extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarCoachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCoachActionPerformed
+        //con esta accion abres la ventana JCoach
         JCoach Jcoach = new JCoach(null, true, equipos, equipo, estrategias);
         Jcoach.setVisible(true);
     }//GEN-LAST:event_btnAgregarCoachActionPerformed
 
     private void btnAgregarJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarJugadoresActionPerformed
+        //con esta accion abres la ventana JJugador
         JJugador player = new JJugador(null, true, equipos, equipo);
         player.setVisible(true);
     }//GEN-LAST:event_btnAgregarJugadoresActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
+        // Con esta acción agregas el equipo creado al ArrayList de equipos
         equipo.setNombre(txfNombreEquipo.getText());
         equipo.setEstadio(txfEstadio.getText());
         equipos.add(equipo);

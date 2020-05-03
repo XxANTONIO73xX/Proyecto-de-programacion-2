@@ -2,8 +2,8 @@
 package Interfaces;
 
 /** Este JDialog sirve para mostrar la ventana de creación de enfrentamientos enparejando equipos.
- * @author Pablo Ojeda 
- * @version 29/04/2020 18:10
+ * @author equipo Maravilla Z 
+ * @version 29/05/2020
  */
 public class JEnfrentamientos extends javax.swing.JDialog {
 

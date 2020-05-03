@@ -8,13 +8,20 @@ import objetos.Jugador;
 
 /**
  * en este jDialog se agregaran los jugadores
- * @author equipo maravilla Z
- * @version 01/05/2020
+ * @author equipo Maravilla Z
+ * @version 02/05/2020
  */
 public class JJugador extends javax.swing.JDialog {
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     Equipo equipo;
     ArrayList<Jugador> jugadores;
+    /**
+     * constructor de JJugador
+     * @param parent parametro que se extiende de Jdialog
+     * @param modal parametro que se extiende de Jdialog
+     * @param equipos ArrayList de equipos 
+     * @param equipo objeto equipo donde se agregara el ArrayList de Jugadores
+     */
     public JJugador(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos, Equipo equipo) {
         super(parent, modal);
         initComponents();
@@ -302,7 +309,7 @@ public class JJugador extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
+        // Con esta accion creas un objeto de tipo Jugador y le ingresas los valores de este JDialog
         Jugador jugador = new Jugador(txfPosicion.getText(),
                 cbxBrazo.getSelectedItem().toString(),
                 Integer.parseInt(txfNumero.getText()),
@@ -311,13 +318,14 @@ public class JJugador extends javax.swing.JDialog {
                 Integer.parseInt(txfEdad.getText()),
                 Float.parseFloat(txfAltura.getText()),
                 Float.parseFloat(txfPeso.getText()));
-                jugadores.add(jugador);
+        //agregas Jugador al Array de jugadores        
+        jugadores.add(jugador);
                 JOptionPane.showMessageDialog(this, "Jugador agregado");
                 equipo.setJugadores(jugadores);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        // TODO add your handling code here:
+        // con esta acción regresas a la ventana anterior
         equipo.setJugadores(jugadores);
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed

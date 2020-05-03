@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Interfaces;
 
 import java.util.ArrayList;
@@ -12,8 +7,9 @@ import objetos.Equipo;
 import objetos.Estrategia;
 
 /**
- *
- * @author User
+ *en esta clase se va a crear el coach del equipo
+ * @author equipo Maravilla Z
+ * @version 02/05/2020
  */
 public class JCoach extends javax.swing.JDialog {
 ArrayList<Equipo> equipos = new ArrayList<Equipo>();
@@ -21,9 +17,14 @@ ArrayList<Estrategia> estrategias = new ArrayList<Estrategia>();
 ArrayList<Estrategia> estrategiasDelCoach = new ArrayList<Estrategia>(); 
 Equipo equipo = new Equipo();
 
-    /**
-     * Creates new form JCoach
-     */
+/**
+ * constructo JCoach
+ * @param parent parametro que se extiende de Jdialog
+ * @param modal parametro que se extiende de Jdialog
+ * @param equipos el ArrayList que usara para guardar el equipo del que forma parte el coach
+ * @param equipo el equipo que pertenece el coach, que se agregara al ArrayList 
+ * @param estrategias estrategias que se usaran para agregarlas al coach
+ */
     public JCoach(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos, Equipo equipo, ArrayList<Estrategia> estrategias) {
         super(parent, modal);
         initComponents();
@@ -32,7 +33,9 @@ Equipo equipo = new Equipo();
         this.estrategias = estrategias;
         cbxEstrategias();
     }
-    
+    /**
+     * Metodo que carga el ComboBox de estrategias
+     */
     public void cbxEstrategias(){
         for(Estrategia estrategias: estrategias){
             cbxEstrategias.addItem(estrategias.getNombreEstrategia());  
@@ -318,7 +321,9 @@ Equipo equipo = new Equipo();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
+        /* en esta acción se creara un nuevo objeto de tipo coach para agregarles los valores puestos en los
+           textField de este Jdialog
+        */
         Coach coach = new Coach(estrategiasDelCoach, 
                 txfNombre.getText(), 
                 txfApellido.getText(),
@@ -333,7 +338,9 @@ Equipo equipo = new Equipo();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnAgregarEstrategiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEstrategiaActionPerformed
-
+        /* en esta acción se le agregan estrategias al coach seleccionadas en el comboBox de 
+           estatregias.
+        */
         String nombreEstrategia = cbxEstrategias.getSelectedItem().toString();
         for(Estrategia e: estrategias){
             if(nombreEstrategia.equals(e.getNombreEstrategia())){
