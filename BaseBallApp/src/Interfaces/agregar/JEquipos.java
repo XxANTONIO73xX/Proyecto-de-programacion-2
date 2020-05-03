@@ -5,6 +5,7 @@ import javax.swing.table.DefaultTableModel;
 import objetos.Equipo;
 import objetos.Estrategia;
 import objetos.Jugador;
+import objetos.Persona;
 
 /**
  * Este JDialog sirve para mostrar la ventana de creación de equipo.
@@ -158,12 +159,6 @@ public class JEquipos extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tblJugadores);
-        if (tblJugadores.getColumnModel().getColumnCount() > 0) {
-            tblJugadores.getColumnModel().getColumn(0).setResizable(false);
-            tblJugadores.getColumnModel().getColumn(1).setResizable(false);
-            tblJugadores.getColumnModel().getColumn(2).setResizable(false);
-            tblJugadores.getColumnModel().getColumn(3).setResizable(false);
-        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
