@@ -243,6 +243,7 @@ public class JEquipos extends javax.swing.JFrame {
         //con esta accion abres la ventana JJugador
         JJugador player = new JJugador(this, true, equipos, equipo);
         player.setVisible(true);
+        cargarTabla();
     }//GEN-LAST:event_btnAgregarJugadoresActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
