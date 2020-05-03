@@ -6,6 +6,7 @@
 package Interfaces;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import objetos.Coach;
 import objetos.Equipo;
 import objetos.Estrategia;
@@ -34,10 +35,7 @@ Equipo equipo = new Equipo();
     
     public void cbxEstrategias(){
         for(Estrategia estrategias: estrategias){
-            cbxEstrategias.addItem(estrategias.getNombreEstrategia());
-            
-
-  
+            cbxEstrategias.addItem(estrategias.getNombreEstrategia());  
         }
     }
 
@@ -328,7 +326,8 @@ Equipo equipo = new Equipo();
                 Float.parseFloat(txfAltura.getText()),
                 Float.parseFloat(txfPeso.getText()));
         equipo.setCoach(coach);
-        
+        JOptionPane.showMessageDialog(this, "el coach fue agregado");
+        this.dispose();
         
         
     }//GEN-LAST:event_btnAgregarActionPerformed
@@ -339,6 +338,7 @@ Equipo equipo = new Equipo();
         for(Estrategia e: estrategias){
             if(nombreEstrategia.equals(e.getNombreEstrategia())){
                 estrategiasDelCoach.add(e);
+                JOptionPane.showMessageDialog(this, "estrategia agregada a este coach");
             }
         }
         

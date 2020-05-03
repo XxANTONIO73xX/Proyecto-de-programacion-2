@@ -2,6 +2,7 @@
 package Interfaces;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import objetos.Equipo;
 import objetos.Jugador;
 
@@ -114,6 +115,11 @@ public class JJugador extends javax.swing.JDialog {
         btnRegresar.setBackground(new java.awt.Color(102, 255, 102));
         btnRegresar.setFont(new java.awt.Font("Trebuchet MS", 2, 18)); // NOI18N
         btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Trebuchet MS", 2, 24)); // NOI18N
         jLabel9.setText("Edad:");
@@ -306,7 +312,15 @@ public class JJugador extends javax.swing.JDialog {
                 Float.parseFloat(txfAltura.getText()),
                 Float.parseFloat(txfPeso.getText()));
                 jugadores.add(jugador);
+                JOptionPane.showMessageDialog(this, "Jugador agregado");
+                equipo.setJugadores(jugadores);
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        // TODO add your handling code here:
+        equipo.setJugadores(jugadores);
+        this.dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
