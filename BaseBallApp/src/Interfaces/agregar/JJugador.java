@@ -13,7 +13,7 @@ import objetos.Jugador;
  */
 public class JJugador extends javax.swing.JDialog {
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
-    Equipo equipo;
+    Equipo equipo = new Equipo();
     ArrayList<Jugador> jugadores;
     /**
      * constructor de JJugador
@@ -28,7 +28,6 @@ public class JJugador extends javax.swing.JDialog {
         this.equipos = equipos;
         this.equipo = equipo; 
         this.jugadores = new ArrayList<Jugador>();
-        equipo.setJugadores(jugadores);
        cbxBrazo.addItem("Zurdo");
        cbxBrazo.addItem("Diestro");
     }
@@ -326,7 +325,6 @@ public class JJugador extends javax.swing.JDialog {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // con esta acción regresas a la ventana anterior
-        equipo.setJugadores(jugadores);
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 

@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import objetos.Equipo;
 
 /**
- *
- * @author User
+ * con este Jframe se simulara el partido y dara el acceso a la manipulacion de datod correspondientes
+ * @author equipo Maravilla Z
  */
 public class JPartido extends javax.swing.JFrame {
 
@@ -288,7 +288,7 @@ public class JPartido extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuAgregarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAgregarEquipoActionPerformed
-        JEquipos team = new JEquipos(null, true, equipos);
+        JEquipos team = new JEquipos(equipos);
         team.setVisible(true);
     }//GEN-LAST:event_jMenuAgregarEquipoActionPerformed
 

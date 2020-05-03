@@ -11,7 +11,7 @@ import objetos.Jugador;
  * @author equipo Maravilla Z
  * @version 02/05/2020
  */
-public class JEquipos extends javax.swing.JDialog {
+public class JEquipos extends javax.swing.JFrame {
 
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     ArrayList<Estrategia> estrategias = new ArrayList<Estrategia>();
@@ -24,12 +24,9 @@ public class JEquipos extends javax.swing.JDialog {
     DefaultTableModel MtblJugadores;
     /**
      * Constructor de JEquipos
-     * @param parent parametro que se extiende de Jdialog
-     * @param modal parametro que se extiende de Jdialog
      * @param equipos es el ArrayList en donde se guardaran los equipos
      */
-    public JEquipos(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos) {
-        super(parent, modal);
+    public JEquipos(ArrayList<Equipo> equipos) {
         initComponents();
         estrategias.add(una);
         estrategias.add(dos);
@@ -37,21 +34,20 @@ public class JEquipos extends javax.swing.JDialog {
         estrategias.add(cuatro);
         this.equipos = equipos;
         MtblJugadores = (DefaultTableModel) tblJugadores.getModel();
-        cargarTabla(equipo);
+        cargarTabla();
 
     }
     /**
      * Metodo para mostrar en la tabla de este JDialog
-     * @param equipo el objeto equipo de donde se sacara el ArrayList de Jugadores para cargar la lista con los datos
      */
-    public void cargarTabla(Equipo equipo) {
+    public void cargarTabla() {
         for (Jugador jugadores : equipo.getJugadores()) {
             MtblJugadores.addRow(new Object[]{
                 jugadores.getNumero(),
                 jugadores.getNombre(),
                 jugadores.getPosicion(),
                 jugadores.getBrazo()});
-        }
+         }
     }
 
     @SuppressWarnings("unchecked")
@@ -71,7 +67,7 @@ public class JEquipos extends javax.swing.JDialog {
         btnAgregarCoach = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         btnAgregarJugadores = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         tblJugadores = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -137,6 +133,7 @@ public class JEquipos extends javax.swing.JDialog {
             }
         });
 
+        tblJugadores.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.green, java.awt.Color.green, java.awt.Color.green, java.awt.Color.green));
         tblJugadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -145,15 +142,28 @@ public class JEquipos extends javax.swing.JDialog {
                 "Numero", "Nombre", "Posicion", "Brazo"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(tblJugadores);
+        jScrollPane1.setViewportView(tblJugadores);
+        if (tblJugadores.getColumnModel().getColumnCount() > 0) {
+            tblJugadores.getColumnModel().getColumn(0).setResizable(false);
+            tblJugadores.getColumnModel().getColumn(1).setResizable(false);
+            tblJugadores.getColumnModel().getColumn(2).setResizable(false);
+            tblJugadores.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -161,30 +171,31 @@ public class JEquipos extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel1)
-                                        .addComponent(jLabel3))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txfEstadio, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txfNombreEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnAgregarCoach, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(jLabel4)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnAgregarJugadores))))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txfEstadio, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txfNombreEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnAgregarCoach, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel4)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnAgregarJugadores)))
+                        .addGap(6, 6, 6)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,11 +217,11 @@ public class JEquipos extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAgregarJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -221,9 +232,7 @@ public class JEquipos extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -231,13 +240,13 @@ public class JEquipos extends javax.swing.JDialog {
 
     private void btnAgregarCoachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCoachActionPerformed
         //con esta accion abres la ventana JCoach
-        JCoach Jcoach = new JCoach(null, true, equipos, equipo, estrategias);
+        JCoach Jcoach = new JCoach(this, true, equipos, equipo, estrategias);
         Jcoach.setVisible(true);
     }//GEN-LAST:event_btnAgregarCoachActionPerformed
 
     private void btnAgregarJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarJugadoresActionPerformed
         //con esta accion abres la ventana JJugador
-        JJugador player = new JJugador(null, true, equipos, equipo);
+        JJugador player = new JJugador(this, true, equipos, equipo);
         player.setVisible(true);
     }//GEN-LAST:event_btnAgregarJugadoresActionPerformed
 
@@ -261,7 +270,7 @@ public class JEquipos extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblJugadores;
     private javax.swing.JTextField txfEstadio;
     private javax.swing.JTextField txfNombreEquipo;
