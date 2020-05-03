@@ -1,11 +1,25 @@
 package Interfaces.MostrarBuscarEliminar;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import objetos.Coach;
+
 /** Sirve para mostrar un coach mediante una tabla y su respectiva busqueda.
  * @author Equipo Maravilla Z
  * @version 2/5/2020 15PM
  */
 
 public class MostrarCoach extends javax.swing.JDialog {
+    
+ ArrayList<Coach> coach;
+ DefaultTableModel MtblMostrarCoach;
+    
+    public void CargarTabla() {
+        for (Coach c: coach){
+            MtblMostrarCoach.addRow(new Object[]{c.getNombre(),c.getApellido(),c.getEdad(),""});
+            
+        }
+    }
 
     public MostrarCoach(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -21,10 +35,10 @@ public class MostrarCoach extends javax.swing.JDialog {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txfBuscarCoach = new javax.swing.JTextField();
+        btnBuscarCoach = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblMostrarCoach = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -60,12 +74,17 @@ public class MostrarCoach extends javax.swing.JDialog {
         jLabel20.setFocusable(false);
         jLabel20.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txfBuscarCoach.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(51, 255, 51));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconfinder_search_322497 (1).png"))); // NOI18N
+        btnBuscarCoach.setBackground(new java.awt.Color(51, 255, 51));
+        btnBuscarCoach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconfinder_search_322497 (1).png"))); // NOI18N
+        btnBuscarCoach.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarCoachActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblMostrarCoach.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -73,7 +92,7 @@ public class MostrarCoach extends javax.swing.JDialog {
                 "Nombre", "Apellido", "Edad", "Equipo"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblMostrarCoach);
 
         javax.swing.GroupLayout jPanel34Layout = new javax.swing.GroupLayout(jPanel34);
         jPanel34.setLayout(jPanel34Layout);
@@ -84,14 +103,14 @@ public class MostrarCoach extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel34Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txfBuscarCoach, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel19)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel34Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBuscarCoach, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
@@ -104,8 +123,8 @@ public class MostrarCoach extends javax.swing.JDialog {
                 .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(txfBuscarCoach, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarCoach))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
@@ -127,15 +146,23 @@ public class MostrarCoach extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBuscarCoachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCoachActionPerformed
+    for (Coach d : coach){
+      if(txfBuscarCoach.equals(d.getNombre())){
+          
+      }  
+    }
+    }//GEN-LAST:event_btnBuscarCoachActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnBuscarCoach;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JPanel jPanel34;
     private javax.swing.JPanel jPanel35;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tblMostrarCoach;
+    private javax.swing.JTextField txfBuscarCoach;
     // End of variables declaration//GEN-END:variables
 }
