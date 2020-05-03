@@ -1,4 +1,3 @@
-
 package Interfaces;
 
 import java.util.ArrayList;
@@ -11,12 +10,15 @@ import objetos.Jugador;
  * @version 01/05/2020
  */
 public class JJugador extends javax.swing.JDialog {
+    
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     Equipo equipo;
     ArrayList<Jugador> jugadores;
+    
     public JJugador(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos, Equipo equipo) {
         super(parent, modal);
         initComponents();
+        
         this.equipos = equipos;
         this.equipo = equipo; 
         this.jugadores = new ArrayList<Jugador>();
@@ -24,7 +26,6 @@ public class JJugador extends javax.swing.JDialog {
        cbxBrazo.addItem("Zurdo");
        cbxBrazo.addItem("Diestro");
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

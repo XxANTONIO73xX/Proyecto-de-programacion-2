@@ -9,9 +9,9 @@ import Interfaces.agregar.JEquipos;
 import java.util.ArrayList;
 import objetos.Equipo;
 
-/**
- * con este Jframe se simulara el partido y dara el acceso a la manipulacion de datod correspondientes
- * @author equipo Maravilla Z
+/** En este JFrame se simulara el partido y dara el acceso a la manipulación de datos correspondientes.
+ * @author Equipo Maravilla Z
+ * @version 
  */
 public class JPartido extends javax.swing.JFrame {
 

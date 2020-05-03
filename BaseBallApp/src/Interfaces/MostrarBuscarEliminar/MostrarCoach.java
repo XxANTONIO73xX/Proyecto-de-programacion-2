@@ -4,6 +4,7 @@ package Interfaces.MostrarBuscarEliminar;
  * @author Equipo Maravilla Z
  * @version 2/5/2020 15PM
  */
+
 public class MostrarCoach extends javax.swing.JDialog {
 
     public MostrarCoach(java.awt.Frame parent, boolean modal) {

@@ -7,6 +7,7 @@ import objetos.Equipo;
  * @author Equipo Maravilla Z
  * @version 2/5/2020 15PM
  */
+
 public class EliminarJugadores extends javax.swing.JDialog {
 
     Equipo equipo = new Equipo();

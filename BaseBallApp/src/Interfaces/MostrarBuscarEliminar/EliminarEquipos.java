@@ -5,10 +5,10 @@ import objetos.Equipo;
 
 /**
  * Sirve para eliminar equipos mediante una tabla y su respectiva busqueda.
- *
  * @author Equipo Maravilla Z
  * @version 2/5/2020 15PM
  */
+
 public class EliminarEquipos extends javax.swing.JDialog {
 
     ArrayList<Equipo> equipo = new ArrayList<Equipo>();

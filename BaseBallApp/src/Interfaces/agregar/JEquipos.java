@@ -23,10 +23,12 @@ public class JEquipos extends javax.swing.JFrame {
     Estrategia cuatro = new Estrategia("Base por bola (Defensiva)", "Golpea al jugador con la bola, y asi evitar que bateé");
     Equipo equipo = new Equipo();
     DefaultTableModel MtblJugadores;
+    
     /**
-     * Constructor de JEquipos
-     * @param equipos es el ArrayList en donde se guardaran los equipos
+     * Constructor de JEquipos.
+     * @param equipos es el ArrayList en donde se guardaran los equipos.
      */
+    
     public JEquipos(ArrayList<Equipo> equipos) {
         initComponents();
         estrategias.add(una);
@@ -38,9 +40,11 @@ public class JEquipos extends javax.swing.JFrame {
         cargarTabla();
 
     }
+    
     /**
      * Metodo para mostrar en la tabla de este JDialog
      */
+    
     public void cargarTabla() {
         for (Jugador jugadores : equipo.getJugadores()) {
             MtblJugadores.addRow(new Object[]{

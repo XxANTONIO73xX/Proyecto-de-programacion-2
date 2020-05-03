@@ -7,10 +7,11 @@ import objetos.Equipo;
 import objetos.Estrategia;
 
 /**
- *en esta clase se va a crear el coach del equipo
- * @author equipo Maravilla Z
+ * En esta clase se va a crear el coach del equipo.
+ * @author Equipo Maravilla Z
  * @version 02/05/2020
  */
+
 public class JCoach extends javax.swing.JDialog {
 ArrayList<Equipo> equipos = new ArrayList<Equipo>();
 ArrayList<Estrategia> estrategias = new ArrayList<Estrategia>();  
@@ -33,9 +34,11 @@ Equipo equipo = new Equipo();
         this.estrategias = estrategias;
         cbxEstrategias();
     }
+   
     /**
      * Metodo que carga el ComboBox de estrategias
      */
+    
     public void cbxEstrategias(){
         for(Estrategia estrategias: estrategias){
             cbxEstrategias.addItem(estrategias.getNombreEstrategia());  
@@ -321,9 +324,10 @@ Equipo equipo = new Equipo();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        /* en esta acción se creara un nuevo objeto de tipo coach para agregarles los valores puestos en los
-           textField de este Jdialog
-        */
+        /**
+         * En esta acción se creara un nuevo objeto de tipo coach para agregarles los valores puestos en los
+           TextField de este JDialog.
+         */
         Coach coach = new Coach(estrategiasDelCoach, 
                 txfNombre.getText(), 
                 txfApellido.getText(),
@@ -332,26 +336,24 @@ Equipo equipo = new Equipo();
                 Float.parseFloat(txfPeso.getText()));
         equipo.setCoach(coach);
         JOptionPane.showMessageDialog(this, "el coach fue agregado");
-        this.dispose();
-        
-        
+        this.dispose();    
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnAgregarEstrategiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEstrategiaActionPerformed
-        /* en esta acción se le agregan estrategias al coach seleccionadas en el comboBox de 
+        
+        /**
+         * En esta acción se le agregan estrategias al coach seleccionadas en el ComboBox de 
            estatregias.
         */
+        
         String nombreEstrategia = cbxEstrategias.getSelectedItem().toString();
         for(Estrategia e: estrategias){
             if(nombreEstrategia.equals(e.getNombreEstrategia())){
                 estrategiasDelCoach.add(e);
-                JOptionPane.showMessageDialog(this, "estrategia agregada a este coach");
+                JOptionPane.showMessageDialog(this, "Estrategia agregada a este coach...");
             }
-        }
-        
-        
+        }             
     }//GEN-LAST:event_btnAgregarEstrategiaActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
