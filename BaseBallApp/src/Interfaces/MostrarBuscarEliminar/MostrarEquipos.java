@@ -1,7 +1,7 @@
 
 package Interfaces.MostrarBuscarEliminar;
 
-<<<<<<< HEAD
+
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import objetos.Equipo;
