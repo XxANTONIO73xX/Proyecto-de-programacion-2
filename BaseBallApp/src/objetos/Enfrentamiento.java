@@ -1,16 +1,12 @@
 package objetos;
-
-import java.util.ArrayList;
-
 /**
  * esta clase creara los enfrentamientos
- * @author Propietario
- * @version 29/04/2020
+ * @author equipo Maravilla Z
+ * @version 02/05/2020
  */
 public class Enfrentamiento {
     private Equipo equipo1; 
     private Equipo equipo2; 
-    private ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     
     /**
      * sobrecarga de enfrentamiento 
@@ -45,15 +41,5 @@ public class Enfrentamiento {
 
     public void setEquipo2(Equipo equipo2) {
         this.equipo2 = equipo2;
-    }
-
-    public ArrayList<Equipo> getEquipos() {
-        return equipos;
-    }
-
-    public void setEquipos(ArrayList<Equipo> equipos) {
-        this.equipos = equipos;
-    }
-    
-    
+    }   
 }

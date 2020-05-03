@@ -28,16 +28,25 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Mostrar/Buscar Equipos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuMostrarEquiposActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuMostrarJugadores">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Mostrar/Buscar Jugadores"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuMostrarJugadoresActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuMostrarCoachs">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Mostrar/Buscar Coachs"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuMostrarCoachsActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

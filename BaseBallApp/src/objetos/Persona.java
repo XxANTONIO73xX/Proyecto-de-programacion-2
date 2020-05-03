@@ -2,7 +2,8 @@ package objetos;
 
 /**
  * Esta se usará como base para los jugadores y el coach.
- * @author Jesus Navarrete
+ * @author equipo Maravilla Z
+ * @version 02/05/2020
  */
 public abstract class Persona {
     private String nombre; 

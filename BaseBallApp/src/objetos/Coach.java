@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 /**
  * Esta se usará como base para determinar lo que hace el coach.
- * @author jose_
- * @version 29/04/2020
+ * @author equipo Maravilla Z
+ * @version 02/05/2020
  */
 public class Coach extends Persona { 
     private ArrayList<Estrategia> estrategias;
