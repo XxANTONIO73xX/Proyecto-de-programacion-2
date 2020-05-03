@@ -1,5 +1,7 @@
 package Interfaces;
 
+import Interfaces.MostrarBuscarEliminar.EliminarEquipos;
+import Interfaces.MostrarBuscarEliminar.EliminarJugadores;
 import Interfaces.MostrarBuscarEliminar.MostrarCoach;
 import Interfaces.MostrarBuscarEliminar.MostrarEquipos;
 import Interfaces.MostrarBuscarEliminar.MostrarJugadores;
@@ -268,9 +270,19 @@ public class JPartido extends javax.swing.JFrame {
         jMenu3.setText("Eliminar");
 
         jMenuEliminarEquipo.setText("Equipos");
+        jMenuEliminarEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuEliminarEquipoActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuEliminarEquipo);
 
         jMenuEliminarJugadores.setText("Jugadores");
+        jMenuEliminarJugadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuEliminarJugadoresActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuEliminarJugadores);
 
         jMenuBar1.add(jMenu3);
@@ -324,6 +336,16 @@ public class JPartido extends javax.swing.JFrame {
         MostrarCoach mostrarCoach = new MostrarCoach(this, true);
         mostrarCoach.setVisible(true);
     }//GEN-LAST:event_jMenuMostrarCoachsActionPerformed
+
+    private void jMenuEliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEliminarEquipoActionPerformed
+        EliminarEquipos elimnarEquipos = new EliminarEquipos(this, true);
+        elimnarEquipos.setVisible(true);
+    }//GEN-LAST:event_jMenuEliminarEquipoActionPerformed
+
+    private void jMenuEliminarJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEliminarJugadoresActionPerformed
+        EliminarJugadores elimunarJugadores = new EliminarJugadores(this, true);
+        elimunarJugadores.setVisible(true);
+    }//GEN-LAST:event_jMenuEliminarJugadoresActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

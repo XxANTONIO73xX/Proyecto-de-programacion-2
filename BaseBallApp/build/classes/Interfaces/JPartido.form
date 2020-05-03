@@ -59,11 +59,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Equipos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuEliminarEquipoActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuEliminarJugadores">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Jugadores"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuEliminarJugadoresActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
