@@ -9,9 +9,12 @@ import Interfaces.agregar.JEquipos;
 import java.util.ArrayList;
 import objetos.Equipo;
 
-/** En este JFrame se simulara el partido y dara el acceso a la manipulación de datos correspondientes.
+/**
+ * En este JFrame se simulara el partido y dara el acceso a la manipulación de
+ * datos correspondientes.
+ *
  * @author Equipo Maravilla Z
- * @version 
+ * @version
  */
 public class JPartido extends javax.swing.JFrame {
 
@@ -503,7 +506,13 @@ public class JPartido extends javax.swing.JFrame {
     private void jMenuEliminarJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEliminarJugadoresActionPerformed
         EliminarJugadores elimunarJugadores = new EliminarJugadores(this, true);
         elimunarJugadores.setVisible(true);
+
     }//GEN-LAST:event_jMenuEliminarJugadoresActionPerformed
+
+    private void jMenuIniciarEnfrentamientoActionPerformed(java.awt.event.ActionEvent evt) {
+        JEnfrentamientos enfrentamientos = new JEnfrentamientos(this, true);
+        enfrentamientos.setVisible(true);
+    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
