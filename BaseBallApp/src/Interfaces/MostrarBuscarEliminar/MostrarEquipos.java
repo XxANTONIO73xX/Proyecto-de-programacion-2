@@ -1,19 +1,14 @@
-
 package Interfaces.MostrarBuscarEliminar;
+
 
 
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import objetos.Equipo;
 
-/**
- *
- * @author Propietario
-=======
 /** Sirve para mostrar equipos mediante una tabla y su respectiva busqueda.
  * @author Equipo Maravilla Z
  * @version 2/5/2020 15PM
->>>>>>> 5168bdfa452e7c728b080994d783e9cc64a55d2b
  */
 public class MostrarEquipos extends javax.swing.JDialog {
         ArrayList<Equipo> equipos;
