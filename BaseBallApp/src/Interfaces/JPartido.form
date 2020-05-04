@@ -82,8 +82,15 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenuIniciarEnfrentamiento">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Iniciar enfrentamiento"/>
+            <Property name="text" type="java.lang.String" value="Enfrentamiento"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="JInicioEnfrentamiento">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Iniciar"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>

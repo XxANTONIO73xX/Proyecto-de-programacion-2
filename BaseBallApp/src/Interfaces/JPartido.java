@@ -71,6 +71,7 @@ public class JPartido extends javax.swing.JFrame {
         jMenuEliminarEquipo = new javax.swing.JMenuItem();
         jMenuEliminarJugadores = new javax.swing.JMenuItem();
         jMenuIniciarEnfrentamiento = new javax.swing.JMenu();
+        JInicioEnfrentamiento = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -457,7 +458,11 @@ public class JPartido extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenuIniciarEnfrentamiento.setText("Iniciar enfrentamiento");
+        jMenuIniciarEnfrentamiento.setText("Enfrentamiento");
+
+        JInicioEnfrentamiento.setText("Iniciar");
+        jMenuIniciarEnfrentamiento.add(JInicioEnfrentamiento);
+
         jMenuBar1.add(jMenuIniciarEnfrentamiento);
 
         setJMenuBar(jMenuBar1);
@@ -548,6 +553,7 @@ public class JPartido extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem JInicioEnfrentamiento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
