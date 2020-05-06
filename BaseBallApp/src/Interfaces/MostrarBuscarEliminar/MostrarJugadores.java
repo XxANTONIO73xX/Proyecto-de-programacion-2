@@ -6,37 +6,55 @@ import javax.swing.table.DefaultTableModel;
 import objetos.Equipo;
 import objetos.Jugador;
 
-/** Sirve para mostrar jugadores mediante una tabla y su respectiva busqueda.
+/**
+ * Sirve para mostrar jugadores mediante una tabla y su respectiva busqueda.
+ *
  * @author Equipo Maravilla Z
  * @version 2/5/2020 15PM
  */
-
+/**
+ * Instancia clases y arreglos que se utilizaran en la clase.
+ */
 public class MostrarJugadores extends javax.swing.JDialog {
 
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     Equipo equipoSeleccionado = new Equipo();
-    DefaultTableModel MtblJugadores; 
+    DefaultTableModel MtblJugadores;
     Ordenar ordenar = new Ordenar();
+
+    /**
+     * Inicia los componentes ya sean tablas, metodos, etc.
+     */
     public MostrarJugadores(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos) {
         super(parent, modal);
         initComponents();
-        this.equipos = equipos; 
+        this.equipos = equipos;
         MtblJugadores = (DefaultTableModel) tblJugadores.getModel();
         cbxEquipos();
     }
-    
-    public void cbxEquipos(){
-        for(Equipo e: equipos){
+
+    /**
+     * Este muestra equipos que estan en el arreglo en el ComboBox que se
+     * encuentra en este JDialog.
+     */
+    public void cbxEquipos() {
+        //Recorre el forEach para agregar los equipos pertenecientes al ArrayList (Equipo) al ComboBox.
+        for (Equipo e : equipos) {
             cbxEquipo.addItem(e.getNombre());
         }
     }
-    public void cargarTabla(){
-        for(Jugador j: equipoSeleccionado.getJugadores()){
+
+    /**
+     * Este método se usa para cargar la tabla con los datos de los jugadores .
+     */
+    public void cargarTabla() {
+        //Recorre el forEach cargando a los jugadores del equipo seleccionado.
+        for (Jugador j : equipoSeleccionado.getJugadores()) {
             MtblJugadores.addRow(new Object[]{
-            j.getNombre(),
-            j.getApellido(),
-            j.getPosicion(),
-            j.getNumero()
+                j.getNombre(),
+                j.getApellido(),
+                j.getPosicion(),
+                j.getNumero()
             });
         }
     }
@@ -123,15 +141,15 @@ public class MostrarJugadores extends javax.swing.JDialog {
             .addGroup(jPanel34Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel19)
                 .addGap(309, 309, 309))
         );
@@ -166,23 +184,25 @@ public class MostrarJugadores extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel34, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel34, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Este ComboBox tiene como criterio de ordenamiento el "BubbleSort", el
+     * cual ordena a los equipos que ya estan dentro del mismo.
+     */
     private void cbxEquipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxEquipoItemStateChanged
-        // TODO add your handling code here:
-        for(Equipo e: equipos){
-            if(e.getNombre().equals(cbxEquipo.getSelectedItem().toString())){
-                equipoSeleccionado = e; 
+        //Recorre el forEach comprobando que el nombre del objeto seleccionado coincida con algun nombre de algún objeto del ArrayList (Equipo).
+        for (Equipo e : equipos) {
+            if (e.getNombre().equals(cbxEquipo.getSelectedItem().toString())) {
+                equipoSeleccionado = e;
             }
         }
         ordenar.bubbleSort(equipoSeleccionado.getJugadores(), equipoSeleccionado.getJugadores().size());
         cargarTabla();
-        
+
     }//GEN-LAST:event_cbxEquipoItemStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -7,15 +7,23 @@ import objetos.Equipo;
 
 /**
  * Sirve para eliminar equipos mediante una tabla y su respectiva busqueda.
+ *
  * @author Equipo Maravilla Z
  * @version 2/5/2020 15PM
  */
-
+/**
+ * Instancia clases y arreglos que se utilizaran en la clase.
+ */
 public class EliminarEquipos extends javax.swing.JDialog {
 
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     DefaultTableModel MtblMostrasEquipos;
     Ordenar ordenar = new Ordenar();
+
+    /**
+     * Inicia los componentes ya sean tablas, metodos simples y tambien de
+     * ordenamiento.
+     */
     public EliminarEquipos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -25,10 +33,13 @@ public class EliminarEquipos extends javax.swing.JDialog {
         cargarTabla();
     }
 
-     public void cargarTabla() {
+    /**
+     * Este método se usa para cargar la tabla con los datos del equipo.
+     */
+    public void cargarTabla() {
+        //Recorre el forEach cargando los equipos a la tabla.
         for (Equipo c : equipos) {
             MtblMostrasEquipos.addRow(new Object[]{c.getNombre(), c.getEstadio(), c.getCoach().getNombre()});
-
         }
     }
 
@@ -253,15 +264,22 @@ public class EliminarEquipos extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Este lleva las acciones del botón ELIMINAR EQUIPO dentro de este JDialog.
+     */
     private void btnEliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEquipoActionPerformed
+        //Cambia el texto de txfEliminarEquipo a null.
         txfEliminarEquipo.setText(null);
     }//GEN-LAST:event_btnEliminarEquipoActionPerformed
-
+    /**
+     * Este remueve el equipo del arreglo, validando que el nombre sea igual, si
+     * lo es el, el equipo se elimina.
+     */
     private void txfEliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfEliminarEquipoActionPerformed
-        // TODO add your handling code here:
-        for(Equipo e: equipos){
-            if(e.getNombre().equals(txfEliminarEquipo.getText())){
+//Recorre el forEach del ArrayList de Equipo.
+        for (Equipo e : equipos) {
+            //Si el nombre del equipo coincide con alguno dentro del ArrayList, este se elimina.
+            if (e.getNombre().equals(txfEliminarEquipo.getText())) {
                 equipos.remove(e);
             }
         }
