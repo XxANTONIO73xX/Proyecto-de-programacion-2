@@ -1,4 +1,3 @@
-
 package Interfaces.agregar;
 
 import java.util.ArrayList;
@@ -7,40 +6,50 @@ import objetos.Equipo;
 import objetos.Jugador;
 
 /**
- * en este jDialog se agregaran los jugadores
- * @author equipo Maravilla Z
+ * Este JDialog sirve para agregar a los jugadores.
+ *
+ * @author Equipo Maravilla Z
  * @version 02/05/2020
  */
+/**
+ * Instancia clases, objetos y ArrayList´s que se utilizaran en la clase.
+ */
 public class JJugador extends javax.swing.JDialog {
+
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     Equipo equipo = new Equipo();
     ArrayList<Jugador> jugadores;
+
     /**
-     * constructor de JJugador
+     * Constructor de JJugador.
+     *
      * @param parent parametro que se extiende de Jdialog
      * @param modal parametro que se extiende de Jdialog
-     * @param equipos ArrayList de equipos 
+     * @param equipos ArrayList de equipos
      * @param equipo objeto equipo donde se agregara el ArrayList de Jugadores
      */
     public JJugador(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos, Equipo equipo) {
         super(parent, modal);
+        /**
+         * Inicia los componentes ya sean tablas, metodos, etc.
+         */
         initComponents();
         this.equipos = equipos;
-        this.equipo = equipo; 
+        this.equipo = equipo;
         this.jugadores = new ArrayList<Jugador>();
-       cbxBrazo.addItem("Zurdo");
-       cbxBrazo.addItem("Diestro");
-       cbxPosicion.addItem("Catcher");
-       cbxPosicion.addItem("Pitcher");
-       cbxPosicion.addItem("1ra base");
-       cbxPosicion.addItem("2da base");
-       cbxPosicion.addItem("3ra base");
-       cbxPosicion.addItem("Short Stop");
-       cbxPosicion.addItem("J. Izquierdo");
-       cbxPosicion.addItem("J. Central");
-       cbxPosicion.addItem("J. Derecho");
+        //Se añaden tipos a los Combo Box correspondientes.
+        cbxBrazo.addItem("Zurdo");
+        cbxBrazo.addItem("Diestro");
+        cbxPosicion.addItem("Catcher");
+        cbxPosicion.addItem("Pitcher");
+        cbxPosicion.addItem("1ra base");
+        cbxPosicion.addItem("2da base");
+        cbxPosicion.addItem("3ra base");
+        cbxPosicion.addItem("Short Stop");
+        cbxPosicion.addItem("J. Izquierdo");
+        cbxPosicion.addItem("J. Central");
+        cbxPosicion.addItem("J. Derecho");
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -305,7 +314,7 @@ public class JJugador extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // Con esta accion creas un objeto de tipo Jugador y le ingresas los valores de este JDialog
+        // Con esta acción creas un objeto de tipo Jugador y le ingresas los valores de este JDialog.
         Jugador jugador = new Jugador(cbxPosicion.getSelectedItem().toString(),
                 cbxBrazo.getSelectedItem().toString(),
                 Integer.parseInt(txfNumero.getText()),
@@ -314,10 +323,10 @@ public class JJugador extends javax.swing.JDialog {
                 Integer.parseInt(txfEdad.getText()),
                 Float.parseFloat(txfAltura.getText()),
                 Float.parseFloat(txfPeso.getText()));
-        //agregas Jugador al Array de jugadores        
+        //Agregas Jugador al Array de jugadores.        
         jugadores.add(jugador);
-                JOptionPane.showMessageDialog(this, "Jugador agregado");
-                equipo.setJugadores(jugadores);
+        JOptionPane.showMessageDialog(this, "Jugador agregado");
+        equipo.setJugadores(jugadores);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

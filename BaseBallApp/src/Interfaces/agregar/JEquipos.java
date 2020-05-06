@@ -8,15 +8,19 @@ import objetos.Jugador;
 import objetos.Persona;
 
 /**
- * Este JDialog sirve para mostrar la ventana de creación de equipo.
- * @author equipo Maravilla Z
+ * Este JDialog sirve para la de creación de equipo.
+ *
+ * @author Equipo Maravilla Z
  * @version 02/05/2020
+ */
+/**
+ * Instancia clases, objetos y ArrayList´s que se utilizaran en la clase.
  */
 public class JEquipos extends javax.swing.JFrame {
 
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     ArrayList<Estrategia> estrategias = new ArrayList<Estrategia>();
-    //estrategias predeterminadas
+    //Objetos tipo Estrategia, creados previamente.
     Estrategia una = new Estrategia("Toque de bola (Ofensiva)", "Golpe ligero a la pelota");
     Estrategia dos = new Estrategia("Robo de base (Ofensiva)", "Roba la base en el momento oportuno");
     Estrategia tres = new Estrategia("Doble Play (Defensiva)", "Doble OUT en una misma jugada");
@@ -24,14 +28,19 @@ public class JEquipos extends javax.swing.JFrame {
     Equipo equipo = new Equipo();
     DefaultTableModel MtblJugadores;
     int i = 0;
+
     /**
      * Constructor de JEquipos.
+     *
      * @param equipos es el ArrayList en donde se guardaran los equipos.
      * @param i es el identificador automatico de equipos.
      */
-    
     public JEquipos(ArrayList<Equipo> equipos, int i) {
+        /**
+         * Inicia los componentes ya sean tablas, metodos, etc.
+         */
         initComponents();
+        // Se agregan los objetos Estrategia al ArrayList.
         estrategias.add(una);
         estrategias.add(dos);
         estrategias.add(tres);
@@ -42,11 +51,10 @@ public class JEquipos extends javax.swing.JFrame {
         cargarTabla();
 
     }
-    
+
     /**
-     * Metodo para mostrar en la tabla de este JDialog
+     * Metodo para mostrar en la tabla de este JDialog.
      */
-    
     public void cargarTabla() {
         for (Jugador jugadores : equipo.getJugadores()) {
             MtblJugadores.addRow(new Object[]{
@@ -54,7 +62,7 @@ public class JEquipos extends javax.swing.JFrame {
                 jugadores.getNombre(),
                 jugadores.getPosicion(),
                 jugadores.getBrazo()});
-         }
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -270,20 +278,29 @@ public class JEquipos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * En este espacio se ejecutan las acciones correspondientes al botón de
+     * AGREGAR COACH para mostrar su respectiva ventana.
+     */
     private void btnAgregarCoachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCoachActionPerformed
         //con esta accion abres la ventana JCoach
         JCoach Jcoach = new JCoach(this, true, equipos, equipo, estrategias);
         Jcoach.setVisible(true);
     }//GEN-LAST:event_btnAgregarCoachActionPerformed
-
+    /**
+     * En este espacio se ejecutan las acciones correspondientes al botón de
+     * AGREGAR JUGADORES para mostrar su respectiva ventana.
+     */
     private void btnAgregarJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarJugadoresActionPerformed
         //con esta accion abres la ventana JJugador
         JJugador player = new JJugador(this, true, equipos, equipo);
         player.setVisible(true);
         cargarTabla();
     }//GEN-LAST:event_btnAgregarJugadoresActionPerformed
-
+    /**
+     * En este espacio se ejecutan las acciones correspondientes al botón de
+     * AGREGAR y así agregar el equipo.
+     */
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // Con esta acción agregas el equipo creado al ArrayList de equipos
         equipo.setId(i);
