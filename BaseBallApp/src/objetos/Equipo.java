@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @version 02/05/2020 
  */
 public class Equipo {
-    
+    private int id;
     private String nombre;
     private String estadio;
     private ArrayList<Jugador> jugadores = new ArrayList<>();
@@ -16,12 +16,14 @@ public class Equipo {
     
       /**
        * constructor de Equipo
+       * @param id Identificador del equipo
        * @param nombre Guarda el nombre del equipo.
        * @param estadio Guarda el nombre del estadio perteneciente al equipo.
        * @param jugadores Arreglo de jugador.
        * @param coach guarda el objeto coach
        */
-    public void Equipo (String nombre, String estadio, ArrayList jugadores, Coach coach){
+    public void Equipo (int id, String nombre, String estadio, ArrayList jugadores, Coach coach){
+        this.id = id;
         this.nombre = nombre;
         this.estadio = estadio;
         this.jugadores = jugadores;
@@ -59,6 +61,14 @@ public class Equipo {
 
     public void setCoach(Coach coach) {
         this.coach = coach;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     

@@ -18,11 +18,11 @@ import objetos.Equipo;
 public class JPartido extends javax.swing.JFrame {
 
     ArrayList<Equipo> equipos;
-
+    int i;
     public JPartido() {
         initComponents();
         equipos = new ArrayList<Equipo>();
-        
+        i = 0;
     }
 
     @SuppressWarnings("unchecked")
@@ -532,12 +532,13 @@ public class JPartido extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuAgregarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAgregarEquipoActionPerformed
-        JEquipos team = new JEquipos(equipos);
+        i++;
+        JEquipos team = new JEquipos(equipos, i);
         team.setVisible(true);
     }//GEN-LAST:event_jMenuAgregarEquipoActionPerformed
 
     private void jMenuMostrarJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMostrarJugadoresActionPerformed
-        MostrarJugadores mostrarJugadores = new MostrarJugadores(this, true);
+        MostrarJugadores mostrarJugadores = new MostrarJugadores(this, true, equipos);
         mostrarJugadores.setVisible(true);
     }//GEN-LAST:event_jMenuMostrarJugadoresActionPerformed
 
@@ -552,7 +553,7 @@ public class JPartido extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuEliminarEquipoActionPerformed
 
     private void jMenuEliminarJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEliminarJugadoresActionPerformed
-        EliminarJugadores elimunarJugadores = new EliminarJugadores(this, true);
+        EliminarJugadores elimunarJugadores = new EliminarJugadores(this, true, equipos);
         elimunarJugadores.setVisible(true);
 
     }//GEN-LAST:event_jMenuEliminarJugadoresActionPerformed

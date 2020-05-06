@@ -1,5 +1,6 @@
 package Interfaces.MostrarBuscarEliminar;
 
+import MetodosEstructura.Ordenar;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import objetos.Equipo;
@@ -14,12 +15,12 @@ public class MostrarEquipos extends javax.swing.JDialog {
 
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     DefaultTableModel MtblMostrasEquipos;
-
-    Equipo equipo = new Equipo();
+    Ordenar ordenar = new Ordenar();
     public MostrarEquipos(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos) {
         super(parent, modal);
         initComponents();
         this.equipos = equipos;
+        ordenar.quickSort(equipos, 0, (equipos.size() - 1));
         MtblMostrasEquipos = (DefaultTableModel) tblEquipo.getModel();
         cargarTabla();
 
@@ -76,9 +77,17 @@ public class MostrarEquipos extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Nombre", "Estadio", "Coach"
+                "Id", "Nombre", "Estadio", "Coach"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblEquipo);
 
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);

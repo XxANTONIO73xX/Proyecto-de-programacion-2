@@ -1,6 +1,8 @@
 package Interfaces.MostrarBuscarEliminar;
 
+import MetodosEstructura.Ordenar;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 import objetos.Equipo;
 
 /**
@@ -11,11 +13,23 @@ import objetos.Equipo;
 
 public class EliminarEquipos extends javax.swing.JDialog {
 
-    ArrayList<Equipo> equipo = new ArrayList<Equipo>();
-
+    ArrayList<Equipo> equipos = new ArrayList<Equipo>();
+    DefaultTableModel MtblMostrasEquipos;
+    Ordenar ordenar = new Ordenar();
     public EliminarEquipos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.equipos = equipos;
+        ordenar.quickSort(equipos, 0, (equipos.size() - 1));
+        MtblMostrasEquipos = (DefaultTableModel) tblEquipo.getModel();
+        cargarTabla();
+    }
+
+     public void cargarTabla() {
+        for (Equipo c : equipos) {
+            MtblMostrasEquipos.addRow(new Object[]{c.getNombre(), c.getEstadio(), c.getCoach().getNombre()});
+
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -33,7 +47,7 @@ public class EliminarEquipos extends javax.swing.JDialog {
         jTable2 = new javax.swing.JTable();
         jPanel11 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tblEquipo = new javax.swing.JTable();
         jLabel30 = new javax.swing.JLabel();
         txfEliminarEquipo = new javax.swing.JTextField();
         btnEliminarEquipo = new javax.swing.JButton();
@@ -134,18 +148,23 @@ public class EliminarEquipos extends javax.swing.JDialog {
         jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel11.setForeground(new java.awt.Color(255, 0, 0));
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        tblEquipo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id", "Nombre", "Estadio", "Coach"
             }
-        ));
-        jScrollPane4.setViewportView(jTable4);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tblEquipo);
 
         jLabel30.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -154,6 +173,12 @@ public class EliminarEquipos extends javax.swing.JDialog {
         jLabel30.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         txfEliminarEquipo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txfEliminarEquipo.setText("ingrese el nombre del equipo a eliminar :)");
+        txfEliminarEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txfEliminarEquipoActionPerformed(evt);
+            }
+        });
 
         btnEliminarEquipo.setBackground(new java.awt.Color(255, 0, 0));
         btnEliminarEquipo.setForeground(new java.awt.Color(255, 51, 0));
@@ -230,15 +255,18 @@ public class EliminarEquipos extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEquipoActionPerformed
-        for (Equipo e : equipo) {
-            if (txfEliminarEquipo.equals(e.getNombre())) {
-                e.setNombre(null);
-                e.setCoach(null);
-                e.setEstadio(null);
+        txfEliminarEquipo.setText(null);
+    }//GEN-LAST:event_btnEliminarEquipoActionPerformed
 
+    private void txfEliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfEliminarEquipoActionPerformed
+        // TODO add your handling code here:
+        for(Equipo e: equipos){
+            if(e.getNombre().equals(txfEliminarEquipo.getText())){
+                equipos.remove(e);
             }
         }
-    }//GEN-LAST:event_btnEliminarEquipoActionPerformed
+        cargarTabla();
+    }//GEN-LAST:event_txfEliminarEquipoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -256,8 +284,8 @@ public class EliminarEquipos extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable4;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTable tblEquipo;
     private javax.swing.JTextField txfEliminarEquipo;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,5 +1,8 @@
 package Interfaces.MostrarBuscarEliminar;
 
+import MetodosEstructura.Ordenar;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 import objetos.Jugador;
 import objetos.Equipo;
 
@@ -9,12 +12,32 @@ import objetos.Equipo;
  */
 
 public class EliminarJugadores extends javax.swing.JDialog {
-
-    Equipo equipo = new Equipo();
-
-    public EliminarJugadores(java.awt.Frame parent, boolean modal) {
+    ArrayList<Equipo> equipos = new ArrayList<Equipo>();
+    Equipo equipoSeleccionado = new Equipo();
+    DefaultTableModel MtblJugadores; 
+    Ordenar ordenar = new Ordenar();
+    public EliminarJugadores(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos) {
         super(parent, modal);
         initComponents();
+        this.equipos = equipos; 
+        MtblJugadores = (DefaultTableModel) tblJugador.getModel();
+        cbxEquipos();
+    }
+        public void cbxEquipos(){
+        for(Equipo e: equipos){
+            cbxEquipo.addItem(e.getNombre());
+        }
+    }
+        
+            public void cargarTabla(){
+        for(Jugador j: equipoSeleccionado.getJugadores()){
+            MtblJugadores.addRow(new Object[]{
+            j.getNombre(),
+            j.getApellido(),
+            j.getPosicion(),
+            j.getNumero()
+            });
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -23,10 +46,11 @@ public class EliminarJugadores extends javax.swing.JDialog {
 
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tblJugador = new javax.swing.JTable();
         jLabel23 = new javax.swing.JLabel();
         txfEliminarJugador = new javax.swing.JTextField();
         btnEliminarJugador = new javax.swing.JButton();
+        cbxEquipo = new javax.swing.JComboBox();
         jPanel1 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
 
@@ -36,18 +60,23 @@ public class EliminarJugadores extends javax.swing.JDialog {
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         jPanel2.setForeground(new java.awt.Color(255, 0, 0));
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tblJugador.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre ", "Apellido", "Posicion", "Numero"
             }
-        ));
-        jScrollPane3.setViewportView(jTable3);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tblJugador);
 
         jLabel23.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -56,6 +85,7 @@ public class EliminarJugadores extends javax.swing.JDialog {
         jLabel23.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         txfEliminarJugador.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txfEliminarJugador.setText("ingresa el numero del jugador");
         txfEliminarJugador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txfEliminarJugadorActionPerformed(evt);
@@ -71,6 +101,13 @@ public class EliminarJugadores extends javax.swing.JDialog {
             }
         });
 
+        cbxEquipo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cbxEquipo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxEquipoItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -83,7 +120,8 @@ public class EliminarJugadores extends javax.swing.JDialog {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(txfEliminarJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEliminarJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnEliminarJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -91,7 +129,9 @@ public class EliminarJugadores extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(cbxEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                .addGap(11, 11, 11)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txfEliminarJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminarJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -130,40 +170,47 @@ public class EliminarJugadores extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void txfEliminarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfEliminarJugadorActionPerformed
-
+        txfEliminarJugador.setText(null);
     }//GEN-LAST:event_txfEliminarJugadorActionPerformed
 
     private void btnEliminarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarJugadorActionPerformed
-        for (Jugador jugadores : equipo.getJugadores()) {
-            if (txfEliminarJugador.equals(jugadores.getNombre())) {
-                jugadores.setNombre(null);
-                jugadores.setApellido(null);
-                jugadores.setAltura(0);
-                jugadores.setPeso(0);
-                jugadores.setBrazo(null);
-                jugadores.setEdad(0);
-                jugadores.setNumero(0);
-                jugadores.setPosicion(null);
-
+        int numero = Integer.parseInt(txfEliminarJugador.getText());
+        for(Jugador j: equipoSeleccionado.getJugadores()){
+            if(j.getNumero() == numero){
+                equipoSeleccionado.getJugadores().remove(j);
             }
         }
+        cargarTabla();
+            
     }//GEN-LAST:event_btnEliminarJugadorActionPerformed
+
+    private void cbxEquipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxEquipoItemStateChanged
+        for(Equipo e: equipos){
+            if(e.getNombre().equals(cbxEquipo.getSelectedItem().toString())){
+                equipoSeleccionado = e; 
+            }
+        }
+        ordenar.bubbleSort(equipoSeleccionado.getJugadores(), equipoSeleccionado.getJugadores().size());
+        cargarTabla();
+    }//GEN-LAST:event_cbxEquipoItemStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminarJugador;
+    private javax.swing.JComboBox cbxEquipo;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable3;
+    private javax.swing.JTable tblJugador;
     private javax.swing.JTextField txfEliminarJugador;
     // End of variables declaration//GEN-END:variables
 }

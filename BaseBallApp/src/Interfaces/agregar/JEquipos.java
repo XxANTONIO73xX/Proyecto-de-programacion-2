@@ -23,19 +23,21 @@ public class JEquipos extends javax.swing.JFrame {
     Estrategia cuatro = new Estrategia("Base por bola (Defensiva)", "Golpea al jugador con la bola, y asi evitar que bateé");
     Equipo equipo = new Equipo();
     DefaultTableModel MtblJugadores;
-    
+    int i = 0;
     /**
      * Constructor de JEquipos.
      * @param equipos es el ArrayList en donde se guardaran los equipos.
+     * @param i es el identificador automatico de equipos.
      */
     
-    public JEquipos(ArrayList<Equipo> equipos) {
+    public JEquipos(ArrayList<Equipo> equipos, int i) {
         initComponents();
         estrategias.add(una);
         estrategias.add(dos);
         estrategias.add(tres);
         estrategias.add(cuatro);
         this.equipos = equipos;
+        this.i = i;
         MtblJugadores = (DefaultTableModel) tblJugadores.getModel();
         cargarTabla();
 
@@ -284,6 +286,7 @@ public class JEquipos extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // Con esta acción agregas el equipo creado al ArrayList de equipos
+        equipo.setId(i);
         equipo.setNombre(txfNombreEquipo.getText());
         equipo.setEstadio(txfEstadio.getText());
         equipos.add(equipo);
