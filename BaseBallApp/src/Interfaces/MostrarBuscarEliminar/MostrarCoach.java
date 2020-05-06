@@ -14,17 +14,13 @@ public class MostrarCoach extends javax.swing.JDialog {
  ArrayList<Coach> coach;
  DefaultTableModel MtblMostrarCoach;
     
-    public void CargarTabla() {
-        for (Coach c: coach){
-            MtblMostrarCoach.addRow(new Object[]{c.getNombre(),c.getApellido(),c.getEdad(),""});
-            
-        }
-    }
 
     public MostrarCoach(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
     }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -146,11 +142,7 @@ public class MostrarCoach extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarCoachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCoachActionPerformed
-    for (Coach d : coach){
-      if(txfBuscarCoach.equals(d.getNombre())){
-          
-      }  
-    }
+    
     }//GEN-LAST:event_btnBuscarCoachActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
