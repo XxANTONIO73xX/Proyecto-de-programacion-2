@@ -26,6 +26,8 @@ public class MostrarEquipos extends javax.swing.JDialog {
     public MostrarEquipos(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
+
         this.equipos = equipos;
         ordenar.quickSort(equipos, 0, (equipos.size() - 1));
         MtblMostrasEquipos = (DefaultTableModel) tblEquipo.getModel();

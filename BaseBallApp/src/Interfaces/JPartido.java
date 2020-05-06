@@ -30,6 +30,7 @@ public class JPartido extends javax.swing.JFrame {
          * Inicia los componentes ya sean tablas, metodos, etc.
          */
         initComponents();
+        this.setLocationRelativeTo(null);
         equipos = new ArrayList<Equipo>();
         i = 0;
     }
@@ -550,6 +551,7 @@ public class JPartido extends javax.swing.JFrame {
         i++;
         JEquipos team = new JEquipos(equipos, i);
         team.setVisible(true);
+        
     }//GEN-LAST:event_jMenuAgregarEquipoActionPerformed
     /**
      * En este espacio se ejecutan las acciones correspondientes al botón de

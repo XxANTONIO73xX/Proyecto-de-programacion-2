@@ -34,6 +34,7 @@ public class JJugador extends javax.swing.JDialog {
          * Inicia los componentes ya sean tablas, metodos, etc.
          */
         initComponents();
+        this.setLocationRelativeTo(null);
         this.equipos = equipos;
         this.equipo = equipo;
         this.jugadores = new ArrayList<Jugador>();

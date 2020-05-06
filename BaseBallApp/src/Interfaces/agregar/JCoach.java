@@ -39,6 +39,7 @@ public class JCoach extends javax.swing.JDialog {
          * Inicia los componentes ya sean tablas, metodos, etc.
          */
         initComponents();
+        this.setLocationRelativeTo(null);
         this.equipos = equipos;
         this.equipo = equipo;
         this.estrategias = estrategias;
@@ -319,7 +320,7 @@ public class JCoach extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 475, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -27,6 +27,7 @@ public class EliminarEquipos extends javax.swing.JDialog {
     public EliminarEquipos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
         this.equipos = equipos;
         ordenar.quickSort(equipos, 0, (equipos.size() - 1));
         MtblMostrasEquipos = (DefaultTableModel) tblEquipo.getModel();

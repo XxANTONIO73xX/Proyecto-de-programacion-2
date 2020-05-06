@@ -18,6 +18,8 @@ public class JEnfrentamientos extends javax.swing.JDialog {
          * Inicia los componentes ya sean tablas, metodos, etc.
          */
         initComponents();
+        this.setLocationRelativeTo(null);
+
     }
 
     @SuppressWarnings("unchecked")
