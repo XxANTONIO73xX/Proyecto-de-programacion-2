@@ -1,23 +1,42 @@
 package Interfaces.MostrarBuscarEliminar;
 
-
-
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import objetos.Equipo;
 
-/** Sirve para mostrar equipos mediante una tabla y su respectiva busqueda.
+/**
+ * Sirve para mostrar equipos mediante una tabla y su respectiva busqueda.
+ *
  * @author Equipo Maravilla Z
  * @version 2/5/2020 15PM
  */
 public class MostrarEquipos extends javax.swing.JDialog {
-        ArrayList<Equipo> equipos;
-        DefaultTableModel MtblMostrasEquipos;
 
-    public MostrarEquipos(java.awt.Frame parent, boolean modal) {
+    ArrayList<Equipo> equipos;
+    DefaultTableModel MtblMostrasEquipos;
+
+    Equipo equipo = new Equipo();
+    public MostrarEquipos(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos, Equipo equipot) {
         super(parent, modal);
         initComponents();
         this.equipos = equipos;
+        this.equipo = equipo;
+        cargarTabla();
+
+
+    }
+
+    public void cargarTabla() {
+        for (Equipo c : equipos) {
+            MtblMostrasEquipos.addRow(new Object[]{c.getNombre(), c.getEstadio(), c.getCoach()});
+
+        }
+    }
+
+    public void vaciarTabla() {
+        for (int i = MtblMostrasEquipos.getRowCount() - 1; i >= 0; i--) {
+            MtblMostrasEquipos.removeRow(i);
+        }
     }
 
     @SuppressWarnings("unchecked")

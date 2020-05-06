@@ -19,10 +19,12 @@ import objetos.Equipo;
 public class JPartido extends javax.swing.JFrame {
 
     ArrayList<Equipo> equipos;
+    Equipo equipot =  new Equipo();
 
     public JPartido() {
         initComponents();
         equipos = new ArrayList<Equipo>();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -551,7 +553,7 @@ public class JPartido extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuMostrarJugadoresActionPerformed
 
     private void jMenuMostrarEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMostrarEquiposActionPerformed
-        MostrarEquipos mostrasEquipo = new MostrarEquipos(this, true);
+        MostrarEquipos mostrasEquipo = new MostrarEquipos(this, true, equipos, equipot);
         mostrasEquipo.setVisible(true);
     }//GEN-LAST:event_jMenuMostrarEquiposActionPerformed
 
