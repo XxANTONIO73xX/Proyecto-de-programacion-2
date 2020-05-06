@@ -2,7 +2,6 @@ package Interfaces;
 
 import Interfaces.MostrarBuscarEliminar.EliminarEquipos;
 import Interfaces.MostrarBuscarEliminar.EliminarJugadores;
-import Interfaces.MostrarBuscarEliminar.MostrarCoach;
 import Interfaces.MostrarBuscarEliminar.MostrarEquipos;
 import Interfaces.MostrarBuscarEliminar.MostrarJugadores;
 import Interfaces.agregar.JEquipos;
@@ -19,7 +18,6 @@ import objetos.Equipo;
 public class JPartido extends javax.swing.JFrame {
 
     ArrayList<Equipo> equipos;
-    Equipo equipot =  new Equipo();
 
     public JPartido() {
         initComponents();
@@ -72,7 +70,6 @@ public class JPartido extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuMostrarEquipos = new javax.swing.JMenuItem();
         jMenuMostrarJugadores = new javax.swing.JMenuItem();
-        jMenuMostrarCoachs = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuEliminarEquipo = new javax.swing.JMenuItem();
         jMenuEliminarJugadores = new javax.swing.JMenuItem();
@@ -479,14 +476,6 @@ public class JPartido extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuMostrarJugadores);
 
-        jMenuMostrarCoachs.setText("Mostrar/Buscar Coachs");
-        jMenuMostrarCoachs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuMostrarCoachsActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuMostrarCoachs);
-
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Eliminar");
@@ -553,14 +542,9 @@ public class JPartido extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuMostrarJugadoresActionPerformed
 
     private void jMenuMostrarEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMostrarEquiposActionPerformed
-        MostrarEquipos mostrasEquipo = new MostrarEquipos(this, true, equipos, equipot);
+        MostrarEquipos mostrasEquipo = new MostrarEquipos(this, true, equipos);
         mostrasEquipo.setVisible(true);
     }//GEN-LAST:event_jMenuMostrarEquiposActionPerformed
-
-    private void jMenuMostrarCoachsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMostrarCoachsActionPerformed
-        MostrarCoach mostrarCoach = new MostrarCoach(this, true);
-        mostrarCoach.setVisible(true);
-    }//GEN-LAST:event_jMenuMostrarCoachsActionPerformed
 
     private void jMenuEliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEliminarEquipoActionPerformed
         EliminarEquipos elimnarEquipos = new EliminarEquipos(this, true);
@@ -623,17 +607,7 @@ public class JPartido extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -650,13 +624,9 @@ public class JPartido extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuEliminarEquipo;
     private javax.swing.JMenuItem jMenuEliminarJugadores;
     private javax.swing.JMenu jMenuIniciarEnfrentamiento;
-    private javax.swing.JMenuItem jMenuMostrarCoachs;
     private javax.swing.JMenuItem jMenuMostrarEquipos;
     private javax.swing.JMenuItem jMenuMostrarJugadores;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
@@ -666,7 +636,6 @@ public class JPartido extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable3;
     private javax.swing.JLabel lblCoach;

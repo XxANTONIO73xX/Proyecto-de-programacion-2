@@ -12,15 +12,15 @@ import objetos.Equipo;
  */
 public class MostrarEquipos extends javax.swing.JDialog {
 
-    ArrayList<Equipo> equipos;
+    ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     DefaultTableModel MtblMostrasEquipos;
 
     Equipo equipo = new Equipo();
-    public MostrarEquipos(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos, Equipo equipot) {
+    public MostrarEquipos(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos) {
         super(parent, modal);
         initComponents();
         this.equipos = equipos;
-        this.equipo = equipo;
+        MtblMostrasEquipos = (DefaultTableModel) tblEquipo.getModel();
         cargarTabla();
 
 
@@ -28,7 +28,7 @@ public class MostrarEquipos extends javax.swing.JDialog {
 
     public void cargarTabla() {
         for (Equipo c : equipos) {
-            MtblMostrasEquipos.addRow(new Object[]{c.getNombre(), c.getEstadio(), c.getCoach()});
+            MtblMostrasEquipos.addRow(new Object[]{c.getNombre(), c.getEstadio(), c.getCoach().getNombre()});
 
         }
     }
@@ -49,7 +49,7 @@ public class MostrarEquipos extends javax.swing.JDialog {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblBuscarEquipo = new javax.swing.JTable();
+        tblEquipo = new javax.swing.JTable();
         jPanel24 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
 
@@ -71,7 +71,7 @@ public class MostrarEquipos extends javax.swing.JDialog {
         jButton1.setBackground(new java.awt.Color(51, 255, 51));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconfinder_search_322497 (1).png"))); // NOI18N
 
-        tblBuscarEquipo.setModel(new javax.swing.table.DefaultTableModel(
+        tblEquipo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -79,7 +79,7 @@ public class MostrarEquipos extends javax.swing.JDialog {
                 "Nombre", "Estadio", "Coach"
             }
         ));
-        jScrollPane1.setViewportView(tblBuscarEquipo);
+        jScrollPane1.setViewportView(tblEquipo);
 
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
         jPanel25.setLayout(jPanel25Layout);
@@ -163,6 +163,6 @@ public class MostrarEquipos extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel25;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTable tblBuscarEquipo;
+    private javax.swing.JTable tblEquipo;
     // End of variables declaration//GEN-END:variables
 }
