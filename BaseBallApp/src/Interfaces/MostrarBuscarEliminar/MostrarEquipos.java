@@ -43,15 +43,13 @@ public class MostrarEquipos extends javax.swing.JDialog {
         for (Equipo c : equipos) {
             MtblMostrasEquipos.addRow(new Object[]{c.getId(), c.getNombre(), c.getEstadio(), c.getCoach().getNombre()});
         }
-<<<<<<< HEAD
         }
     
-=======
-    }
+
+    
     /**
      * Este método se usa para vaciar la tabla y dejarla en blanco, quitando así los datos de los equipos .
      */
->>>>>>> c4a72e7b71933efc4307949d88c7008509802e92
     public void vaciarTabla() {
         //Recorre el ciclo "for" removiendo cada Row o Columna hasta que sea 0.
         for (int i = MtblMostrasEquipos.getRowCount() - 1; i >= 0; i--) {
