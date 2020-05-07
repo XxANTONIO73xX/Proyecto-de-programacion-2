@@ -19,10 +19,6 @@ public class EliminarEquipos extends javax.swing.JDialog {
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     DefaultTableModel MtblMostrasEquipos;
     Ordenar ordenar = new Ordenar();
-
-    public EliminarEquipos(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos) {
-
-
     /**
      * Inicia los componentes ya sean tablas, metodos simples y tambien de
      * ordenamiento.
