@@ -7,41 +7,52 @@ import objetos.Equipo;
 import objetos.Estrategia;
 
 /**
- * En esta clase se va a crear el coach del equipo.
+ * Este JDialog sirve para crear el coach del equipo.
+ *
  * @author Equipo Maravilla Z
  * @version 02/05/2020
  */
-
-public class JCoach extends javax.swing.JDialog {
-ArrayList<Equipo> equipos = new ArrayList<Equipo>();
-ArrayList<Estrategia> estrategias = new ArrayList<Estrategia>();  
-ArrayList<Estrategia> estrategiasDelCoach = new ArrayList<Estrategia>(); 
-Equipo equipo = new Equipo();
-
 /**
- * constructo JCoach
- * @param parent parametro que se extiende de Jdialog
- * @param modal parametro que se extiende de Jdialog
- * @param equipos el ArrayList que usara para guardar el equipo del que forma parte el coach
- * @param equipo el equipo que pertenece el coach, que se agregara al ArrayList 
- * @param estrategias estrategias que se usaran para agregarlas al coach
+ * Instancia clases, objetos y ArrayList´s que se utilizaran en la clase.
  */
+public class JCoach extends javax.swing.JDialog {
+
+    ArrayList<Equipo> equipos = new ArrayList<Equipo>();
+    ArrayList<Estrategia> estrategias = new ArrayList<Estrategia>();
+    ArrayList<Estrategia> estrategiasDelCoach = new ArrayList<Estrategia>();
+    Equipo equipo = new Equipo();
+
+    /**
+     * Constructor de JCoach.
+     *
+     * @param parent parametro que se extiende de Jdialog
+     * @param modal parametro que se extiende de Jdialog
+     * @param equipos el ArrayList que usara para guardar el equipo del que
+     * forma parte el coach
+     * @param equipo el equipo que pertenece el coach, que se agregara al
+     * ArrayList
+     * @param estrategias estrategias que se usaran para agregarlas al coach
+     */
     public JCoach(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos, Equipo equipo, ArrayList<Estrategia> estrategias) {
         super(parent, modal);
+        /**
+         * Inicia los componentes ya sean tablas, metodos, etc.
+         */
         initComponents();
+        this.setLocationRelativeTo(null);
         this.equipos = equipos;
         this.equipo = equipo;
         this.estrategias = estrategias;
         cbxEstrategias();
     }
-   
+
     /**
-     * Metodo que carga el ComboBox de estrategias
+     * Este muestra estrategias que estan en el arreglo en el ComboBox que se
+     * encuentra en este JDialog.
      */
-    
-    public void cbxEstrategias(){
-        for(Estrategia estrategias: estrategias){
-            cbxEstrategias.addItem(estrategias.getNombreEstrategia());  
+    public void cbxEstrategias() {
+        for (Estrategia estrategias : estrategias) {
+            cbxEstrategias.addItem(estrategias.getNombreEstrategia());
         }
     }
 
@@ -309,7 +320,7 @@ Equipo equipo = new Equipo();
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 475, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,37 +332,35 @@ Equipo equipo = new Equipo();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         /**
-         * En esta acción se creara un nuevo objeto de tipo coach para agregarles los valores puestos en los
-           TextField de este JDialog.
-         */
-        Coach coach = new Coach(estrategiasDelCoach, 
-                txfNombre.getText(), 
+     * En esta acción se creara un nuevo objeto de tipo coach para agregarles
+     * los valores puestos en los TextField de este JDialog.
+     */
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        Coach coach = new Coach(estrategiasDelCoach,
+                txfNombre.getText(),
                 txfApellido.getText(),
                 Integer.parseInt(txfEdad.getText()),
                 Float.parseFloat(txfAltura.getText()),
                 Float.parseFloat(txfPeso.getText()));
         equipo.setCoach(coach);
         JOptionPane.showMessageDialog(this, "el coach fue agregado");
-        this.dispose();    
+        this.dispose();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnAgregarEstrategiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEstrategiaActionPerformed
-        
+
         /**
-         * En esta acción se le agregan estrategias al coach seleccionadas en el ComboBox de 
-           estatregias.
-        */
-        
+         * En esta acción se le agregan estrategias al coach seleccionadas en el
+         * ComboBox de estatregias.
+         */
         String nombreEstrategia = cbxEstrategias.getSelectedItem().toString();
-        for(Estrategia e: estrategias){
-            if(nombreEstrategia.equals(e.getNombreEstrategia())){
+        for (Estrategia e : estrategias) {
+            if (nombreEstrategia.equals(e.getNombreEstrategia())) {
                 estrategiasDelCoach.add(e);
                 JOptionPane.showMessageDialog(this, "Estrategia agregada a este coach...");
             }
-        }             
+        }
     }//GEN-LAST:event_btnAgregarEstrategiaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
