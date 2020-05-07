@@ -22,6 +22,7 @@ public class MostrarEquipos extends javax.swing.JDialog {
         this.equipos = equipos;
         ordenar.quickSort(equipos, 0, (equipos.size() - 1));
         MtblMostrasEquipos = (DefaultTableModel) tblEquipo.getModel();
+        vaciarTabla();
         cargarTabla();
 
 
@@ -29,11 +30,10 @@ public class MostrarEquipos extends javax.swing.JDialog {
 
     public void cargarTabla() {
         for (Equipo c : equipos) {
-            MtblMostrasEquipos.addRow(new Object[]{c.getNombre(), c.getEstadio(), c.getCoach().getNombre()});
-
+            MtblMostrasEquipos.addRow(new Object[]{c.getId(), c.getNombre(), c.getEstadio(), c.getCoach().getNombre()});
         }
-    }
-
+        }
+    
     public void vaciarTabla() {
         for (int i = MtblMostrasEquipos.getRowCount() - 1; i >= 0; i--) {
             MtblMostrasEquipos.removeRow(i);

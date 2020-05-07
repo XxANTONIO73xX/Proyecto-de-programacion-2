@@ -548,7 +548,7 @@ public class JPartido extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuMostrarEquiposActionPerformed
 
     private void jMenuEliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEliminarEquipoActionPerformed
-        EliminarEquipos elimnarEquipos = new EliminarEquipos(this, true);
+        EliminarEquipos elimnarEquipos = new EliminarEquipos(this, true, equipos);
         elimnarEquipos.setVisible(true);
     }//GEN-LAST:event_jMenuEliminarEquipoActionPerformed
 
