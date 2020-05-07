@@ -11,30 +11,49 @@ import objetos.Equipo;
  * @author Equipo Maravilla Z
  * @version 2/5/2020 15PM
  */
+/**
+ * Instancia clases, objetos y arreglos que se utilizaran en la clase.
+ */
 public class MostrarEquipos extends javax.swing.JDialog {
 
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     DefaultTableModel MtblMostrasEquipos;
     Ordenar ordenar = new Ordenar();
+
+    /**
+     * Inicia los componentes ya sean tablas, metodos, etc.
+     */
     public MostrarEquipos(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
+
         this.equipos = equipos;
         ordenar.quickSort(equipos, 0, (equipos.size() - 1));
         MtblMostrasEquipos = (DefaultTableModel) tblEquipo.getModel();
         vaciarTabla();
         cargarTabla();
 
-
     }
-
+    /**
+     * Este método se usa para cargar la tabla con los datos de los equipos .
+     */
     public void cargarTabla() {
+        //Recorre el forEach para agregar los equipos pertenecientes al ArrayList (Equipo) a la tabla.
         for (Equipo c : equipos) {
             MtblMostrasEquipos.addRow(new Object[]{c.getId(), c.getNombre(), c.getEstadio(), c.getCoach().getNombre()});
         }
+<<<<<<< HEAD
         }
     
+=======
+    }
+    /**
+     * Este método se usa para vaciar la tabla y dejarla en blanco, quitando así los datos de los equipos .
+     */
+>>>>>>> c4a72e7b71933efc4307949d88c7008509802e92
     public void vaciarTabla() {
+        //Recorre el ciclo "for" removiendo cada Row o Columna hasta que sea 0.
         for (int i = MtblMostrasEquipos.getRowCount() - 1; i >= 0; i--) {
             MtblMostrasEquipos.removeRow(i);
         }
@@ -77,7 +96,7 @@ public class MostrarEquipos extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Id", "Nombre", "Estadio", "Coach"
+                "ID", "Nombre", "Estadio", "Coach"
             }
         ) {
             boolean[] canEdit = new boolean [] {
