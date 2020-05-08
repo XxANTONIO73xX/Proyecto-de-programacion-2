@@ -11,44 +11,39 @@ import objetos.Equipo;
  * @author Equipo Maravilla Z
  * @version 2/5/2020 15PM
  */
-/**
- * Instancia clases, objetos y arreglos que se utilizaran en la clase.
- */
 public class MostrarEquipos extends javax.swing.JDialog {
 
+    /**
+     * Instancia clases, objetos y arreglos que se utilizaran en la clase.
+     */
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     DefaultTableModel MtblMostrasEquipos;
     Ordenar ordenar = new Ordenar();
-    
-    /**
-     * Inicia los componentes ya sean tablas, metodos, etc.
-     */
+
     public MostrarEquipos(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos) {
         super(parent, modal);
+        /**
+         * Inicia los componentes ya sean tablas, metodos, etc.
+         */
         initComponents();
         this.setLocationRelativeTo(null);
         this.equipos = equipos;
         MtblMostrasEquipos = (DefaultTableModel) tblEquipo.getModel();
+        ordenar.quickSort(this.equipos, 0, (this.equipos.size() - 1));
+        vaciarTabla();
         cargarTabla();
 
     }
-    /**
-     * Este método se usa para cargar la tabla con los datos de los equipos .
-     */
+
     public void cargarTabla() {
         //Recorre el forEach para agregar los equipos pertenecientes al ArrayList (Equipo) a la tabla.
         for (Equipo c : equipos) {
             MtblMostrasEquipos.addRow(new Object[]{c.getId(), c.getNombre(), c.getEstadio(), c.getCoach().getNombre()});
         }
-        }
-    
+    }
 
-    
-    /**
-     * Este método se usa para vaciar la tabla y dejarla en blanco, quitando así los datos de los equipos .
-     */
     public void vaciarTabla() {
-        //Recorre el ciclo "for" removiendo cada Row o Columna hasta que sea 0.
+        //Rcorre la tabla completa removiendo toda la tabla cada vez que carga el método. 
         for (int i = MtblMostrasEquipos.getRowCount() - 1; i >= 0; i--) {
             MtblMostrasEquipos.removeRow(i);
         }
