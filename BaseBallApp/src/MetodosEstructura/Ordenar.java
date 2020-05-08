@@ -12,6 +12,20 @@ public class Ordenar {
 
     public Ordenar() {
     }
+    
+    public void MetodoBurbuja(ArrayList<Jugador> jugadores){
+        Jugador auxiliar;
+        for (int i = 0; i < jugadores.size(); i++) {
+            for(Jugador actual: jugadores){
+                if(actual.getNumero() > jugadores.get(i + 1).getNumero()){
+                    auxiliar = actual;
+                    actual = jugadores.get(i + 1);
+                    jugadores.remove(jugadores.get(i + 1));
+                    jugadores.set(i + 1, auxiliar);
+                }
+            }
+        }
+    }
 
     public void bubbleSort(ArrayList<Jugador> jugadores, int nElementos) {
 

@@ -45,7 +45,7 @@ public class Timer implements Runnable{
                 }else if(segundos >= 10 && minutos >= 10){
                     temporizador.setText(minutos +" : "+ segundos);
                 } 
-                Thread.sleep(400);
+                Thread.sleep(1000);
             } catch (Exception e) {
             }
         }

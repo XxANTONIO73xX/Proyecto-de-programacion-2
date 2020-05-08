@@ -58,11 +58,13 @@ public class MostrarJugadores extends javax.swing.JDialog {
             });
         }
     }
+
     public void vaciarTabla() {
         for (int i = MtblJugadores.getRowCount() - 1; i >= 0; i--) {
             MtblJugadores.removeRow(i);
         }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -204,10 +206,9 @@ public class MostrarJugadores extends javax.swing.JDialog {
                 equipoSeleccionado = e;
             }
         }
-        ordenar.bubbleSort(equipoSeleccionado.getJugadores(), equipoSeleccionado.getJugadores().size());
-        vaciarTabla();
-        cargarTabla();
-
+            vaciarTabla();
+            cargarTabla();
+        
     }//GEN-LAST:event_cbxEquipoItemStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

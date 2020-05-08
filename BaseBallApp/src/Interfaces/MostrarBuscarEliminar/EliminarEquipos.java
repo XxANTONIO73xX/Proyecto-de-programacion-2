@@ -29,7 +29,6 @@ public class EliminarEquipos extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.equipos = equipos;
         MtblMostrasEquipos = (DefaultTableModel) tblEquipo.getModel();
-        ordenar.quickSort(equipos, 0, equipos.size() - 1);
         cargarTabla();
     }
 
@@ -283,7 +282,6 @@ public class EliminarEquipos extends javax.swing.JDialog {
                 equipos.remove(e);
             }
         }
-        ordenar.quickSort(equipos, 0, (equipos.size() - 1));
         cargarTabla();
     }//GEN-LAST:event_txfEliminarEquipoActionPerformed
 

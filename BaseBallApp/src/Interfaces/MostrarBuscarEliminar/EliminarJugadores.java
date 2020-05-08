@@ -30,7 +30,6 @@ public class EliminarJugadores extends javax.swing.JDialog {
         initComponents();
         this.equipos = equipos;
         MtblJugadores = (DefaultTableModel) tblJugador.getModel();
-        ordenar.bubbleSort(equipoSeleccionado.getJugadores(), equipoSeleccionado.getJugadores().size());
         cbxEquipos();
     }
 
@@ -221,7 +220,7 @@ public class EliminarJugadores extends javax.swing.JDialog {
                 equipoSeleccionado.getJugadores().remove(j);
             }
         }
-        ordenar.bubbleSort(equipoSeleccionado.getJugadores(), equipoSeleccionado.getJugadores().size());
+
         cargarTabla();
 
     }//GEN-LAST:event_btnEliminarJugadorActionPerformed
@@ -236,7 +235,6 @@ public class EliminarJugadores extends javax.swing.JDialog {
                 equipoSeleccionado = e;
             }
         }
-        ordenar.bubbleSort(equipoSeleccionado.getJugadores(), equipoSeleccionado.getJugadores().size());
         cargarTabla();
     }//GEN-LAST:event_cbxEquipoItemStateChanged
 
