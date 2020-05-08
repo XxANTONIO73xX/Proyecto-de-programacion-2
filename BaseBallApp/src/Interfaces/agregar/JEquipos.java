@@ -13,11 +13,11 @@ import objetos.Persona;
  * @author Equipo Maravilla Z
  * @version 02/05/2020
  */
-/**
- * Instancia clases, objetos y ArrayList´s que se utilizaran en la clase.
- */
 public class JEquipos extends javax.swing.JFrame {
 
+    /**
+     * Instancia clases, objetos y ArrayList´s que se utilizaran en la clase.
+     */
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     ArrayList<Estrategia> estrategias = new ArrayList<Estrategia>();
     //Objetos tipo Estrategia, creados previamente.
@@ -52,10 +52,8 @@ public class JEquipos extends javax.swing.JFrame {
 
     }
 
-    /**
-     * Metodo para mostrar en la tabla de este JDialog.
-     */
     public void cargarTabla() {
+        //Se usa para cargar la tabla agregar a los jugadores del ArrayList a la tabla.
         for (Jugador jugadores : equipo.getJugadores()) {
             MtblJugadores.addRow(new Object[]{
                 jugadores.getNumero(),
@@ -278,31 +276,22 @@ public class JEquipos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    /**
-     * En este espacio se ejecutan las acciones correspondientes al botón de
-     * AGREGAR COACH para mostrar su respectiva ventana.
-     */
+
     private void btnAgregarCoachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCoachActionPerformed
-        //con esta accion abres la ventana JCoach
+        //En este espacio se ejecutan las acciones correspondientes al botón de AGREGAR COACH para mostrar su respectiva ventana (JCoach).
         JCoach Jcoach = new JCoach(this, true, equipos, equipo, estrategias);
         Jcoach.setVisible(true);
     }//GEN-LAST:event_btnAgregarCoachActionPerformed
-    /**
-     * En este espacio se ejecutan las acciones correspondientes al botón de
-     * AGREGAR JUGADORES para mostrar su respectiva ventana.
-     */
+
     private void btnAgregarJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarJugadoresActionPerformed
-        //con esta accion abres la ventana JJugador
+        //En este espacio se ejecutan las acciones correspondientes al botón de AGREGAR JUGADORES para mostrar su respectiva ventana (JJugador).
         JJugador player = new JJugador(this, true, equipos, equipo);
         player.setVisible(true);
         cargarTabla();
     }//GEN-LAST:event_btnAgregarJugadoresActionPerformed
-    /**
-     * En este espacio se ejecutan las acciones correspondientes al botón de
-     * AGREGAR y así agregar el equipo.
-     */
+
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // Con esta acción agregas el equipo creado al ArrayList de equipos
+        //En este espacio se ejecutan las acciones correspondientes al botón de AGREGAR, para agregar los datos puestos al ArrayList.
         equipo.setId(i);
         equipo.setNombre(txfNombreEquipo.getText());
         equipo.setEstadio(txfEstadio.getText());

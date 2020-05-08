@@ -12,31 +12,27 @@ import objetos.Equipo;
  * @author Equipo Maravilla Z
  * @version 2/5/2020 15PM
  */
-/**
- * Instancia clases y arreglos que se utilizaran en la clase.
- */
 public class EliminarJugadores extends javax.swing.JDialog {
 
+    /**
+     * Instancia clases y arreglos que se utilizaran en la clase.
+     */
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     Equipo equipoSeleccionado = new Equipo();
     DefaultTableModel MtblJugadores;
     Ordenar ordenar = new Ordenar();
 
-    /**
-     * Inicia los componentes ya sean tablas, metodos, etc.
-     */
     public EliminarJugadores(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos) {
         super(parent, modal);
+        /**
+         * Inicia los componentes ya sean tablas, metodos, etc.
+         */
         initComponents();
         this.equipos = equipos;
         MtblJugadores = (DefaultTableModel) tblJugador.getModel();
         cbxEquipos();
     }
 
-    /**
-     * Este muestra equipos que estan en el arreglo en el ComboBox que se
-     * encuentra en este JDialog.
-     */
     public void cbxEquipos() {
         //Recorre el forEach para agregar los equipos pertenecientes al ArrayList (Equipo) al ComboBox.
         for (Equipo e : equipos) {
@@ -44,9 +40,6 @@ public class EliminarJugadores extends javax.swing.JDialog {
         }
     }
 
-    /**
-     * Este método se usa para cargar la tabla con los datos de los jugadores .
-     */
     public void cargarTabla() {
         //Recorre el forEach cargando a los jugadores del equipo seleccionado.
         for (Jugador j : equipoSeleccionado.getJugadores()) {
@@ -195,23 +188,20 @@ public class EliminarJugadores extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    /**
-     * Este lleva las acciones del botón ELIMINAR JUGADOR dentro de este
-     * JDialog.
-     */
+
     private void txfEliminarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfEliminarJugadorActionPerformed
         //Cambia el texto de txfEliminarJugador a null.
         txfEliminarJugador.setText(null);
     }//GEN-LAST:event_txfEliminarJugadorActionPerformed
-    /**
-     * Este remueve a un jugador del arreglo, validando que el número sea igual,
-     * si lo es el, el jugador se elimina.
-     *
-     * @param numero Toma el texto escrito en txfEliminarJugador y lo parsea a
-     * Int.
-     */
-    private void btnEliminarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarJugadorActionPerformed
 
+    private void btnEliminarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarJugadorActionPerformed
+        /**
+         * Este remueve a un jugador del arreglo, validando que el número sea
+         * igual, si lo es el, el jugador se elimina.
+         *
+         * @param numero Toma el texto escrito en txfEliminarJugador y lo parsea
+         * a Int.
+         */
         int numero = Integer.parseInt(txfEliminarJugador.getText());
         //Recorre el forEach cargando a los jugadores del equipo seleccionado.
         for (Jugador j : equipoSeleccionado.getJugadores()) {
@@ -224,12 +214,9 @@ public class EliminarJugadores extends javax.swing.JDialog {
         cargarTabla();
 
     }//GEN-LAST:event_btnEliminarJugadorActionPerformed
-    /**
-     * Este ComboBox tiene como criterio de ordenamiento el "BubbleSort", el
-     * cual ordena a los equipos que ya estan dentro del mismo.
-     */
+
     private void cbxEquipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxEquipoItemStateChanged
-         //Recorre el forEach comprobando que el nombre del objeto seleccionado coincida con algun nombre de algún objeto del ArrayList (Equipo).
+        //Recorre el forEach comprobando que el nombre del objeto seleccionado coincida con algun nombre de algún objeto del ArrayList (Equipo).
         for (Equipo e : equipos) {
             if (e.getNombre().equals(cbxEquipo.getSelectedItem().toString())) {
                 equipoSeleccionado = e;

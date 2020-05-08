@@ -46,11 +46,8 @@ public class JCoach extends javax.swing.JDialog {
         cbxEstrategias();
     }
 
-    /**
-     * Este muestra estrategias que estan en el arreglo en el ComboBox que se
-     * encuentra en este JDialog.
-     */
     public void cbxEstrategias() {
+        //En este espacio se ejecutan las acciones para cargar las Estrategias al al ComboBox.
         for (Estrategia estrategias : estrategias) {
             cbxEstrategias.addItem(estrategias.getNombreEstrategia());
         }
@@ -332,11 +329,9 @@ public class JCoach extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-        /**
-     * En esta acción se creara un nuevo objeto de tipo coach para agregarles
-     * los valores puestos en los TextField de este JDialog.
-     */
+
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        //En este espacio se ejecutan las acciones correspondientes al botón de AGREGAR, para agregar los datos puestos al ArrayList.
         Coach coach = new Coach(estrategiasDelCoach,
                 txfNombre.getText(),
                 txfApellido.getText(),
@@ -349,11 +344,7 @@ public class JCoach extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnAgregarEstrategiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEstrategiaActionPerformed
-
-        /**
-         * En esta acción se le agregan estrategias al coach seleccionadas en el
-         * ComboBox de estatregias.
-         */
+//En este espacio se ejecutan las acciones correspondientes al botón de AGREGAR ESTRATEGIA, para agregar los datos puestos al ArrayList.
         String nombreEstrategia = cbxEstrategias.getSelectedItem().toString();
         for (Estrategia e : estrategias) {
             if (nombreEstrategia.equals(e.getNombreEstrategia())) {

@@ -1,32 +1,34 @@
 package objetos;
+
 /**
- * esta clase creara los enfrentamientos
- * @author equipo Maravilla Z
+ * Esta clase tiene los parametros para crear los enfrentamientos.
+ *
+ * @author Equipo Maravilla Z
  * @version 02/05/2020
  */
 public class Enfrentamiento {
-    private Equipo equipo1; 
-    private Equipo equipo2; 
-    
+
+    private Equipo equipo1;
+    private Equipo equipo2;
+
     /**
-     * sobrecarga de enfrentamiento 
+     * Sobrecarga de enfrentamiento.
      */
     public Enfrentamiento() {
     }
 
     /**
-     * constructor de enfrentamiento
-     * @param equipo1 equipo que participara en el enfrentamiento
-     * @param equipo2 equipo que participara en el enfrentamiento
+     * Constructor de enfrentamiento.
+     *
+     * @param equipo1 Equipo que participará en el enfrentamiento.
+     * @param equipo2 Equipo que participará en el enfrentamiento.
      */
     public Enfrentamiento(Equipo equipo1, Equipo equipo2) {
         this.equipo1 = equipo1;
         this.equipo2 = equipo2;
     }
- 
-    
-    
-    //getters y setters
+
+    //Getters And Seters.
     public Equipo getEquipo1() {
         return equipo1;
     }
@@ -41,5 +43,5 @@ public class Enfrentamiento {
 
     public void setEquipo2(Equipo equipo2) {
         this.equipo2 = equipo2;
-    }   
+    }
 }

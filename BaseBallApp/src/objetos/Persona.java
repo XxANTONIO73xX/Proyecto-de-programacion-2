@@ -2,18 +2,21 @@ package objetos;
 
 /**
  * Esta se usará como base para los jugadores y el coach.
+ *
  * @author equipo Maravilla Z
  * @version 02/05/2020
  */
 public abstract class Persona {
-    private String nombre; 
-    private String apellido; 
-    private int edad; 
-    private float altura; 
-    private float peso; 
+
+    private String nombre;
+    private String apellido;
+    private int edad;
+    private float altura;
+    private float peso;
 
     /**
-     * constructor de persona
+     * Constructor de persona.
+     *
      * @param nombre el nombre de la persona
      * @param apellido el apellido de la persona
      * @param edad la edad de la persona
@@ -28,9 +31,7 @@ public abstract class Persona {
         this.peso = peso;
     }
 
-    
-    
-    //getters y setters
+    //Getters And Seters.
     public String getNombre() {
         return nombre;
     }
@@ -70,5 +71,5 @@ public abstract class Persona {
     public void setPeso(float peso) {
         this.peso = peso;
     }
-    
+
 }
