@@ -30,7 +30,6 @@ public class MostrarJugadores extends javax.swing.JDialog {
         initComponents();
         this.equipos = equipos;
         MtblJugadores = (DefaultTableModel) tblJugadores.getModel();
-        ordenar.bubbleSort(equipoSeleccionado.getJugadores(), equipoSeleccionado.getJugadores().size());
         cbxEquipos();
     }
 

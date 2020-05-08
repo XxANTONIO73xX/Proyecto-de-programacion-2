@@ -11,7 +11,6 @@ import objetos.Jugador;
 public class Ordenar {
 
     public Ordenar() {
-
     }
 
     public void bubbleSort(ArrayList<Jugador> jugadores, int nElementos) {
@@ -31,16 +30,14 @@ public class Ordenar {
                 if (jugadores.get(j).getNumero() > jugadores.get(j + 1).getNumero()) {
 
                     auxiliar = jugadores.get(j);
-                    jugadores.add(j, jugadores.get(j + 1)); 
+                    jugadores.add(j, jugadores.get(j + 1));
+                    //vector[j + 1] = auxiliar;
                     jugadores.add((j + 1), auxiliar);
-
                 }
 
             }
 
         }
-
-        
     }
 
     public void quickSort(ArrayList<Equipo> vector, int primero, int ultimo) {
@@ -50,21 +47,28 @@ public class Ordenar {
         Cuenta con pequeño código y excelente velocidad de ejecución.
         */
         
-        int i = primero, j = ultimo;
-        Equipo pivote = vector.get(((primero + ultimo) / 2));
+        int i = primero; 
+        int j = ultimo;
+        //int pivote = vector[(primero + ultimo) / 2];
+        Equipo pivote = vector.get((primero + ultimo) / 2);
         Equipo auxiliar;
 
         do {
+            //vector[i] < pivote
             while (vector.get(i).getId() < pivote.getId()) {
                 i++;
             }
-            while (vector.get(j).getId() > pivote.getId()) {
+            //vector[j] > pivote
+            while (vector.get(i).getId() > pivote.getId()) {
                 j--;
             }
 
             if (i <= j) {
+                //auxiliar = vector[j];
                 auxiliar = vector.get(j);
+                //vector[j] = vector[i];
                 vector.add(j, vector.get(i));
+                //vector[i] = auxiliar;
                 vector.add(i, auxiliar);
                 i++;
                 j--;
