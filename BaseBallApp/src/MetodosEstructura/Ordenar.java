@@ -14,7 +14,7 @@ public class Ordenar {
 
     }
 
-    public ArrayList<Jugador> bubbleSort(ArrayList<Jugador> jugadores, int nElementos) {
+    public void bubbleSort(ArrayList<Jugador> jugadores, int nElementos) {
 
         /*
         Este método es clásico y muy sencillo, aunque poco eficiente. 
@@ -31,7 +31,6 @@ public class Ordenar {
                 if (jugadores.get(j).getNumero() > jugadores.get(j + 1).getNumero()) {
 
                     auxiliar = jugadores.get(j);
-                    jugadores.remove(j);
                     jugadores.add(j, jugadores.get(j + 1)); 
                     jugadores.add((j + 1), auxiliar);
 
@@ -41,10 +40,10 @@ public class Ordenar {
 
         }
 
-        return jugadores;
+        
     }
 
-    public ArrayList<Equipo> quickSort(ArrayList<Equipo> vector, int primero, int ultimo) {
+    public void quickSort(ArrayList<Equipo> vector, int primero, int ultimo) {
         
         /*
         Es uno de los métodos más rápidos y más frecuentemente utilizados. 
@@ -65,7 +64,6 @@ public class Ordenar {
 
             if (i <= j) {
                 auxiliar = vector.get(j);
-                vector.remove(j);
                 vector.add(j, vector.get(i));
                 vector.add(i, auxiliar);
                 i++;
@@ -80,7 +78,5 @@ public class Ordenar {
         if (ultimo > i) {
             quickSort(vector, i, ultimo);
         }
-
-        return vector;
     }
 }

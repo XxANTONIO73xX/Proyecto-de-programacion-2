@@ -31,6 +31,7 @@ public class MostrarEquipos extends javax.swing.JDialog {
         this.equipos = equipos;
         ordenar.quickSort(equipos, 0, (equipos.size() - 1));
         MtblMostrasEquipos = (DefaultTableModel) tblEquipo.getModel();
+        vaciarTabla();
         cargarTabla();
 
     }
@@ -40,10 +41,12 @@ public class MostrarEquipos extends javax.swing.JDialog {
     public void cargarTabla() {
         //Recorre el forEach para agregar los equipos pertenecientes al ArrayList (Equipo) a la tabla.
         for (Equipo c : equipos) {
-            MtblMostrasEquipos.addRow(new Object[]{c.getNombre(), c.getEstadio(), c.getCoach().getNombre()});
-
+            MtblMostrasEquipos.addRow(new Object[]{c.getId(), c.getNombre(), c.getEstadio(), c.getCoach().getNombre()});
         }
-    }
+        }
+    
+
+    
     /**
      * Este método se usa para vaciar la tabla y dejarla en blanco, quitando así los datos de los equipos .
      */
