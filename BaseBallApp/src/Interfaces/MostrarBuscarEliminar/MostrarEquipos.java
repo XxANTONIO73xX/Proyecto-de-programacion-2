@@ -19,7 +19,7 @@ public class MostrarEquipos extends javax.swing.JDialog {
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     DefaultTableModel MtblMostrasEquipos;
     Ordenar ordenar = new Ordenar();
-
+    
     /**
      * Inicia los componentes ya sean tablas, metodos, etc.
      */
@@ -27,11 +27,8 @@ public class MostrarEquipos extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-
         this.equipos = equipos;
-        ordenar.quickSort(equipos, 0, (equipos.size() - 1));
         MtblMostrasEquipos = (DefaultTableModel) tblEquipo.getModel();
-        vaciarTabla();
         cargarTabla();
 
     }
