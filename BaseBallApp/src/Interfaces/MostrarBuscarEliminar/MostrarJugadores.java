@@ -17,26 +17,26 @@ import objetos.Jugador;
  */
 public class MostrarJugadores extends javax.swing.JDialog {
 
+    /**
+     * Instancia clases y arreglos que se utilizaran en la clase.
+     */
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     Equipo equipoSeleccionado = new Equipo();
     DefaultTableModel MtblJugadores;
     Ordenar ordenar = new Ordenar();
 
-    /**
-     * Inicia los componentes ya sean tablas, metodos, etc.
-     */
     public MostrarJugadores(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos) {
         super(parent, modal);
+
+        /**
+         * Inicia los componentes ya sean tablas, metodos, etc.
+         */
         initComponents();
         this.equipos = equipos;
         MtblJugadores = (DefaultTableModel) tblJugadores.getModel();
         cbxEquipos();
     }
 
-    /**
-     * Este muestra equipos que estan en el arreglo en el ComboBox que se
-     * encuentra en este JDialog.
-     */
     public void cbxEquipos() {
         //Recorre el forEach para agregar los equipos pertenecientes al ArrayList (Equipo) al ComboBox.
         for (Equipo e : equipos) {
@@ -44,11 +44,8 @@ public class MostrarJugadores extends javax.swing.JDialog {
         }
     }
 
-    /**
-     * Este método se usa para cargar la tabla con los datos de los jugadores .
-     */
     public void cargarTabla() {
-        //Recorre el forEach cargando a los jugadores del equipo seleccionado.
+        //Recorre el forEach para agregar los equipos pertenecientes al ArrayList (Jugador) a la tabla.
         for (Jugador j : equipoSeleccionado.getJugadores()) {
             MtblJugadores.addRow(new Object[]{
                 j.getNombre(),
@@ -60,6 +57,7 @@ public class MostrarJugadores extends javax.swing.JDialog {
     }
 
     public void vaciarTabla() {
+        //Rcorre la tabla completa removiendo toda la tabla cada vez que carga el método. 
         for (int i = MtblJugadores.getRowCount() - 1; i >= 0; i--) {
             MtblJugadores.removeRow(i);
         }
@@ -195,10 +193,7 @@ public class MostrarJugadores extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    /**
-     * Este ComboBox tiene como criterio de ordenamiento el "BubbleSort", el
-     * cual ordena a los equipos que ya estan dentro del mismo.
-     */
+
     private void cbxEquipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxEquipoItemStateChanged
         //Recorre el forEach comprobando que el nombre del objeto seleccionado coincida con algun nombre de algún objeto del ArrayList (Equipo).
         for (Equipo e : equipos) {
@@ -206,9 +201,9 @@ public class MostrarJugadores extends javax.swing.JDialog {
                 equipoSeleccionado = e;
             }
         }
-            vaciarTabla();
-            cargarTabla();
-        
+        vaciarTabla();
+        cargarTabla();
+
     }//GEN-LAST:event_cbxEquipoItemStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

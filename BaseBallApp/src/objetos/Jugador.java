@@ -14,7 +14,8 @@ public class Jugador extends Persona {
     private int numero;
 
     /**
-     * constructor de jugador
+     * Constructor de jugador.
+     *
      * @param posicion la posicion del jugador
      * @param brazo el brazo que domina
      * @param numero numero del jugador
@@ -30,7 +31,8 @@ public class Jugador extends Persona {
         this.brazo = brazo;
         this.numero = numero;
     }
-    //setters y getters
+
+    //Getters And Seters.
     public String getPosicion() {
         return posicion;
     }

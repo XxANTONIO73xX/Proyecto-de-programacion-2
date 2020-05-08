@@ -16,16 +16,20 @@ import objetos.Timer;
  * @author Equipo Maravilla Z
  * @version 06/05/2020
  */
-/**
- * Instancia clases, objetos y ArrayList´s que se utilizaran en la clase.
- *
- */
 public class JPartido extends javax.swing.JFrame {
 
+    /**
+     * Instancia clases, objetos y ArrayList´s que se utilizaran en la clase.
+     *
+     * @param i Se usa como índice.
+     * @param tiempo Se guarda el tiempo.
+     * @param t Controla la ejecución del tiempo.
+     */
     ArrayList<Equipo> equipos;
     int i;
     Timer tiempo;
     Thread t;
+
     public JPartido() {
         /**
          * Inicia los componentes ya sean tablas, metodos, etc.
@@ -39,7 +43,6 @@ public class JPartido extends javax.swing.JFrame {
         t.start();
 
     }
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -564,54 +567,40 @@ public class JPartido extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-/**
-     * En este espacio se ejecutan las acciones correspondientes al botón de
-     * AGREGAR EQUIPOS para mostrar su respectiva ventana.
-     */
+
     private void jMenuAgregarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAgregarEquipoActionPerformed
+        //En este espacio se ejecutan las acciones correspondientes al botón de AGREGAR EQUIPO para mostrar su respectiva ventana.
         i++;
         JEquipos team = new JEquipos(equipos, i);
         team.setVisible(true);
-        
     }//GEN-LAST:event_jMenuAgregarEquipoActionPerformed
-    /**
-     * En este espacio se ejecutan las acciones correspondientes al botón de
-     * MOSTRAR JUGADORES para mostrar su respectiva ventana.
-     */
+
     private void jMenuMostrarJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMostrarJugadoresActionPerformed
+        //En este espacio se ejecutan las acciones correspondientes al botón de MOSTRAR JUGADOR para mostrar su respectiva ventana.
         MostrarJugadores mostrarJugadores = new MostrarJugadores(this, true, equipos);
         mostrarJugadores.setVisible(true);
     }//GEN-LAST:event_jMenuMostrarJugadoresActionPerformed
-    /**
-     * En este espacio se ejecutan las acciones correspondientes al botón de
-     * MOSTRAR EQUIPOS para mostrar su respectiva ventana.
-     */
+
     private void jMenuMostrarEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMostrarEquiposActionPerformed
+        //En este espacio se ejecutan las acciones correspondientes al botón de MOSTRAR EQUIPO para mostrar su respectiva ventana.
         MostrarEquipos mostrasEquipo = new MostrarEquipos(this, true, equipos);
         mostrasEquipo.setVisible(true);
     }//GEN-LAST:event_jMenuMostrarEquiposActionPerformed
-    /**
-     * En este espacio se ejecutan las acciones correspondientes al botón de
-     * ELIMINAR EQUIPO para mostrar su respectiva ventana.
-     */
+
     private void jMenuEliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEliminarEquipoActionPerformed
+        //En este espacio se ejecutan las acciones correspondientes al botón de ELIMINAR EQUIPO para mostrar su respectiva ventana.
         EliminarEquipos elimnarEquipos = new EliminarEquipos(this, true, equipos);
         elimnarEquipos.setVisible(true);
     }//GEN-LAST:event_jMenuEliminarEquipoActionPerformed
-    /**
-     * En este espacio se ejecutan las acciones correspondientes al botón de
-     * ELIMINAR JUGADORES para mostrar su respectiva ventana.
-     */
+
     private void jMenuEliminarJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEliminarJugadoresActionPerformed
+        //En este espacio se ejecutan las acciones correspondientes al botón de ELIMINAR JUGADORES para mostrar su respectiva ventana.
         EliminarJugadores elimunarJugadores = new EliminarJugadores(this, true, equipos);
         elimunarJugadores.setVisible(true);
-
     }//GEN-LAST:event_jMenuEliminarJugadoresActionPerformed
-    /**
-     * En este espacio se ejecutan las acciones correspondientes al botón de
-     * INICIAR ENFRENTAMIENTO para mostrar su respectiva ventana.
-     */
+
     private void jMenuIniciarEnfrentamientoActionPerformed(java.awt.event.ActionEvent evt) {
+        //En este espacio se ejecutan las acciones correspondientes al botón de INICIAR ENFRENTAMIENTO para mostrar su respectiva ventana.
         JEnfrentamientos enfrentamientos = new JEnfrentamientos(this, true);
         enfrentamientos.setVisible(true);
     }

@@ -23,10 +23,10 @@ public class JJugador extends javax.swing.JDialog {
     /**
      * Constructor de JJugador.
      *
-     * @param parent parametro que se extiende de Jdialog
-     * @param modal parametro que se extiende de Jdialog
-     * @param equipos ArrayList de equipos
-     * @param equipo objeto equipo donde se agregara el ArrayList de Jugadores
+     * @param parent parametro que se extiende de JDialog.
+     * @param modal parametro que se extiende de JDialog.
+     * @param equipos ArrayList de equipos.
+     * @param equipo Objeto equipo donde se agregará el ArrayList de Jugadores.
      */
     public JJugador(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos, Equipo equipo) {
         super(parent, modal);

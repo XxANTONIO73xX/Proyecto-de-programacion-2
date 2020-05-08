@@ -1,29 +1,28 @@
-
 package objetos;
 
 /**
  * Esta se usará como base para las estrategias del coach.
- * @author equipo Maravilla Z
+ *
+ * @author Equipo Maravilla Z
  * @version 02/05/2020
  */
 public class Estrategia {
-    
+
     private String nombreEstrategia;
     private String Descripcion;
 
-    
     /**
-     * Constructor de Estrategia
-     * @param nombreEstrategia el nombre de la estrategia.
-     * @param Descripcion la descripcion de la estrategia.
+     * Constructor de Estrategia.
+     *
+     * @param nombreEstrategia El nombre de la estrategia.
+     * @param Descripcion La descripcion de la estrategia.
      */
-
     public Estrategia(String nombreEstrategia, String Descripcion) {
         this.nombreEstrategia = nombreEstrategia;
         this.Descripcion = Descripcion;
     }
 
-    //getters and setters
+    //Getters And Seters.
     public String getNombreEstrategia() {
         return nombreEstrategia;
     }
@@ -39,6 +38,5 @@ public class Estrategia {
     public void setDescripcion(String Descripcion) {
         this.Descripcion = Descripcion;
     }
-    
-    
+
 }

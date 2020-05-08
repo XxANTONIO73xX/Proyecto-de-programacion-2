@@ -16,15 +16,19 @@ import objetos.Equipo;
  */
 public class EliminarEquipos extends javax.swing.JDialog {
 
+    /**
+     * Instancia clases y arreglos que se utilizaran en la clase.
+     */
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     DefaultTableModel MtblMostrasEquipos;
     Ordenar ordenar = new Ordenar();
-    /**
-     * Inicia los componentes ya sean tablas, metodos simples y tambien de
-     * ordenamiento.
-     */
+
     public EliminarEquipos(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos) {
         super(parent, modal);
+        /**
+         * Inicia los componentes ya sean tablas, metodos simples y tambien de
+         * ordenamiento.
+         */
         initComponents();
         this.setLocationRelativeTo(null);
         this.equipos = equipos;
@@ -32,9 +36,6 @@ public class EliminarEquipos extends javax.swing.JDialog {
         cargarTabla();
     }
 
-    /**
-     * Este método se usa para cargar la tabla con los datos del equipo.
-     */
     public void cargarTabla() {
         //Recorre el forEach cargando los equipos a la tabla.
         for (Equipo c : equipos) {
@@ -263,17 +264,12 @@ public class EliminarEquipos extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    /**
-     * Este lleva las acciones del botón ELIMINAR EQUIPO dentro de este JDialog.
-     */
+
     private void btnEliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEquipoActionPerformed
         //Cambia el texto de txfEliminarEquipo a null.
         txfEliminarEquipo.setText(null);
     }//GEN-LAST:event_btnEliminarEquipoActionPerformed
-    /**
-     * Este remueve el equipo del arreglo, validando que el nombre sea igual, si
-     * lo es el, el equipo se elimina.
-     */
+
     private void txfEliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfEliminarEquipoActionPerformed
 //Recorre el forEach del ArrayList de Equipo.
         for (Equipo e : equipos) {
