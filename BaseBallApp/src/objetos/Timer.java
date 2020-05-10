@@ -13,13 +13,11 @@ public class Timer implements Runnable {
     private JLabel temporizador;
     private int segundos = 0;
     private int minutos = 0;
-    public boolean estado = true;
 
     /**
      * @param temporizador Guarda el tiempo.
      * @param segundos Guarda los segundos.
      * @param minutos Guarda los minutos.
-     * @param estado Verifica el estado del Timer.
      */
     public Timer(JLabel temporizador) {
         this.temporizador = temporizador;
@@ -28,7 +26,7 @@ public class Timer implements Runnable {
     @Override
     public void run() {
 
-        while (estado) {
+        while (true) {
             try {
                 segundos++;
                 if (segundos == 60) {

@@ -1,5 +1,12 @@
 package Interfaces;
 
+import java.util.ArrayList;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import objetos.Enfrentamiento;
+import objetos.Equipo;
+import objetos.Timer;
+
 /**
  * Este JDialog sirve para mostrar la ventana de creación de enfrentamientos
  * enparejando equipos.
@@ -9,19 +16,36 @@ package Interfaces;
  */
 
 public class JEnfrentamientos extends javax.swing.JDialog {
-/**
- * Instancia clases, objetos y ArrayList´s que se utilizaran en la clase.
- */
-    public JEnfrentamientos(java.awt.Frame parent, boolean modal) {
+    Enfrentamiento enfrentamiento;
+    ArrayList<Equipo> equipos;
+    Timer tiempo;
+    Thread t;
+    public JEnfrentamientos(java.awt.Frame parent, boolean modal, Enfrentamiento enfrentamiento, ArrayList<Equipo> equipos, Timer tiempo, Thread t, JLabel estadio) {
         super(parent, modal);
-        /**
-         * Inicia los componentes ya sean tablas, metodos, etc.
-         */
+        this.enfrentamiento = enfrentamiento; 
+        this.equipos = equipos; 
+        this.tiempo = tiempo;
+        this.t = t;
+        lblestadioDeEnfrentamiento = estadio;
         initComponents();
         this.setLocationRelativeTo(null);
+        cbxLocal();
+        cbxVisitante();
 
     }
-
+    
+    public void cbxLocal(){
+        for(Equipo e: equipos){
+            cbxLocal.addItem(e.getNombre());
+        }
+    }
+    
+    public void cbxVisitante(){
+        for(Equipo e: equipos){
+            cbxVisitante.addItem(e.getNombre());
+        }        
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -29,14 +53,14 @@ public class JEnfrentamientos extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         jEditorPane1 = new javax.swing.JEditorPane();
         jPanel1 = new javax.swing.JPanel();
-        btnEmpezar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        cbxLocal = new javax.swing.JComboBox<>();
-        cbxVisitante = new javax.swing.JComboBox<>();
+        cbxLocal = new javax.swing.JComboBox<String>();
+        cbxVisitante = new javax.swing.JComboBox<String>();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         lblestadioDeEnfrentamiento = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
 
@@ -46,15 +70,6 @@ public class JEnfrentamientos extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 0));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-
-        btnEmpezar.setBackground(new java.awt.Color(102, 255, 102));
-        btnEmpezar.setFont(new java.awt.Font("Trebuchet MS", 2, 18)); // NOI18N
-        btnEmpezar.setText("Empezar");
-        btnEmpezar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEmpezarActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Trebuchet MS", 2, 48)); // NOI18N
         jLabel3.setText("vs.");
@@ -71,6 +86,14 @@ public class JEnfrentamientos extends javax.swing.JDialog {
         lblestadioDeEnfrentamiento.setFont(new java.awt.Font("Trebuchet MS", 2, 36)); // NOI18N
         lblestadioDeEnfrentamiento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblestadioDeEnfrentamiento.setText("----------");
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setText("Empezar!!");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -102,8 +125,8 @@ public class JEnfrentamientos extends javax.swing.JDialog {
                         .addGap(236, 236, 236)
                         .addComponent(jLabel6))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(191, 191, 191)
-                        .addComponent(btnEmpezar, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(202, 202, 202)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -127,8 +150,8 @@ public class JEnfrentamientos extends javax.swing.JDialog {
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
                 .addComponent(lblestadioDeEnfrentamiento)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(btnEmpezar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -177,14 +200,34 @@ public class JEnfrentamientos extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpezarActionPerformed
-
-    }//GEN-LAST:event_btnEmpezarActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+                try {
+        String equipoLocal = cbxLocal.getSelectedItem().toString();
+        String equipoVisitante = cbxVisitante.getSelectedItem().toString();
+        Equipo local = null;
+        Equipo visitante = null;
+        for(Equipo e: equipos){
+            if(e.getNombre().equals(equipoLocal)){
+                e = local;
+            }else if(e.getNombre().equals(equipoVisitante)){
+                e = visitante;
+            }
+        }
+        enfrentamiento.Enfrentamiento(local, visitante);
+        lblestadioDeEnfrentamiento.setText(local.getEstadio());
+        Thread.sleep(2000);
+        t.start();       
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "No a Organizado un enfrentamiento");
+        }
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEmpezar;
     private javax.swing.JComboBox<String> cbxLocal;
     private javax.swing.JComboBox<String> cbxVisitante;
+    private javax.swing.JButton jButton1;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

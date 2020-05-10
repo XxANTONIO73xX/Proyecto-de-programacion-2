@@ -6,7 +6,10 @@ import Interfaces.MostrarBuscarEliminar.MostrarEquipos;
 import Interfaces.MostrarBuscarEliminar.MostrarJugadores;
 import Interfaces.agregar.JEquipos;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import objetos.Enfrentamiento;
 import objetos.Equipo;
+import objetos.EventosAleatorios;
 import objetos.Timer;
 
 /**
@@ -25,22 +28,38 @@ public class JPartido extends javax.swing.JFrame {
      * @param tiempo Se guarda el tiempo.
      * @param t Controla la ejecución del tiempo.
      */
+    Enfrentamiento enfrentamiento;
     ArrayList<Equipo> equipos;
+    DefaultTableModel MtblEventosAleatorios;
     int i;
     Timer tiempo;
     Thread t;
-
+    EventosAleatorios eventosAleatorios;
+    Thread EA;
     public JPartido() {
         /**
          * Inicia los componentes ya sean tablas, metodos, etc.
          */
         initComponents();
         this.setLocationRelativeTo(null);
+        enfrentamiento = new Enfrentamiento();
         equipos = new ArrayList<Equipo>();
+        MtblEventosAleatorios = (DefaultTableModel) tblEventosAleatorios.getModel();
         i = 0;
         tiempo = new Timer(lbltiempo);
         t = new Thread(tiempo);
-        t.start();
+        eventosAleatorios = new EventosAleatorios(lblEntrada, 
+                lblOut, 
+                lblStrike,
+                lblBola, 
+                lblMarcadorLocal, 
+                lblMarcadorVisitante, 
+                lbltiempo,
+                tblEventosAleatorios, MtblEventosAleatorios,
+                enfrentamiento, 
+                tiempo, t, 
+                lblNombreLocal, lblNombreVisitante);
+        EA = new Thread(eventosAleatorios);
 
     }
 
@@ -545,6 +564,11 @@ public class JPartido extends javax.swing.JFrame {
         jMenuIniciarEnfrentamiento.setText("Enfrentamiento");
 
         JInicioEnfrentamiento.setText("Iniciar");
+        JInicioEnfrentamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JInicioEnfrentamientoActionPerformed(evt);
+            }
+        });
         jMenuIniciarEnfrentamiento.add(JInicioEnfrentamiento);
 
         jMenuBar1.add(jMenuIniciarEnfrentamiento);
@@ -599,11 +623,11 @@ public class JPartido extends javax.swing.JFrame {
         elimunarJugadores.setVisible(true);
     }//GEN-LAST:event_jMenuEliminarJugadoresActionPerformed
 
-    private void jMenuIniciarEnfrentamientoActionPerformed(java.awt.event.ActionEvent evt) {
-        //En este espacio se ejecutan las acciones correspondientes al botón de INICIAR ENFRENTAMIENTO para mostrar su respectiva ventana.
-        JEnfrentamientos enfrentamientos = new JEnfrentamientos(this, true);
+    private void JInicioEnfrentamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JInicioEnfrentamientoActionPerformed
+        // TODO add your handling code here:
+        JEnfrentamientos enfrentamientos = new JEnfrentamientos(this, true, enfrentamiento, equipos, tiempo, t, lblEstadio);
         enfrentamientos.setVisible(true);
-    }
+    }//GEN-LAST:event_JInicioEnfrentamientoActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
