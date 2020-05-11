@@ -202,7 +202,7 @@ public class JEnfrentamientos extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-                try {
+         try {
         String equipoLocal = cbxLocal.getSelectedItem().toString();
         String equipoVisitante = cbxVisitante.getSelectedItem().toString();
         Equipo local = null;
