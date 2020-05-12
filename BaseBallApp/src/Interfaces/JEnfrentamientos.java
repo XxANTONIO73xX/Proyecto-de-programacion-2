@@ -3,7 +3,6 @@ package Interfaces;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import objetos.Enfrentamiento;
 import objetos.Equipo;
 import objetos.Timer;
 
@@ -16,17 +15,16 @@ import objetos.Timer;
  */
 
 public class JEnfrentamientos extends javax.swing.JDialog {
-    Enfrentamiento enfrentamiento;
     ArrayList<Equipo> equipos;
     Timer tiempo;
     Thread t;
-    public JEnfrentamientos(java.awt.Frame parent, boolean modal, Enfrentamiento enfrentamiento, ArrayList<Equipo> equipos, Timer tiempo, Thread t, JLabel estadio) {
+    Equipo local;
+    Equipo visitante;
+    public JEnfrentamientos(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos, Equipo local, Equipo visitante) {
         super(parent, modal);
-        this.enfrentamiento = enfrentamiento; 
+        this.local = local; 
+        this.visitante = visitante;
         this.equipos = equipos; 
-        this.tiempo = tiempo;
-        this.t = t;
-        lblestadioDeEnfrentamiento = estadio;
         initComponents();
         this.setLocationRelativeTo(null);
         cbxLocal();
@@ -73,6 +71,12 @@ public class JEnfrentamientos extends javax.swing.JDialog {
 
         jLabel3.setFont(new java.awt.Font("Trebuchet MS", 2, 48)); // NOI18N
         jLabel3.setText("vs.");
+
+        cbxLocal.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxLocalItemStateChanged(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 2, 36)); // NOI18N
         jLabel2.setText("Visitante");
@@ -202,27 +206,21 @@ public class JEnfrentamientos extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         try {
         String equipoLocal = cbxLocal.getSelectedItem().toString();
         String equipoVisitante = cbxVisitante.getSelectedItem().toString();
-        Equipo local = null;
-        Equipo visitante = null;
         for(Equipo e: equipos){
             if(e.getNombre().equals(equipoLocal)){
-                e = local;
+                local = e;
             }else if(e.getNombre().equals(equipoVisitante)){
-                e = visitante;
+                visitante = e;
             }
-        }
-        enfrentamiento.Enfrentamiento(local, visitante);
-        lblestadioDeEnfrentamiento.setText(local.getEstadio());
-        Thread.sleep(2000);
-        t.start();       
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "No a Organizado un enfrentamiento");
-        }
+        }      
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cbxLocalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxLocalItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxLocalItemStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbxLocal;
