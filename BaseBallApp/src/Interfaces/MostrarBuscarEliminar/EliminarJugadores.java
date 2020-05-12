@@ -52,6 +52,12 @@ public class EliminarJugadores extends javax.swing.JDialog {
         }
     }
 
+      public void vaciarTabla() {
+        //Rcorre la tabla completa removiendo toda la tabla cada vez que carga el método. 
+        for (int i = MtblJugadores.getRowCount() - 1; i >= 0; i--) {
+            MtblJugadores.removeRow(i);
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -210,7 +216,7 @@ public class EliminarJugadores extends javax.swing.JDialog {
                 equipoSeleccionado.getJugadores().remove(j);
             }
         }
-
+        vaciarTabla();
         cargarTabla();
 
     }//GEN-LAST:event_btnEliminarJugadorActionPerformed
@@ -222,6 +228,7 @@ public class EliminarJugadores extends javax.swing.JDialog {
                 equipoSeleccionado = e;
             }
         }
+        vaciarTabla();
         cargarTabla();
     }//GEN-LAST:event_cbxEquipoItemStateChanged
 

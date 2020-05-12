@@ -33,6 +33,7 @@ public class EliminarEquipos extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.equipos = equipos;
         MtblMostrasEquipos = (DefaultTableModel) tblEquipo.getModel();
+        vaciarTabla();
         cargarTabla();
     }
 
@@ -43,6 +44,13 @@ public class EliminarEquipos extends javax.swing.JDialog {
         }
     }
 
+        public void vaciarTabla() {
+        //Rcorre la tabla completa removiendo toda la tabla cada vez que carga el método. 
+        for (int i = MtblMostrasEquipos.getRowCount() - 1; i >= 0; i--) {
+            MtblMostrasEquipos.removeRow(i);
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -267,18 +275,20 @@ public class EliminarEquipos extends javax.swing.JDialog {
 
     private void btnEliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEquipoActionPerformed
         //Cambia el texto de txfEliminarEquipo a null.
-        txfEliminarEquipo.setText(null);
-    }//GEN-LAST:event_btnEliminarEquipoActionPerformed
-
-    private void txfEliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfEliminarEquipoActionPerformed
-//Recorre el forEach del ArrayList de Equipo.
-        for (Equipo e : equipos) {
+                for (Equipo e : equipos) {
             //Si el nombre del equipo coincide con alguno dentro del ArrayList, este se elimina.
             if (e.getNombre().equals(txfEliminarEquipo.getText())) {
                 equipos.remove(e);
             }
         }
+        vaciarTabla();
         cargarTabla();
+
+    }//GEN-LAST:event_btnEliminarEquipoActionPerformed
+
+    private void txfEliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfEliminarEquipoActionPerformed
+//Recorre el forEach del ArrayList de Equipo.
+        txfEliminarEquipo.setText(null);
     }//GEN-LAST:event_txfEliminarEquipoActionPerformed
 
 
