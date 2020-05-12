@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group/>
+=======
+        <group>
+            <file>file:/C:/Users/Propietario/Documents/GitHub/Proyecto-de-programacion-2/BaseBallApp/src/objetos/EventosAleatorios.java</file>
+            <file>file:/C:/Users/Propietario/Documents/GitHub/Proyecto-de-programacion-2/BaseBallApp/src/Interfaces/JPartido.java</file>
+            <file>file:/C:/Users/Propietario/Documents/GitHub/Proyecto-de-programacion-2/BaseBallApp/src/Interfaces/JEnfrentamientos.java</file>
+        </group>
+>>>>>>> 2d2a37b312ccaa79c662f2949d456e38eeceb097
     </open-files>
 </project-private>
