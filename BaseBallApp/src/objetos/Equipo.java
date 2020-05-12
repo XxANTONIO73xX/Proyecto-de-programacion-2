@@ -31,8 +31,7 @@ public class Equipo {
         this.estadio = estadio;
         this.jugadores = jugadores;
         this.coach = coach;
-    }
-
+    } 
     //Getters And Seters.
     public String getNombre() {
         return nombre;

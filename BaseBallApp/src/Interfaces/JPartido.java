@@ -7,7 +7,6 @@ import Interfaces.MostrarBuscarEliminar.MostrarJugadores;
 import Interfaces.agregar.JEquipos;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import objetos.Enfrentamiento;
 import objetos.Equipo;
 import objetos.EventosAleatorios;
 import objetos.Timer;
@@ -28,7 +27,6 @@ public class JPartido extends javax.swing.JFrame {
      * @param tiempo Se guarda el tiempo.
      * @param t Controla la ejecución del tiempo.
      */
-    Enfrentamiento enfrentamiento;
     ArrayList<Equipo> equipos;
     DefaultTableModel MtblEventosAleatorios;
     int i;
@@ -36,29 +34,20 @@ public class JPartido extends javax.swing.JFrame {
     Thread t;
     EventosAleatorios eventosAleatorios;
     Thread EA;
+    Equipo local; 
+    Equipo visitante;
     public JPartido() {
         /**
          * Inicia los componentes ya sean tablas, metodos, etc.
          */
         initComponents();
         this.setLocationRelativeTo(null);
-        enfrentamiento = new Enfrentamiento();
         equipos = new ArrayList<Equipo>();
         MtblEventosAleatorios = (DefaultTableModel) tblEventosAleatorios.getModel();
         i = 0;
         tiempo = new Timer(lbltiempo);
         t = new Thread(tiempo);
-        eventosAleatorios = new EventosAleatorios(lblEntrada, 
-                lblOut, 
-                lblStrike,
-                lblBola, 
-                lblMarcadorLocal, 
-                lblMarcadorVisitante, 
-                lbltiempo,
-                tblEventosAleatorios, MtblEventosAleatorios,
-                enfrentamiento, 
-                tiempo, t, 
-                lblNombreLocal, lblNombreVisitante);
+        eventosAleatorios = new EventosAleatorios(lblEntrada, lblOut, lblStrike, lblBola, lblMarcadorLocal, lblMarcadorVisitante, lbltiempo, tblEventosAleatorios, MtblEventosAleatorios, tiempo, t, lblNombreLocal, lblNombreVisitante, local, visitante);
         EA = new Thread(eventosAleatorios);
 
     }
@@ -105,6 +94,7 @@ public class JPartido extends javax.swing.JFrame {
         jPanel14 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
         lbltiempo = new javax.swing.JLabel();
+        btnEmpezar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuAgregarEquipo = new javax.swing.JMenuItem();
@@ -141,7 +131,7 @@ public class JPartido extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblEstadio, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+                .addComponent(lblEstadio, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
                 .addGap(57, 57, 57))
         );
         jPanel4Layout.setVerticalGroup(
@@ -170,7 +160,7 @@ public class JPartido extends javax.swing.JFrame {
         jLabel6.setText("Entrada:");
 
         lblEntrada.setFont(new java.awt.Font("Trebuchet MS", 2, 18)); // NOI18N
-        lblEntrada.setText("-----");
+        lblEntrada.setText("Alta");
 
         lblOut.setFont(new java.awt.Font("Trebuchet MS", 2, 18)); // NOI18N
         lblOut.setText("-");
@@ -443,6 +433,15 @@ public class JPartido extends javax.swing.JFrame {
         lbltiempo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lbltiempo.setText("00 : 00");
 
+        btnEmpezar.setBackground(new java.awt.Color(0, 153, 255));
+        btnEmpezar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnEmpezar.setText("Empezar");
+        btnEmpezar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmpezarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -467,13 +466,15 @@ public class JPartido extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel8))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lbltiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(lbltiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(btnEmpezar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel8)))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -503,7 +504,9 @@ public class JPartido extends javax.swing.JFrame {
                         .addGap(4, 4, 4)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEmpezar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -625,9 +628,20 @@ public class JPartido extends javax.swing.JFrame {
 
     private void JInicioEnfrentamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JInicioEnfrentamientoActionPerformed
         // TODO add your handling code here:
-        JEnfrentamientos enfrentamientos = new JEnfrentamientos(this, true, enfrentamiento, equipos, tiempo, t, lblEstadio);
+        JEnfrentamientos enfrentamientos = new JEnfrentamientos(this, true, equipos, local, visitante);
         enfrentamientos.setVisible(true);
+        lblNombreLocal.setText(local.getNombre());
+        lblNombreVisitante.setText(visitante.getNombre());
+        lblCoachLocal.setText(local.getCoach().getNombre());
+        lblCoachVisitante.setText(visitante.getCoach().getNombre());
+        lblEstadio.setText(local.getEstadio());
     }//GEN-LAST:event_JInicioEnfrentamientoActionPerformed
+
+    private void btnEmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpezarActionPerformed
+        // TODO add your handling code here:
+        t.start();
+        EA.start();
+    }//GEN-LAST:event_btnEmpezarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -664,6 +678,7 @@ public class JPartido extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem JInicioEnfrentamiento;
+    private javax.swing.JButton btnEmpezar;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
