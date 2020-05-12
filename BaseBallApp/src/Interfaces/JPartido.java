@@ -28,8 +28,9 @@ public class JPartido extends javax.swing.JFrame {
      * @param t Controla la ejecución del tiempo.
      */
     ArrayList<Equipo> equipos;
+    ArrayList<Equipo> enfrentamiento;
     DefaultTableModel MtblEventosAleatorios;
-    int i;
+    int i = 0;
     Timer tiempo;
     Thread t;
     EventosAleatorios eventosAleatorios;
@@ -43,15 +44,15 @@ public class JPartido extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         equipos = new ArrayList<Equipo>();
+        enfrentamiento = new ArrayList<Equipo>();
         MtblEventosAleatorios = (DefaultTableModel) tblEventosAleatorios.getModel();
-        i = 0;
         tiempo = new Timer(lbltiempo);
         t = new Thread(tiempo);
         eventosAleatorios = new EventosAleatorios(lblEntrada, lblOut, lblStrike, lblBola, lblMarcadorLocal, lblMarcadorVisitante, lbltiempo, tblEventosAleatorios, MtblEventosAleatorios, tiempo, t, lblNombreLocal, lblNombreVisitante, local, visitante);
         EA = new Thread(eventosAleatorios);
 
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -628,7 +629,7 @@ public class JPartido extends javax.swing.JFrame {
 
     private void JInicioEnfrentamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JInicioEnfrentamientoActionPerformed
         // TODO add your handling code here:
-        JEnfrentamientos enfrentamientos = new JEnfrentamientos(this, true, equipos, local, visitante);
+        JEnfrentamientos enfrentamientos = new JEnfrentamientos(this, true, equipos, enfrentamiento);
         enfrentamientos.setVisible(true);
         lblNombreLocal.setText(local.getNombre());
         lblNombreVisitante.setText(visitante.getNombre());

@@ -32,7 +32,7 @@ public class MostrarEquipos extends javax.swing.JDialog {
         ordenar.quickSort(this.equipos, 0, (this.equipos.size() - 1));
         vaciarTabla();
         cargarTabla();
-
+        //System.out.println(equipos.size());
     }
 
     public void cargarTabla() {

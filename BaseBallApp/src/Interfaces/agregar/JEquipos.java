@@ -62,6 +62,7 @@ public class JEquipos extends javax.swing.JFrame {
                 jugadores.getBrazo()});
         }
     }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

@@ -13,37 +13,36 @@ import objetos.Timer;
  * @author Equipo Maravilla Z
  * @version 29/05/2020
  */
-
 public class JEnfrentamientos extends javax.swing.JDialog {
+
     ArrayList<Equipo> equipos;
+    ArrayList<Equipo> enfrentamiento;
     Timer tiempo;
     Thread t;
-    Equipo local;
-    Equipo visitante;
-    public JEnfrentamientos(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos, Equipo local, Equipo visitante) {
+
+    public JEnfrentamientos(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos, ArrayList<Equipo> enfrentamiento) {
         super(parent, modal);
-        this.local = local; 
-        this.visitante = visitante;
-        this.equipos = equipos; 
+        this.enfrentamiento = enfrentamiento;
+        this.equipos = equipos;
         initComponents();
         this.setLocationRelativeTo(null);
         cbxLocal();
         cbxVisitante();
 
     }
-    
-    public void cbxLocal(){
-        for(Equipo e: equipos){
+
+    public void cbxLocal() {
+        for (Equipo e : equipos) {
             cbxLocal.addItem(e.getNombre());
         }
     }
-    
-    public void cbxVisitante(){
-        for(Equipo e: equipos){
+
+    public void cbxVisitante() {
+        for (Equipo e : equipos) {
             cbxVisitante.addItem(e.getNombre());
-        }        
+        }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -206,20 +205,21 @@ public class JEnfrentamientos extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String equipoLocal = cbxLocal.getSelectedItem().toString();
-        String equipoVisitante = cbxVisitante.getSelectedItem().toString();
-        for(Equipo e: equipos){
-            if(e.getNombre().equals(equipoLocal)){
-                local = e;
-            }else if(e.getNombre().equals(equipoVisitante)){
-                visitante = e;
-            }
-        }      
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbxLocalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxLocalItemStateChanged
         // TODO add your handling code here:
+        String equipoLocal = cbxLocal.getSelectedItem().toString();
+        String equipoVisitante = cbxVisitante.getSelectedItem().toString();
+        for (Equipo e : equipos) {
+            if (e.getNombre().equals(equipoLocal)) {
+                enfrentamiento.add(0, e);
+            } else if (e.getNombre().equals(equipoVisitante)) {
+                enfrentamiento.add(1, e);
+            }
+        }
+        lblestadioDeEnfrentamiento.setText(enfrentamiento.get(0).getEstadio());
     }//GEN-LAST:event_cbxLocalItemStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
