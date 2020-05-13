@@ -3,8 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/jose_/OneDrive/Documentos/GitHub/Proyecto-de-programacion-2/BaseBallApp/src/Interfaces/JPartido.java</file>
-            <file>file:/C:/Users/jose_/OneDrive/Documentos/GitHub/Proyecto-de-programacion-2/BaseBallApp/src/Interfaces/JEnfrentamientos.java</file>
+            <file>file:/C:/Users/Propietario/Documents/GitHub/Proyecto-de-programacion-2/BaseBallApp/src/MetodosEstructura/Ordenar.java</file>
+            <file>file:/C:/Users/Propietario/Documents/GitHub/Proyecto-de-programacion-2/BaseBallApp/src/objetos/EventosAleatorios.java</file>
+            <file>file:/C:/Users/Propietario/Documents/GitHub/Proyecto-de-programacion-2/BaseBallApp/src/Interfaces/JPartido.java</file>
+            <file>file:/C:/Users/Propietario/Documents/GitHub/Proyecto-de-programacion-2/BaseBallApp/src/Interfaces/MostrarBuscarEliminar/EliminarJugadores.java</file>
+            <file>file:/C:/Users/Propietario/Documents/GitHub/Proyecto-de-programacion-2/BaseBallApp/src/Interfaces/JEnfrentamientos.java</file>
+            <file>file:/C:/Users/Propietario/Documents/GitHub/Proyecto-de-programacion-2/BaseBallApp/src/Interfaces/agregar/JEquipos.java</file>
+            <file>file:/C:/Users/Propietario/Documents/GitHub/Proyecto-de-programacion-2/BaseBallApp/src/Interfaces/MostrarBuscarEliminar/EliminarEquipos.java</file>
+            <file>file:/C:/Users/Propietario/Documents/GitHub/Proyecto-de-programacion-2/BaseBallApp/src/Interfaces/MostrarBuscarEliminar/MostrarJugadores.java</file>
+            <file>file:/C:/Users/Propietario/Documents/GitHub/Proyecto-de-programacion-2/BaseBallApp/src/Interfaces/agregar/JJugador.java</file>
         </group>
     </open-files>
 </project-private>
