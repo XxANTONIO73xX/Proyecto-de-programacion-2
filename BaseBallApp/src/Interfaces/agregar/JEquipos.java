@@ -63,6 +63,7 @@ public class JEquipos extends javax.swing.JFrame {
         }
     }
     
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -296,7 +297,9 @@ public class JEquipos extends javax.swing.JFrame {
         equipo.setId(i);
         equipo.setNombre(txfNombreEquipo.getText());
         equipo.setEstadio(txfEstadio.getText());
+        
         equipos.add(equipo);
+        
         this.dispose();
     }//GEN-LAST:event_btnAgregarActionPerformed
 

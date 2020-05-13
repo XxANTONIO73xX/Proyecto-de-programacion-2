@@ -34,6 +34,7 @@ public class MostrarJugadores extends javax.swing.JDialog {
         initComponents();
         this.equipos = equipos;
         MtblJugadores = (DefaultTableModel) tblJugadores.getModel();
+        
         cbxEquipos();
     }
 
@@ -199,8 +200,10 @@ public class MostrarJugadores extends javax.swing.JDialog {
         for (Equipo e : equipos) {
             if (e.getNombre().equals(cbxEquipo.getSelectedItem().toString())) {
                 equipoSeleccionado = e;
+                break;
             }
         }
+        ordenar.bubbleSort(equipoSeleccionado.getJugadores(), equipoSeleccionado.getJugadores().size());
         vaciarTabla();
         cargarTabla();
 
