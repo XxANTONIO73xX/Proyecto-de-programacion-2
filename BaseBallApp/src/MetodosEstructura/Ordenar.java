@@ -44,9 +44,9 @@ public class Ordenar {
                 if (jugadores.get(j).getNumero() > jugadores.get(j + 1).getNumero()) {
 
                     auxiliar = jugadores.get(j);
-                    jugadores.add(j, jugadores.get(j + 1));
+                    jugadores.set(j, jugadores.get(j + 1));
                     //vector[j + 1] = auxiliar;
-                    jugadores.add((j + 1), auxiliar);
+                    jugadores.set((j + 1), auxiliar);
                 }
 
             }

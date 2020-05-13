@@ -29,7 +29,7 @@ public class MostrarEquipos extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.equipos = equipos;
         MtblMostrasEquipos = (DefaultTableModel) tblEquipo.getModel();
-        ordenar.quickSort(this.equipos, 0, (this.equipos.size() - 1));
+//        ordenar.quickSort(this.equipos, 0, (this.equipos.size() - 1));
         vaciarTabla();
         cargarTabla();
         //System.out.println(equipos.size());
