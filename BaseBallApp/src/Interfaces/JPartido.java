@@ -95,8 +95,9 @@ public class JPartido extends javax.swing.JFrame {
         jPanel14 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
         lbltiempo = new javax.swing.JLabel();
-        btnEmpezar = new javax.swing.JButton();
+        btnTerminar = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
+        btnEmpezar1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuAgregarEquipo = new javax.swing.JMenuItem();
@@ -133,7 +134,7 @@ public class JPartido extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblEstadio, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE)
+                .addComponent(lblEstadio, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
                 .addGap(57, 57, 57))
         );
         jPanel4Layout.setVerticalGroup(
@@ -442,17 +443,26 @@ public class JPartido extends javax.swing.JFrame {
         lbltiempo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lbltiempo.setText("00 : 00");
 
-        btnEmpezar.setBackground(new java.awt.Color(0, 153, 255));
-        btnEmpezar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnEmpezar.setText("Empezar");
-        btnEmpezar.addActionListener(new java.awt.event.ActionListener() {
+        btnTerminar.setBackground(new java.awt.Color(0, 153, 255));
+        btnTerminar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnTerminar.setText("Terminar");
+        btnTerminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEmpezarActionPerformed(evt);
+                btnTerminarActionPerformed(evt);
             }
         });
 
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Publicidad1.png"))); // NOI18N
+
+        btnEmpezar1.setBackground(new java.awt.Color(0, 153, 255));
+        btnEmpezar1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnEmpezar1.setText("Empezar");
+        btnEmpezar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmpezar1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -463,7 +473,8 @@ public class JPartido extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnTerminar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -482,11 +493,15 @@ public class JPartido extends javax.swing.JFrame {
                                         .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(lbltiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btnEmpezar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel8)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jLabel8)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(1028, Short.MAX_VALUE)
+                    .addComponent(btnEmpezar1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(22, 22, 22)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -516,11 +531,16 @@ public class JPartido extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEmpezar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTerminar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(21, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(550, 550, 550)
+                    .addComponent(btnEmpezar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(23, 23, 23)))
         );
 
         jMenuBar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -647,19 +667,23 @@ public class JPartido extends javax.swing.JFrame {
         lblEstadio.setText(enfrentamiento.get(0).getEstadio());
     }//GEN-LAST:event_JInicioEnfrentamientoActionPerformed
 
-    private void btnEmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpezarActionPerformed
+    private void btnTerminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminarActionPerformed
         // TODO add your handling code here:
-            EA.start();
-            
-            JOptionPane.showMessageDialog(this, "la entrada numero: " + j + " a terminado");
+        EA.stop();
+        t.stop();
         if (Integer.parseInt(lblMarcadorLocal.getText()) > Integer.parseInt(lblMarcadorVisitante.getText())) {
             JOptionPane.showMessageDialog(null, "Ganador: " + lblNombreLocal.getText());
         } else {
             JOptionPane.showMessageDialog(null, "Ganador: " + lblNombreVisitante.getText());
 
         }
+    }//GEN-LAST:event_btnTerminarActionPerformed
 
-    }//GEN-LAST:event_btnEmpezarActionPerformed
+    private void btnEmpezar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpezar1ActionPerformed
+        // TODO add your handling code here:
+        t.start();
+        EA.start();
+    }//GEN-LAST:event_btnEmpezar1ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -696,7 +720,8 @@ public class JPartido extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem JInicioEnfrentamiento;
-    private javax.swing.JButton btnEmpezar;
+    private javax.swing.JButton btnEmpezar1;
+    private javax.swing.JButton btnTerminar;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

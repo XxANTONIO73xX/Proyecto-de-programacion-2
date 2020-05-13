@@ -245,6 +245,8 @@ public class EventosAleatorios implements Runnable {
                     JOptionPane.showMessageDialog(null, "no comenzo el partido");
                 }
             }
+                    JOptionPane.showMessageDialog(null, "la entrada numero: " + i + " a terminado");
+
     }
     }
     public void CambiarEntradas(int out, String entrada) {
