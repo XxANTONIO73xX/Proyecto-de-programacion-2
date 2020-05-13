@@ -1,6 +1,7 @@
 package objetos;
 
 import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -50,14 +51,13 @@ public class EventosAleatorios implements Runnable {
 
     @Override
     public void run() {
-        int entradas = 9;
-        String entrada = "Alta";
+        String entrada = lblEntrada.getText();
         int out = 0;
         int bola = 0;
         int strike = 0;
         int carrera = 0;
-
-        for (int i = 0; i < entradas; i++) {
+        Random aleatorio = new Random();
+        for(int i = 0; i < 9; i++){
             CambiarEntradas(out, entrada);
             if (entrada.equals("Alta")) {
                try {
@@ -67,20 +67,22 @@ public class EventosAleatorios implements Runnable {
                     strike = 0;
                     carrera = 0;
                     boolean estado = true;
-                    int numero = (int) (Math.random() * enfrentamiento.get(0).getJugadores().size() + 1);
-                    MtblEventosAleatorios.addRow(new Object[]{("Jugador " + enfrentamiento.get(0).getJugadores().get(numero).getNombre() + "esta posicion para batear"), lblTiempo.getText()});
+                    int numero = aleatorio.nextInt(enfrentamiento.get(0).getJugadores().size());
+                    MtblEventosAleatorios.addRow(new Object[]{enfrentamiento.get(0).getJugadores().get(numero).getNombre(),"esta posicion para batear", lblTiempo.getText()});
                     Jugador jugadorNuevo = enfrentamiento.get(0).getJugadores().get(numero);
                     Thread.sleep(5000);
                     do {
-                        int resultado = (int) (Math.random() * 4 + 1);
+                        int resultado = 1 + aleatorio.nextInt(4);
                         switch (resultado) {
                             case 1: {
-                                MtblEventosAleatorios.addRow(new Object[]{("Jugador " + enfrentamiento.get(0).getJugadores().get(numero).getNombre() + "cometio strike"), lblTiempo.getText()});
+                                MtblEventosAleatorios.addRow(new Object[]{enfrentamiento.get(0).getJugadores().get(numero).getNombre(), "cometio strike", lblTiempo.getText()});
                                 strike++;
                                 lblStrike.setText(Integer.toString(strike));
                                 if (strike == 3) {
                                     out++;
                                     lblOut.setText(Integer.toString(out));
+                                    estado = false;
+                                    CambiarEntradas(out, entrada); 
                                 }
                                 Thread.sleep(5000);
                                 break;
@@ -88,32 +90,40 @@ public class EventosAleatorios implements Runnable {
                             case 2: {
                                 bola++;
                                 lblBola.setText(Integer.toString(bola));
-                                MtblEventosAleatorios.addRow(new Object[]{("Jugador " + enfrentamiento.get(0).getJugadores().get(numero).getNombre() + "se le acumula una bola a favor"), lblTiempo.getText()});
+                                MtblEventosAleatorios.addRow(new Object[]{enfrentamiento.get(0).getJugadores().get(numero).getNombre(), "se le acumula una bola a favor", lblTiempo.getText()});
                                 if (bola == 3) {
-                                    MtblEventosAleatorios.addRow(new Object[]{("Jugador " + enfrentamiento.get(0).getJugadores().get(numero).getNombre() + "se le sede la primera base"), lblTiempo.getText()});
+                                    MtblEventosAleatorios.addRow(new Object[]{enfrentamiento.get(0).getJugadores().get(numero).getNombre(), "se le sede la primera base", lblTiempo.getText()});
                                     RecorrerBases(jugadorNuevo, base1, base2, base3, carrera);
                                     MarcadorLocal.setText(Integer.toString(carrera));
+                                    estado = false;
+                                                CambiarEntradas(out, entrada);
+
                                 }
                                Thread.sleep(5000);
                                 break;
                             }
                             case 3: {
                                 out++;
-                                MtblEventosAleatorios.addRow(new Object[]{("Jugador " + enfrentamiento.get(0).getJugadores().get(numero).getNombre() + "el bateador acierta y corre hacia primero"), lblTiempo.getText()});
+                                MtblEventosAleatorios.addRow(new Object[]{enfrentamiento.get(0).getJugadores().get(numero).getNombre(), "el bateador acierta y corre hacia primero", lblTiempo.getText()});
                                 Thread.sleep(3000);
-                                MtblEventosAleatorios.addRow(new Object[]{("Jugador " + enfrentamiento.get(0).getJugadores().get(numero).getNombre() + "es sacado por out cuando corria hacia su base"), lblTiempo.getText()});
+                                MtblEventosAleatorios.addRow(new Object[]{enfrentamiento.get(0).getJugadores().get(numero).getNombre(), "es sacado por out cuando corria hacia su base", lblTiempo.getText()});
                                Thread.sleep(5000);
                                 lblOut.setText(Integer.toString(out));
+                                estado = false;
+                                            CambiarEntradas(out, entrada);
+
                                 break;
                             }
                             case 4: {
                                 RecorrerBases(jugadorNuevo, base1, base2, base3, carrera);
-                                MtblEventosAleatorios.addRow(new Object[]{("Jugador " + enfrentamiento.get(0).getJugadores().get(numero).getNombre() + "el bateador acierta y corre hacia primero"), lblTiempo.getText()});
+                                MtblEventosAleatorios.addRow(new Object[]{enfrentamiento.get(0).getJugadores().get(numero).getNombre(), "el bateador acierta y corre hacia primero", lblTiempo.getText()});
                                Thread.sleep(5000);
-                                break;
+                               estado = false;
+                                           CambiarEntradas(out, entrada);
+                               break;
                             }
                             case 5: {
-                                MtblEventosAleatorios.addRow(new Object[]{("Jugador " + enfrentamiento.get(0).getJugadores().get(numero).getNombre() + "el bateador acierta y hace un HomeRun"), lblTiempo.getText()});
+                                MtblEventosAleatorios.addRow(new Object[]{enfrentamiento.get(0).getJugadores().get(numero).getNombre(), "el bateador acierta y hace un HomeRun", lblTiempo.getText()});
                                 if (base1 != null) {
                                     carrera++;
                                     MarcadorLocal.setText(Integer.toString(carrera));
@@ -130,37 +140,42 @@ public class EventosAleatorios implements Runnable {
                                     MarcadorLocal.setText(Integer.toString(carrera));
                                 }
                                Thread.sleep(1000);
+                               estado = false;
+                                           CambiarEntradas(out, entrada);
 
                             }
                         }
-                    } while (strike < 3 || estado);
+                    } while (estado == true);
                     Thread.sleep(10000);
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "no comenzo el partido");
                 }
             }
             if (entrada.equals("Baja")) {
-                try {
+               try {
                     lblEntrada.setText(entrada);
                     out = 0;
                     bola = 0;
                     strike = 0;
                     carrera = 0;
                     boolean estado = true;
-                    int numero = (int) (Math.random() * enfrentamiento.get(1).getJugadores().size() + 1);
-                    MtblEventosAleatorios.addRow(new Object[]{("Jugador " + enfrentamiento.get(1).getJugadores().get(numero).getNombre() + "esta posicion para batear"), lblTiempo.getText()});
+                    int numero = (int) (Math.random() * enfrentamiento.get(1).getJugadores().size());
+                    MtblEventosAleatorios.addRow(new Object[]{enfrentamiento.get(1).getJugadores().get(numero).getNombre(),"esta posicion para batear", lblTiempo.getText()});
                     Jugador jugadorNuevo = enfrentamiento.get(1).getJugadores().get(numero);
                     Thread.sleep(5000);
                     do {
                         int resultado = (int) (Math.random() * 4 + 1);
                         switch (resultado) {
                             case 1: {
-                                MtblEventosAleatorios.addRow(new Object[]{("Jugador " + enfrentamiento.get(1).getJugadores().get(numero).getNombre() + "cometio strike"), lblTiempo.getText()});
+                                MtblEventosAleatorios.addRow(new Object[]{enfrentamiento.get(1).getJugadores().get(numero).getNombre(), "cometio strike", lblTiempo.getText()});
                                 strike++;
                                 lblStrike.setText(Integer.toString(strike));
                                 if (strike == 3) {
                                     out++;
                                     lblOut.setText(Integer.toString(out));
+                                    estado = false;
+                                                CambiarEntradas(out, entrada);
+
                                 }
                                 Thread.sleep(5000);
                                 break;
@@ -168,76 +183,80 @@ public class EventosAleatorios implements Runnable {
                             case 2: {
                                 bola++;
                                 lblBola.setText(Integer.toString(bola));
-                                MtblEventosAleatorios.addRow(new Object[]{("Jugador " + enfrentamiento.get(1).getJugadores().get(numero).getNombre() + "se le acumula una bola a favor"), lblTiempo.getText()});
+                                MtblEventosAleatorios.addRow(new Object[]{enfrentamiento.get(1).getJugadores().get(numero).getNombre(), "se le acumula una bola a favor", lblTiempo.getText()});
                                 if (bola == 3) {
-                                    MtblEventosAleatorios.addRow(new Object[]{("Jugador " + enfrentamiento.get(1).getJugadores().get(numero).getNombre() + "se le sede la primera base"), lblTiempo.getText()});
+                                    MtblEventosAleatorios.addRow(new Object[]{enfrentamiento.get(1).getJugadores().get(numero).getNombre(), "se le sede la primera base", lblTiempo.getText()});
                                     RecorrerBases(jugadorNuevo, base1, base2, base3, carrera);
-                                    MarcadorVisitante.setText(Integer.toString(carrera));
+                                    MarcadorLocal.setText(Integer.toString(carrera));
+                                    estado = false;
+                                                CambiarEntradas(out, entrada);
+
                                 }
-                                Thread.sleep(5000);
+                               Thread.sleep(5000);
                                 break;
                             }
                             case 3: {
                                 out++;
-                                MtblEventosAleatorios.addRow(new Object[]{("Jugador " + enfrentamiento.get(1).getJugadores().get(numero).getNombre() + "el bateador acierta y corre hacia primero"), lblTiempo.getText()});
+                                MtblEventosAleatorios.addRow(new Object[]{enfrentamiento.get(1).getJugadores().get(numero).getNombre(), "el bateador acierta y corre hacia primero", lblTiempo.getText()});
                                 Thread.sleep(3000);
-                                MtblEventosAleatorios.addRow(new Object[]{("Jugador " + enfrentamiento.get(1).getJugadores().get(numero).getNombre() + "es sacado por out cuando corria hacia su base"), lblTiempo.getText()});
-                                Thread.sleep(5000);
+                                MtblEventosAleatorios.addRow(new Object[]{enfrentamiento.get(1).getJugadores().get(numero).getNombre(), "es sacado por out cuando corria hacia su base", lblTiempo.getText()});
+                               Thread.sleep(5000);
                                 lblOut.setText(Integer.toString(out));
+                                estado = false;
+                                            CambiarEntradas(out, entrada);
+
                                 break;
                             }
                             case 4: {
                                 RecorrerBases(jugadorNuevo, base1, base2, base3, carrera);
-                                MtblEventosAleatorios.addRow(new Object[]{("Jugador " + enfrentamiento.get(1).getJugadores().get(numero).getNombre() + "el bateador acierta y corre hacia primero"), lblTiempo.getText()});
-                                Thread.sleep(5000);
+                                MtblEventosAleatorios.addRow(new Object[]{enfrentamiento.get(1).getJugadores().get(numero).getNombre(), "el bateador acierta y corre hacia primero", lblTiempo.getText()});
+                               Thread.sleep(5000);
+                               estado = false;
+                                           CambiarEntradas(out, entrada);
+
                                 break;
                             }
                             case 5: {
-                                MtblEventosAleatorios.addRow(new Object[]{("Jugador " + enfrentamiento.get(1).getJugadores().get(numero).getNombre() + "el bateador acierta y hace un HomeRun"), lblTiempo.getText()});
+                                MtblEventosAleatorios.addRow(new Object[]{enfrentamiento.get(1).getJugadores().get(numero).getNombre(), "el bateador acierta y hace un HomeRun", lblTiempo.getText()});
                                 if (base1 != null) {
                                     carrera++;
-                                    MarcadorVisitante.setText(Integer.toString(carrera));
+                                    MarcadorLocal.setText(Integer.toString(carrera));
                                 }
-                                Thread.sleep(1000);
+                               Thread.sleep(1000);
                                 if (base2 != null) {
                                     carrera++;
-                                    MarcadorVisitante.setText(Integer.toString(carrera));
+                                    MarcadorLocal.setText(Integer.toString(carrera));
                                 }
 
-                                Thread.sleep(1000);
+                               Thread.sleep(1000);
                                 if (base3 != null) {
                                     carrera++;
-                                    MarcadorVisitante.setText(Integer.toString(carrera));
+                                    MarcadorLocal.setText(Integer.toString(carrera));
                                 }
-                                Thread.sleep(1000);
-                                break;
+                               Thread.sleep(1000);
+                               estado = false;
+                                           CambiarEntradas(out, entrada);
+
                             }
                         }
-                    } while (strike < 3 || estado);
+                    } while (estado == true);
                     Thread.sleep(10000);
-
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "no ha comenzado");
+                    JOptionPane.showMessageDialog(null, "no comenzo el partido");
                 }
             }
-        }
-        t.interrupt();
-        if (Integer.parseInt(MarcadorLocal.getText()) > Integer.parseInt(MarcadorVisitante.getText())) {
-            JOptionPane.showMessageDialog(null, "Ganador: " + lblNombreLocal.getText());
-        } else {
-            JOptionPane.showMessageDialog(null, "Ganador: " + lblNombreVisitante.getText());
-
-        }
     }
-
+    }
     public void CambiarEntradas(int out, String entrada) {
         if (entrada.equals("Alta")) {
             if (out == 3) {
                 entrada = "Baja";
+                lblEntrada.setText(entrada);
             }
         } else if (entrada.equals("Baja")) {
             if (out == 3) {
                 entrada = "Alta";
+                lblEntrada.setText(entrada);
             }
         }
     }
