@@ -388,6 +388,7 @@ public class JPartido extends javax.swing.JFrame {
         jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
         tblEventosAleatorios.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        tblEventosAleatorios.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblEventosAleatorios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
