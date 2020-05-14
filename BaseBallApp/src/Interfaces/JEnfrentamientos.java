@@ -203,16 +203,22 @@ public class JEnfrentamientos extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+      try{
         for (Equipo e : equipos) {
             if (e.getNombre().equals(cbxLocal.getSelectedItem().toString())) {
                 enfrentamiento.add(0, e);
-            } 
-            
+            }
+        }
+        
+        for(Equipo e: equipos){
             if (e.getNombre().equals(cbxVisitante.getSelectedItem().toString())) {
                 enfrentamiento.add(1, e);
             }
         }
         this.dispose();
+      }catch(Exception e){
+          JOptionPane.showMessageDialog(this, "tiene que escoger a dos equipos diferentes");
+      }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbxLocalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxLocalItemStateChanged
