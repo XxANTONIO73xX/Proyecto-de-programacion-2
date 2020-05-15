@@ -31,7 +31,6 @@ public class Jugador extends Persona {
         this.brazo = brazo;
         this.numero = numero;
     }
-
     //Getters And Seters.
     public String getPosicion() {
         return posicion;

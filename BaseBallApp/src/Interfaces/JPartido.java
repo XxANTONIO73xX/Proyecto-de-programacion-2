@@ -8,8 +8,10 @@ import Interfaces.agregar.JEquipos;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import objetos.Coach;
 import objetos.Equipo;
 import objetos.EventosAleatorios;
+import objetos.Jugador;
 import objetos.Timer;
 
 /**
@@ -31,12 +33,24 @@ public class JPartido extends javax.swing.JFrame {
     ArrayList<Equipo> equipos;
     ArrayList<Equipo> enfrentamiento;
     DefaultTableModel MtblEventosAleatorios;
-    int i = 0;
+    int i = 1;
     Timer tiempo;
     Thread t;
     EventosAleatorios eventosAleatorios;
     Thread EA;
 
+    //Equipo predeterminado 1
+    ArrayList<Jugador> Equipo1 = new ArrayList<Jugador>();
+    Coach coach1 = new Coach(null, "Jose", "Salazar", 35, (float) 1.80, 85);
+    Equipo Predeterminado1 = new Equipo(i, "Yaquis", "Obregon", Equipo1, coach1);
+    //termina el codigo de Equipo predeterminado 1
+    
+    //Equipo predeterminado 2
+    ArrayList<Jugador> Equipo2 = new ArrayList<Jugador>();
+    Coach coach2 = new Coach(null, "Eduardo", "Lara", 35, (float) 1.80, 85);
+    Equipo Predeterminado2 = new Equipo(i + 1, "Tomateros", "Estadio de Culiacan", Equipo2, coach2);
+    //termina el codigo de Equipo predeterminado 2
+    
     public JPartido() {
         /**
          * Inicia los componentes ya sean tablas, metodos, etc.
@@ -50,7 +64,19 @@ public class JPartido extends javax.swing.JFrame {
         t = new Thread(tiempo);
         eventosAleatorios = new EventosAleatorios(lblEntrada, lblOut, lblStrike, lblBola, lblMarcadorLocal, lblMarcadorVisitante, lbltiempo, tblEventosAleatorios, MtblEventosAleatorios, tiempo, t, lblNombreLocal, lblNombreVisitante, enfrentamiento);
         EA = new Thread(eventosAleatorios);
+        
+        for (int j = 1; j <= 30; j++) {
+            Jugador jugador = new Jugador("", "", j, "YaquisPlayer" + j, "jugador" + j, 18, (float) 1.80, 80);
+            Equipo1.add(jugador);
+        }
 
+        for (int j = 1; j <= 30; j++) {
+            Jugador jugador = new Jugador("", "", j, "TomaterosPlayer" + j, "jugador" + j, 18, (float) 1.80, 80);
+            Equipo2.add(jugador);
+        }
+        
+        equipos.add(Predeterminado1);
+        equipos.add(Predeterminado2);
     }
 
     @SuppressWarnings("unchecked")
@@ -401,7 +427,7 @@ public class JPartido extends javax.swing.JFrame {
         if (tblEventosAleatorios.getColumnModel().getColumnCount() > 0) {
             tblEventosAleatorios.getColumnModel().getColumn(0).setPreferredWidth(200);
             tblEventosAleatorios.getColumnModel().getColumn(1).setPreferredWidth(700);
-            tblEventosAleatorios.getColumnModel().getColumn(2).setPreferredWidth(50);
+            tblEventosAleatorios.getColumnModel().getColumn(2).setPreferredWidth(100);
         }
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -628,7 +654,8 @@ public class JPartido extends javax.swing.JFrame {
 
     private void jMenuAgregarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAgregarEquipoActionPerformed
         //En este espacio se ejecutan las acciones correspondientes al botón de AGREGAR EQUIPO para mostrar su respectiva ventana.
-        i++;
+        i++; //2
+        i++; //3
         JEquipos team = new JEquipos(equipos, i);
         team.setVisible(true);
     }//GEN-LAST:event_jMenuAgregarEquipoActionPerformed
