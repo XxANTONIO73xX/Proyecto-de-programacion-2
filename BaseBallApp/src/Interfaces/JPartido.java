@@ -44,13 +44,13 @@ public class JPartido extends javax.swing.JFrame {
     Coach coach1 = new Coach(null, "Jose", "Salazar", 35, (float) 1.80, 85);
     Equipo Predeterminado1 = new Equipo(i, "Yaquis", "Obregon", Equipo1, coach1);
     //termina el codigo de Equipo predeterminado 1
-    
+
     //Equipo predeterminado 2
     ArrayList<Jugador> Equipo2 = new ArrayList<Jugador>();
     Coach coach2 = new Coach(null, "Eduardo", "Lara", 35, (float) 1.80, 85);
     Equipo Predeterminado2 = new Equipo(i + 1, "Tomateros", "Estadio de Culiacan", Equipo2, coach2);
     //termina el codigo de Equipo predeterminado 2
-    
+
     public JPartido() {
         /**
          * Inicia los componentes ya sean tablas, metodos, etc.
@@ -64,7 +64,7 @@ public class JPartido extends javax.swing.JFrame {
         t = new Thread(tiempo);
         eventosAleatorios = new EventosAleatorios(lblEntrada, lblOut, lblStrike, lblBola, lblMarcadorLocal, lblMarcadorVisitante, lbltiempo, tblEventosAleatorios, MtblEventosAleatorios, tiempo, t, lblNombreLocal, lblNombreVisitante, enfrentamiento);
         EA = new Thread(eventosAleatorios);
-        
+
         for (int j = 1; j <= 30; j++) {
             Jugador jugador = new Jugador("", "", j, "YaquisPlayer" + j, "jugador" + j, 18, (float) 1.80, 80);
             Equipo1.add(jugador);
@@ -74,7 +74,7 @@ public class JPartido extends javax.swing.JFrame {
             Jugador jugador = new Jugador("", "", j, "TomaterosPlayer" + j, "jugador" + j, 18, (float) 1.80, 80);
             Equipo2.add(jugador);
         }
-        
+
         equipos.add(Predeterminado1);
         equipos.add(Predeterminado2);
     }
@@ -701,10 +701,23 @@ public class JPartido extends javax.swing.JFrame {
         t.stop();
         if (Integer.parseInt(lblMarcadorLocal.getText()) > Integer.parseInt(lblMarcadorVisitante.getText())) {
             JOptionPane.showMessageDialog(null, "Ganador: " + lblNombreLocal.getText());
-        } else {
+        } else if (Integer.parseInt(lblMarcadorVisitante.getText()) > Integer.parseInt(lblMarcadorLocal.getText())) {
             JOptionPane.showMessageDialog(null, "Ganador: " + lblNombreVisitante.getText());
 
+        } else {
+            JOptionPane.showMessageDialog(null, "Ganador: es un EMPATE");
         }
+        
+        //Rcorre la tabla completa removiendo toda la tabla cada vez que carga el método. 
+        for (int i = MtblEventosAleatorios.getRowCount() - 1; i >= 0; i--) {
+            MtblEventosAleatorios.removeRow(i);
+        }
+        lblNombreLocal.setText(null);
+        lblNombreVisitante.setText(null);
+        lblCoachLocal.setText(null);
+        lblCoachVisitante.setText(null);
+        lblEstadio.setText(null);        
+        lbltiempo.setText("00:00");
     }//GEN-LAST:event_btnTerminarActionPerformed
 
     private void btnEmpezar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpezar1ActionPerformed
