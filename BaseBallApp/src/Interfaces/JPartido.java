@@ -701,10 +701,12 @@ public class JPartido extends javax.swing.JFrame {
         t.stop();
         if (Integer.parseInt(lblMarcadorLocal.getText()) > Integer.parseInt(lblMarcadorVisitante.getText())) {
             JOptionPane.showMessageDialog(null, "Ganador: " + lblNombreLocal.getText());
-        } else {
+ } else if (Integer.parseInt(lblMarcadorVisitante.getText()) > Integer.parseInt(lblMarcadorLocal.getText())) {
             JOptionPane.showMessageDialog(null, "Ganador: " + lblNombreVisitante.getText());
 
-        }
+        }else{
+            JOptionPane.showMessageDialog(null, "Ganador: es un EMPATE");
+ }
     }//GEN-LAST:event_btnTerminarActionPerformed
 
     private void btnEmpezar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpezar1ActionPerformed
