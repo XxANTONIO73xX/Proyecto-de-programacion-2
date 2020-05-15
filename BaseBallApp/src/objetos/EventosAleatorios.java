@@ -117,6 +117,7 @@ public class EventosAleatorios implements Runnable {
                                         }
                                     }
                                     strike = 0;
+                                    lblStrike.setText(Integer.toString(strike));
                                     break;
                                 }
                                 case 3: { // out
@@ -170,79 +171,81 @@ public class EventosAleatorios implements Runnable {
                             int caso = 1 + aleatorio.nextInt(4);
                             switch (caso) {
                                 case 1: { // hit
-                                    Thread.sleep(2000);
                                     MtblEventosAleatorios.addRow(new Object[]{enfrentamiento.get(1).getJugadores().get(j).getNombre(), "EL bateador acierta", lblTiempo.getText()});
                                     RecorrerBases(enfrentamiento.get(1).getJugadores().get(j), base1, base2, base3, carrera, MarcadorVisitante);
+                                    Thread.sleep(2000);
                                     break;
                                 }
                                 case 2: { // strike
-                                    Thread.sleep(2000);
                                     strike++;
                                     lblStrike.setText(Integer.toString(strike));
                                     MtblEventosAleatorios.addRow(new Object[]{enfrentamiento.get(1).getJugadores().get(j).getNombre(), "EL bateador hace un strike", lblTiempo.getText()});
                                     int subcaso = 1 + aleatorio.nextInt(2);
+                                    Thread.sleep(2000);
                                     switch (subcaso) {
                                         case 1: { //hace un hit y se recorre
-                                            Thread.sleep(2000);
                                             MtblEventosAleatorios.addRow(new Object[]{enfrentamiento.get(1).getJugadores().get(j).getNombre(), "El bateador acierta", lblTiempo.getText()});
                                             RecorrerBases(enfrentamiento.get(1).getJugadores().get(j), base1, base2, base3, carrera, MarcadorVisitante);
+                                            Thread.sleep(2000);
                                             break;
                                         }
                                         case 2: { // hace otros strikes y se le acumula un out
-                                            Thread.sleep(2000);
                                             strike++;
                                             lblStrike.setText(Integer.toString(strike));
                                             MtblEventosAleatorios.addRow(new Object[]{enfrentamiento.get(1).getJugadores().get(j).getNombre(), "EL bateador hace un strike", lblTiempo.getText()});
+                                            Thread.sleep(1000);
                                             strike++;
                                             lblStrike.setText(Integer.toString(strike));
                                             MtblEventosAleatorios.addRow(new Object[]{enfrentamiento.get(1).getJugadores().get(j).getNombre(), "EL bateador hace un strike y acumula un out", lblTiempo.getText()});
+                                            Thread.sleep(1000);
                                             out++;
                                             lblOut.setText(Integer.toString(out));
+                                            Thread.sleep(2000);
                                             break;
                                         }
                                     }
+                                    strike = 0;
+                                    lblStrike.setText(Integer.toString(strike));
                                     break;
                                 }
                                 case 3: { // out
-                                    Thread.sleep(2000);
                                     out++;
                                     lblOut.setText(Integer.toString(out));
                                     MtblEventosAleatorios.addRow(new Object[]{enfrentamiento.get(1).getJugadores().get(j).getNombre(), "el bateador acerto y corrio hacia primera", lblTiempo.getText()});
                                     MtblEventosAleatorios.addRow(new Object[]{enfrentamiento.get(1).getJugadores().get(j).getNombre(), "el bateador es ponchado antes de llegar", lblTiempo.getText()});
+                                    Thread.sleep(2000);
                                     break;
                                 }
                                 case 4: { // homeRun
-                                    Thread.sleep(2000);
                                     MtblEventosAleatorios.addRow(new Object[]{enfrentamiento.get(1).getJugadores().get(j).getNombre(), "EL bateador hace un HOME RUN", lblTiempo.getText()});
                                     carrera++;
                                     MarcadorVisitante.setText(Integer.toString(carrera));
-                                    Thread.sleep(1000);
                                     if (base1.getNumero() != 0) {
                                         carrera++;
                                         MarcadorVisitante.setText(Integer.toString(carrera));
                                         MtblEventosAleatorios.addRow(new Object[]{base1.getNombre(), "Corre hacia HOME", lblTiempo.getText()});
+                                        Thread.sleep(2000);
                                     }
-                                    Thread.sleep(1000);
                                     if (base2.getNumero() != 0) {
                                         carrera++;
                                         MarcadorVisitante.setText(Integer.toString(carrera));
                                         MtblEventosAleatorios.addRow(new Object[]{base2.getNombre(), "Corre hacia HOME", lblTiempo.getText()});
+                                        Thread.sleep(2000);
                                     }
-                                    Thread.sleep(1000);
                                     if (base3.getNumero() != 0) {
                                         carrera++;
                                         MarcadorVisitante.setText(Integer.toString(carrera));
                                         MtblEventosAleatorios.addRow(new Object[]{base3.getNombre(), "Corre hacia HOME", lblTiempo.getText()});
+                                        Thread.sleep(2000);
                                     }
                                     break;
                                 }
                             }
                             if(out == 3){
                               break;  
-                            }                       
+                            }
                         }
                     } while (out < 3);
-                    break;
                 }
 
             }
