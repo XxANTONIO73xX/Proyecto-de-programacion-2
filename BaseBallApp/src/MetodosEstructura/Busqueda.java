@@ -15,15 +15,15 @@ import objetos.Jugador;
  */
 public class Busqueda {
 
-    public Jugador busquedaBinaria(ArrayList<Jugador> vector, int nElmentos, String valor) {
+    public Jugador busquedaBinaria(ArrayList<Jugador> vector, int nElmentos, int valor) {
         int inicio = 0;
         int fin = nElmentos - 1;
         int pos;
         while (inicio <= fin) {
             pos = (inicio + fin) / 2;
-            if (vector.get(pos).getNombre().equals(valor)) {
+            if (vector.get(pos).getNumero() == valor) {
                 return vector.get(pos);
-            } else if (vector.get(pos).getNombre() != valor) {
+            } else if (vector.get(pos).getNumero() < valor) {
                 inicio = pos + 1;
             } else {
                 fin = pos - 1;
