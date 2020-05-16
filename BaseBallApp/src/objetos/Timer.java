@@ -4,9 +4,8 @@ import javax.swing.JLabel;
 
 /**
  * Esta se usará como base para los jugadores y el coach.
- *
  * @author equipo Maravilla Z
- * @version 02/05/2020
+ * @version 16/05/2020
  */
 public class Timer implements Runnable {
 
@@ -15,14 +14,15 @@ public class Timer implements Runnable {
     private int minutos = 0;
 
     /**
+     * constructor de Timer
      * @param temporizador Guarda el tiempo.
-     * @param segundos Guarda los segundos.
-     * @param minutos Guarda los minutos.
      */
     public Timer(JLabel temporizador) {
         this.temporizador = temporizador;
     }
-
+    /**
+     * Metodo Runneable
+     */
     @Override
     public void run() {
 

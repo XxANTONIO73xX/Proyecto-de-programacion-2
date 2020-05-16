@@ -7,18 +7,23 @@ import objetos.Equipo;
 import objetos.Timer;
 
 /**
- * Este JDialog sirve para mostrar la ventana de creación de enfrentamientos
- * enparejando equipos.
+ * Este JDialog sirve para los preparativos del JPartido para iniciar el enfrentamiento y seleccionar a los equipos.
  *
  * @author Equipo Maravilla Z
- * @version 29/05/2020
+ * @version 16/05/2020
  */
 public class JEnfrentamientos extends javax.swing.JDialog {
 
     ArrayList<Equipo> equipos;
     ArrayList<Equipo> enfrentamiento;
-    Timer tiempo;
-    Thread t;
+    
+    /**
+     * constructor para instanciar este JDialog 
+     * @param parent Atributo heredado del JDialog
+     * @param modal Atributo heredado del JDialog
+     * @param equipos ArrayList de equipos que seleccionaras
+     * @param enfrentamiento ArrayList donde se guardaran los dos Equipos proximos a enfrentarse 
+     */
     public JEnfrentamientos(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos, ArrayList<Equipo> enfrentamiento) {
         super(parent, modal);
         this.enfrentamiento = enfrentamiento;
@@ -28,13 +33,17 @@ public class JEnfrentamientos extends javax.swing.JDialog {
         cbxLocal();
         cbxVisitante();
     }
-
+    /**
+     * este metodo sirve para cargar el ComboBox en donde se seleccionara el equipo Local
+     */
     public void cbxLocal() {
         for (Equipo e : equipos) {
             cbxLocal.addItem(e.getNombre());
         }
     }
-
+    /**
+     * este metodo sirve para cargar el ComboBox en donde se seleccionara el equipo Visitante
+     */
     public void cbxVisitante() {
         for (Equipo e : equipos) {
             cbxVisitante.addItem(e.getNombre());
@@ -202,8 +211,7 @@ public class JEnfrentamientos extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-      try{
+        // En esta accion se comenzaran los preparativos para el enfrentamiento
         for (Equipo e : equipos) {
             if (e.getNombre().equals(cbxLocal.getSelectedItem().toString())) {
                 enfrentamiento.add(0, e);
@@ -216,9 +224,6 @@ public class JEnfrentamientos extends javax.swing.JDialog {
             }
         }
         this.dispose();
-      }catch(Exception e){
-          JOptionPane.showMessageDialog(this, "tiene que escoger a dos equipos diferentes");
-      }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbxLocalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxLocalItemStateChanged

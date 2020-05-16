@@ -2,6 +2,7 @@ package Interfaces.MostrarBuscarEliminar;
 
 import MetodosEstructura.Ordenar;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import objetos.Equipo;
 
@@ -9,26 +10,22 @@ import objetos.Equipo;
  * Sirve para eliminar equipos mediante una tabla y su respectiva busqueda.
  *
  * @author Equipo Maravilla Z
- * @version 2/5/2020 15PM
- */
-/**
- * Instancia clases y arreglos que se utilizaran en la clase.
+ * @version 16/05/2020 
  */
 public class EliminarEquipos extends javax.swing.JDialog {
 
-    /**
-     * Instancia clases y arreglos que se utilizaran en la clase.
-     */
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     DefaultTableModel MtblMostrasEquipos;
     Ordenar ordenar = new Ordenar();
-
+    /**
+     * constructor de este JDialog
+     * @param parent atributo Heredado de JDialog
+     * @param modal atributo Heredado de JDialog
+     * @param equipos ArrayList de donde se sacaran los equipos previamente agregados para cargar la tabla
+     * 
+     */
     public EliminarEquipos(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos) {
         super(parent, modal);
-        /**
-         * Inicia los componentes ya sean tablas, metodos simples y tambien de
-         * ordenamiento.
-         */
         initComponents();
         this.setLocationRelativeTo(null);
         this.equipos = equipos;
@@ -36,21 +33,27 @@ public class EliminarEquipos extends javax.swing.JDialog {
         vaciarTabla();
         cargarTabla();
     }
-
+    
+    /**
+     * este metodo sirve para carga la abla de los equipos  
+     */
     public void cargarTabla() {
         //Recorre el forEach cargando los equipos a la tabla.
         for (Equipo c : equipos) {
             MtblMostrasEquipos.addRow(new Object[]{c.getNombre(), c.getEstadio(), c.getCoach().getNombre()});
         }
     }
-
-        public void vaciarTabla() {
+    
+    /**
+     * este metodo sirve para vaciar la tabla y hacer mas facil el actualizar tabla
+     */
+    public void vaciarTabla() {
         //Rcorre la tabla completa removiendo toda la tabla cada vez que carga el método. 
         for (int i = MtblMostrasEquipos.getRowCount() - 1; i >= 0; i--) {
             MtblMostrasEquipos.removeRow(i);
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -275,19 +278,25 @@ public class EliminarEquipos extends javax.swing.JDialog {
 
     private void btnEliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEquipoActionPerformed
         //Cambia el texto de txfEliminarEquipo a null.
-                for (Equipo e : equipos) {
+        for (Equipo e : equipos) {
             //Si el nombre del equipo coincide con alguno dentro del ArrayList, este se elimina.
             if (e.getNombre().equals(txfEliminarEquipo.getText())) {
-                equipos.remove(e);
+                int n = JOptionPane.showConfirmDialog(this, "Esta seguro de eliminar: " + e.getNombre(), "¿estas seguro?", JOptionPane.YES_NO_OPTION);
+                if (n == JOptionPane.YES_OPTION) {
+                    equipos.remove(e);
+                    vaciarTabla();
+                    cargarTabla();
+                    JOptionPane.showMessageDialog(this, "El equipo fue eliminado");
+                }else{
+                    JOptionPane.showMessageDialog(this, "La acción fue cancelada");
+                }
             }
         }
-        vaciarTabla();
-        cargarTabla();
+
 
     }//GEN-LAST:event_btnEliminarEquipoActionPerformed
 
     private void txfEliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfEliminarEquipoActionPerformed
-//Recorre el forEach del ArrayList de Equipo.
         txfEliminarEquipo.setText(null);
     }//GEN-LAST:event_txfEliminarEquipoActionPerformed
 

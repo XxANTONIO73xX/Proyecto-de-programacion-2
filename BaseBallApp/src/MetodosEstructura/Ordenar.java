@@ -5,16 +5,22 @@ import objetos.Equipo;
 import objetos.Jugador;
 
 /**
- *
- * @author juan.m.osuna
+ * esta clase sirve para emplear metodos de estructura de datos
+ * @author Equipo Maravilla Z
+ * @version 16/05/2020
  */
 public class Ordenar {
-
+    /**
+     * contructor de Ordenar 
+     */
     public Ordenar() {
     }
-    
+    /**
+     * con este metodo empleas el metodo de ordenamiento burbuja
+     * @param jugadores ArrayList a ordenar
+     * @param nElementos El numero de elementos que hay en el ArrayList
+     */
     public void bubbleSort(ArrayList<Jugador> jugadores, int nElementos) {
-
         /*
         Este método es clásico y muy sencillo, aunque poco eficiente. 
         Se basa en comparar elementos adyacentes de la lista (vector) e intercambiar sus valores si estan desordenados. 
@@ -39,7 +45,13 @@ public class Ordenar {
 
         }
     }
-
+    
+    /**
+     * con este metodo empleas el metodo de ordenamiento QuickSort
+     * @param vector ArrayList a ordenar 
+     * @param primero el primer elemento 
+     * @param ultimo el ultimo elemento
+     */
     public void quickSort(ArrayList<Equipo> vector, int primero, int ultimo) {
         
         /*

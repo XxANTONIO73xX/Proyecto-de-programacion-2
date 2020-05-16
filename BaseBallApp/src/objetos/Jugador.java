@@ -1,11 +1,9 @@
 package objetos;
 
 /**
- * En esta clase se van a crear los jugadores heredando atributos de la clase
- * persona.
- *
+ * En esta clase se van a crear los jugadores heredando atributos de la clasepersona.
  * @author equipo Maravilla Z
- * @version 02/05/2020
+ * @version 16/05/2020
  */
 public class Jugador extends Persona {
 

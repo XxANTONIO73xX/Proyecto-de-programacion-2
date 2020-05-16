@@ -12,34 +12,32 @@ import objetos.Jugador;
  * Sirve para mostrar jugadores mediante una tabla y su respectiva busqueda.
  *
  * @author Equipo Maravilla Z
- * @version 2/5/2020 15PM
- */
-/**
- * Instancia clases y arreglos que se utilizaran en la clase.
+ * @version 16/05/2020 
  */
 public class MostrarJugadores extends javax.swing.JDialog {
-
-    /**
-     * Instancia clases y arreglos que se utilizaran en la clase.
-     */
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     Equipo equipoSeleccionado = new Equipo();
     DefaultTableModel MtblJugadores;
     Ordenar ordenar = new Ordenar();
     Busqueda busqueda = new Busqueda();
+    
+    /**
+     * constructor de este JDialog
+     * @param parent Atributo heredado de JDialog
+     * @param modal Atributo heredado de JDialog
+     * @param equipos ArrayList de equipos de donde se obtendra el ArrayList de jugadores
+     */
     public MostrarJugadores(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos) {
         super(parent, modal);
-
-        /**
-         * Inicia los componentes ya sean tablas, metodos, etc.
-         */
         initComponents();
         this.equipos = equipos;
         MtblJugadores = (DefaultTableModel) tblJugadores.getModel();
-        
         cbxEquipos();
     }
-
+    
+    /**
+     * con este metodo cargas el ComboBox de los equipos para seleccionarlos despues. 
+     */
     public void cbxEquipos() {
         //Recorre el forEach para agregar los equipos pertenecientes al ArrayList (Equipo) al ComboBox.
         for (Equipo e : equipos) {
@@ -47,6 +45,9 @@ public class MostrarJugadores extends javax.swing.JDialog {
         }
     }
 
+    /**
+     * con este metodo se cargan los jugadores del equipo previamente seleccionado.
+     */
     public void cargarTabla() {
         //Recorre el forEach para agregar los equipos pertenecientes al ArrayList (Jugador) a la tabla.
         for (Jugador j : equipoSeleccionado.getJugadores()) {
@@ -58,7 +59,10 @@ public class MostrarJugadores extends javax.swing.JDialog {
             });
         }
     }
-
+    
+    /**
+     * con este metodo vacias la tabla facilitando asi su actualizacion de nuevos datos. 
+     */
     public void vaciarTabla() {
         //Rcorre la tabla completa removiendo toda la tabla cada vez que carga el método. 
         for (int i = MtblJugadores.getRowCount() - 1; i >= 0; i--) {
@@ -203,7 +207,7 @@ public class MostrarJugadores extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbxEquipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxEquipoItemStateChanged
-        //Recorre el forEach comprobando que el nombre del objeto seleccionado coincida con algun nombre de algún objeto del ArrayList (Equipo).
+        // en este espacio se determina el equipo que seleccionaste 
         for (Equipo e : equipos) {
             if (e.getNombre().equals(cbxEquipo.getSelectedItem().toString())) {
                 equipoSeleccionado = e;
@@ -217,14 +221,14 @@ public class MostrarJugadores extends javax.swing.JDialog {
     }//GEN-LAST:event_cbxEquipoItemStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-       // try{
+        // en este espacio se realiza la acción de buscar un jugador en particular
+        try{
         Jugador encontrado = busqueda.busquedaBinaria(equipoSeleccionado.getJugadores(), equipoSeleccionado.getJugadores().size(), Integer.parseInt(txfNombreJugador.getText())); 
         vaciarTabla();
         MtblJugadores.addRow(new Object[]{encontrado.getNombre(), encontrado.getApellido(), encontrado.getPosicion(), encontrado.getNumero()});
-       // }catch(Exception e){
-         //  JOptionPane.showMessageDialog(this, "El jugador no existe!!");
-       // }
+        }catch(Exception e){
+          JOptionPane.showMessageDialog(this, "El jugador no existe!!");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

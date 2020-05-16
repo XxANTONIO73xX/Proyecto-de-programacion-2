@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Esta clase se usará como base para la creación de equipos.
  *
  * @author Equipo Maravilla z
- * @version 02/05/2020
+ * @version 16/05/2020
  */
 public class Equipo {
 
@@ -32,7 +32,10 @@ public class Equipo {
         this.jugadores = jugadores;
         this.coach = coach;
     }
-
+    
+    /**
+     * sobrecarga de equipo
+     */
     public Equipo() {
     }
     

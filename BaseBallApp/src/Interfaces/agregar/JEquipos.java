@@ -11,13 +11,9 @@ import objetos.Persona;
  * Este JDialog sirve para la de creación de equipo.
  *
  * @author Equipo Maravilla Z
- * @version 02/05/2020
+ * @version 16/05/2020
  */
 public class JEquipos extends javax.swing.JFrame {
-
-    /**
-     * Instancia clases, objetos y ArrayList´s que se utilizaran en la clase.
-     */
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     ArrayList<Estrategia> estrategias = new ArrayList<Estrategia>();
     //Objetos tipo Estrategia, creados previamente.
@@ -36,9 +32,6 @@ public class JEquipos extends javax.swing.JFrame {
      * @param i es el identificador automatico de equipos.
      */
     public JEquipos(ArrayList<Equipo> equipos, int i) {
-        /**
-         * Inicia los componentes ya sean tablas, metodos, etc.
-         */
         initComponents();
         // Se agregan los objetos Estrategia al ArrayList.
         estrategias.add(una);
@@ -49,9 +42,10 @@ public class JEquipos extends javax.swing.JFrame {
         this.i = i;
         MtblJugadores = (DefaultTableModel) tblJugadores.getModel();
         cargarTabla();
-
     }
-
+    /**
+     * con este metodo cargas la tabla de los jugadores agregados al equipo a agregar
+     */
     public void cargarTabla() {
         //Se usa para cargar la tabla agregar a los jugadores del ArrayList a la tabla.
         for (Jugador jugadores : equipo.getJugadores()) {

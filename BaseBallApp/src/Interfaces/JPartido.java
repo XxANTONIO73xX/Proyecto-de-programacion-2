@@ -19,17 +19,9 @@ import objetos.Timer;
  * datos correspondientes.
  *
  * @author Equipo Maravilla Z
- * @version 06/05/2020
+ * @version 16/05/2020
  */
 public class JPartido extends javax.swing.JFrame {
-
-    /**
-     * Instancia clases, objetos y ArrayList´s que se utilizaran en la clase.
-     *
-     * @param i Se usa como índice.
-     * @param tiempo Se guarda el tiempo.
-     * @param t Controla la ejecución del tiempo.
-     */
     ArrayList<Equipo> equipos;
     ArrayList<Equipo> enfrentamiento;
     DefaultTableModel MtblEventosAleatorios;
@@ -52,9 +44,6 @@ public class JPartido extends javax.swing.JFrame {
     //termina el codigo de Equipo predeterminado 2
 
     public JPartido() {
-        /**
-         * Inicia los componentes ya sean tablas, metodos, etc.
-         */
         initComponents();
         this.setLocationRelativeTo(null);
         equipos = new ArrayList<Equipo>();
@@ -64,17 +53,17 @@ public class JPartido extends javax.swing.JFrame {
         t = new Thread(tiempo);
         eventosAleatorios = new EventosAleatorios(lblEntrada, lblOut, lblStrike, lblBola, lblMarcadorLocal, lblMarcadorVisitante, lbltiempo, tblEventosAleatorios, MtblEventosAleatorios, tiempo, t, lblNombreLocal, lblNombreVisitante, enfrentamiento);
         EA = new Thread(eventosAleatorios);
-
+        //agrega jugadores de forma predeterminada al equipo predeterminado1
         for (int j = 1; j <= 30; j++) {
             Jugador jugador = new Jugador("", "", j, "YaquisPlayer" + j, "jugador" + j, 18, (float) 1.80, 80);
             Equipo1.add(jugador);
         }
-
+        //agrega jugadores de forma predeterminada al equipo predeterminado2
         for (int j = 1; j <= 30; j++) {
             Jugador jugador = new Jugador("", "", j, "TomaterosPlayer" + j, "jugador" + j, 18, (float) 1.80, 80);
             Equipo2.add(jugador);
         }
-
+        //se añaden ambos equipos al ArrayList
         equipos.add(Predeterminado1);
         equipos.add(Predeterminado2);
     }
@@ -685,7 +674,7 @@ public class JPartido extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuEliminarJugadoresActionPerformed
 
     private void JInicioEnfrentamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JInicioEnfrentamientoActionPerformed
-        // TODO add your handling code here:
+        // En este espacio se hacen los preparativos para el enfrentamiento
         JEnfrentamientos enfrentamientos = new JEnfrentamientos(this, true, equipos, enfrentamiento);
         enfrentamientos.setVisible(true);
         lblNombreLocal.setText(enfrentamiento.get(0).getNombre());
@@ -696,7 +685,7 @@ public class JPartido extends javax.swing.JFrame {
     }//GEN-LAST:event_JInicioEnfrentamientoActionPerformed
 
     private void btnTerminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminarActionPerformed
-        // TODO add your handling code here:
+        // En este espacio se detienen los hilos y se valida quien fue el ganador
         EA.stop();
         t.stop();
         if (Integer.parseInt(lblMarcadorLocal.getText()) > Integer.parseInt(lblMarcadorVisitante.getText())) {
@@ -718,10 +707,11 @@ public class JPartido extends javax.swing.JFrame {
         lblCoachVisitante.setText(null);
         lblEstadio.setText(null);        
         lbltiempo.setText("00:00");
+        enfrentamiento.clear();
     }//GEN-LAST:event_btnTerminarActionPerformed
 
     private void btnEmpezar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpezar1ActionPerformed
-        // TODO add your handling code here:
+        // En este espacio se da el inicio a los hilos
         t.start();
         EA.start();
     }//GEN-LAST:event_btnEmpezar1ActionPerformed

@@ -9,10 +9,7 @@ import objetos.Jugador;
  * Este JDialog sirve para agregar a los jugadores.
  *
  * @author Equipo Maravilla Z
- * @version 02/05/2020
- */
-/**
- * Instancia clases, objetos y ArrayList´s que se utilizaran en la clase.
+ * @version 16/05/2020
  */
 public class JJugador extends javax.swing.JDialog {
 
@@ -30,9 +27,6 @@ public class JJugador extends javax.swing.JDialog {
      */
     public JJugador(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos, Equipo equipo) {
         super(parent, modal);
-        /**
-         * Inicia los componentes ya sean tablas, metodos, etc.
-         */
         initComponents();
         this.setLocationRelativeTo(null);
         this.equipos = equipos;

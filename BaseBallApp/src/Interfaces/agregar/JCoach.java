@@ -10,10 +10,7 @@ import objetos.Estrategia;
  * Este JDialog sirve para crear el coach del equipo.
  *
  * @author Equipo Maravilla Z
- * @version 02/05/2020
- */
-/**
- * Instancia clases, objetos y ArrayList´s que se utilizaran en la clase.
+ * @version 16/05/2020
  */
 public class JCoach extends javax.swing.JDialog {
 
@@ -27,17 +24,12 @@ public class JCoach extends javax.swing.JDialog {
      *
      * @param parent parametro que se extiende de Jdialog
      * @param modal parametro que se extiende de Jdialog
-     * @param equipos el ArrayList que usara para guardar el equipo del que
-     * forma parte el coach
-     * @param equipo el equipo que pertenece el coach, que se agregara al
-     * ArrayList
+     * @param equipos el ArrayList que usara para guardar el equipo del que forma parte el coach
+     * @param equipo el equipo que pertenece el coach, que se agregara al ArrayList
      * @param estrategias estrategias que se usaran para agregarlas al coach
      */
     public JCoach(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos, Equipo equipo, ArrayList<Estrategia> estrategias) {
         super(parent, modal);
-        /**
-         * Inicia los componentes ya sean tablas, metodos, etc.
-         */
         initComponents();
         this.setLocationRelativeTo(null);
         this.equipos = equipos;
@@ -45,7 +37,10 @@ public class JCoach extends javax.swing.JDialog {
         this.estrategias = estrategias;
         cbxEstrategias();
     }
-
+    
+    /**
+     * con este metodo se cargan las estrategias previamente agregadas para que se agregen al Coach
+     */
     public void cbxEstrategias() {
         //En este espacio se ejecutan las acciones para cargar las Estrategias al al ComboBox.
         for (Estrategia estrategias : estrategias) {

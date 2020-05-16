@@ -1,7 +1,9 @@
 package Interfaces.MostrarBuscarEliminar;
 
+import MetodosEstructura.Busqueda;
 import MetodosEstructura.Ordenar;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import objetos.Jugador;
 import objetos.Equipo;
@@ -10,35 +12,39 @@ import objetos.Equipo;
  * Sirve para eliminar jugadores mediante una tabla y su respectiva busqueda.
  *
  * @author Equipo Maravilla Z
- * @version 2/5/2020 15PM
+ * @version 16/05/2020 
  */
 public class EliminarJugadores extends javax.swing.JDialog {
-
-    /**
-     * Instancia clases y arreglos que se utilizaran en la clase.
-     */
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     Equipo equipoSeleccionado = new Equipo();
     DefaultTableModel MtblJugadores;
-
+/**
+ * constructor de este JDialog
+ * @param parent Atributo heredado por el JDialog
+ * @param modal Atributo heredado por el JDialog
+ * @param equipos ArrayList de equipo de donde se obtendra el ArrayList de jugadores
+ */
     public EliminarJugadores(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos) {
         super(parent, modal);
-        /**
-         * Inicia los componentes ya sean tablas, metodos, etc.
-         */
         initComponents();
         this.equipos = equipos;
         MtblJugadores = (DefaultTableModel) tblJugador.getModel();
         cbxEquipos();
     }
-
+    
+    /**
+     * con este metodo cargas el Combobox de equipos para poder seleccionarlos despues.
+     */
     public void cbxEquipos() {
         //Recorre el forEach para agregar los equipos pertenecientes al ArrayList (Equipo) al ComboBox.
         for (Equipo e : equipos) {
             cbxEquipo.addItem(e.getNombre());
         }
     }
-
+    
+    /**
+     * con este metodo cargas la tabla de jugadores del equipo seleccionado en el ComboBox de equipos
+     */
     public void cargarTabla() {
         //Recorre el forEach cargando a los jugadores del equipo seleccionado.
         for (Jugador j : equipoSeleccionado.getJugadores()) {
@@ -50,13 +56,17 @@ public class EliminarJugadores extends javax.swing.JDialog {
             });
         }
     }
-
-      public void vaciarTabla() {
+    
+    /**
+     * con este metodo vacias la tabla facilitando la actualizacion a la tabla. 
+     */
+    public void vaciarTabla() {
         //Rcorre la tabla completa removiendo toda la tabla cada vez que carga el método. 
         for (int i = MtblJugadores.getRowCount() - 1; i >= 0; i--) {
             MtblJugadores.removeRow(i);
         }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -200,28 +210,22 @@ public class EliminarJugadores extends javax.swing.JDialog {
     }//GEN-LAST:event_txfEliminarJugadorActionPerformed
 
     private void btnEliminarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarJugadorActionPerformed
-        /**
-         * Este remueve a un jugador del arreglo, validando que el número sea
-         * igual, si lo es el, el jugador se elimina.
-         *
-         * @param numero Toma el texto escrito en txfEliminarJugador y lo parsea
-         * a Int.
-         */
-        int numero = Integer.parseInt(txfEliminarJugador.getText());
-        //Recorre el forEach cargando a los jugadores del equipo seleccionado.
-        for (Jugador j : equipoSeleccionado.getJugadores()) {
-            //Si el número el jugador coincide con alguno dentro del ArrayList, este se elimina.
-            if (j.getNumero() == numero) {
-                equipoSeleccionado.getJugadores().remove(j);
-            }
+       //en este espacio haces la accion de eliminar el jugador de su seleccion
+        Busqueda busqueda = new Busqueda();
+        Jugador eliminado = busqueda.busquedaBinaria(equipoSeleccionado.getJugadores(), equipoSeleccionado.getJugadores().size(), Integer.parseInt(txfEliminarJugador.getText()));
+        int n = JOptionPane.showConfirmDialog(this, "Esta seguro de eliminar: " + eliminado.getNombre() + "  " + eliminado.getNumero(), "¿estas seguro?", JOptionPane.YES_NO_OPTION);
+        if (n == JOptionPane.YES_OPTION) {
+            equipoSeleccionado.getJugadores().remove(eliminado);
+            vaciarTabla();
+            cargarTabla();
+            JOptionPane.showMessageDialog(this, "El Jugador fue eliminado");
+        } else {
+            JOptionPane.showMessageDialog(this, "Accion cancelada");
         }
-        vaciarTabla();
-        cargarTabla();
-
     }//GEN-LAST:event_btnEliminarJugadorActionPerformed
 
     private void cbxEquipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxEquipoItemStateChanged
-        //Recorre el forEach comprobando que el nombre del objeto seleccionado coincida con algun nombre de algún objeto del ArrayList (Equipo).
+        //en este espacio se selecciona el equipo a manipular
         for (Equipo e : equipos) {
             if (e.getNombre().equals(cbxEquipo.getSelectedItem().toString())) {
                 equipoSeleccionado = e;

@@ -3,7 +3,7 @@ package objetos;
 import java.util.ArrayList;
 
 /**
- * Esta se usará como base para determinar lo que hace el coach.
+ * Esta se usará como base para determinar el coach.
  *
  * @author equipo Maravilla Z
  * @version 02/05/2020

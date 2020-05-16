@@ -11,22 +11,21 @@ import objetos.Equipo;
  * Sirve para mostrar equipos mediante una tabla y su respectiva busqueda.
  *
  * @author Equipo Maravilla Z
- * @version 2/5/2020 15PM
+ * @version 16/05/2020
  */
 public class MostrarEquipos extends javax.swing.JDialog {
-
-    /**
-     * Instancia clases, objetos y arreglos que se utilizaran en la clase.
-     */
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     DefaultTableModel MtblMostrasEquipos;
     Ordenar ordenar = new Ordenar();
     Busqueda busqueda = new Busqueda();
+   /**
+    * constructor de este JDialog
+    * @param parent Atributo heredado de JDialog
+    * @param modal Atributo heredado de JDialog
+    * @param equipos ArrayList de equipo que se mostraran en la tabla
+    */
     public MostrarEquipos(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos) {
         super(parent, modal);
-        /**
-         * Inicia los componentes ya sean tablas, metodos, etc.
-         */
         initComponents();
         this.setLocationRelativeTo(null);
         this.equipos = equipos;
@@ -34,16 +33,21 @@ public class MostrarEquipos extends javax.swing.JDialog {
         ordenar.quickSort(this.equipos, 0, (this.equipos.size() - 1));
         vaciarTabla();
         cargarTabla();
-        //System.out.println(equipos.size());
     }
-
+    
+   /**
+     * con este metodo cargas la tabla de jugadores del equipo seleccionado en el ComboBox de equipos
+     */
     public void cargarTabla() {
         //Recorre el forEach para agregar los equipos pertenecientes al ArrayList (Equipo) a la tabla.
         for (Equipo c : equipos) {
             MtblMostrasEquipos.addRow(new Object[]{c.getId(), c.getNombre(), c.getEstadio(), c.getCoach().getNombre()});
         }
     }
-
+    
+    /**
+     * con este metodo vacias la tabla facilitando la actualizacion a la tabla. 
+     */
     public void vaciarTabla() {
         //Rcorre la tabla completa removiendo toda la tabla cada vez que carga el método. 
         for (int i = MtblMostrasEquipos.getRowCount() - 1; i >= 0; i--) {
@@ -180,7 +184,7 @@ public class MostrarEquipos extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        // En este espacio se ejectua la accion de buscar equipo
        try{
         Equipo encontrado = busqueda.busquedaLineal(equipos, equipos.size(),txfJugadorAbuscar.getText());
         vaciarTabla();

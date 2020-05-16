@@ -8,11 +8,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
- * Esta se usará para configurar la lógica de los eventos que pasarán en los
- * enfrentamientos.
- *
+ * Esta se usará para configurar la lógica de los eventos que pasarán en los enfrentamientos.
  * @author Equipo Maravilla Z
- * @version 08/05/2020
+ * @version 16/05/2020
  */
 public class EventosAleatorios implements Runnable {
 
@@ -36,6 +34,23 @@ public class EventosAleatorios implements Runnable {
     Timer tiempo;
     Thread t;
     
+    /**
+     * constructor de los eventos aleatorios 
+     * @param lblEntrada donde se muestra el tipo de entrada
+     * @param lblOut se muestra el acumulo de outs
+     * @param lblStrike se muestra el acumulo de Strikes 
+     * @param lblBola se muestra el acumulo de bolas
+     * @param MarcadorLocal muestra la puntuacion del equipo local
+     * @param MarcadorVisitante muestra la puntuacion del equipo visitante
+     * @param lblTiempo muestra el tiempo transcurrido
+     * @param tblEventosAleatorios tabla donde se muestran los eventos aleatorios
+     * @param MtblEventosAleatorios el modelo por Default de la tabla de eventos aleatorios 
+     * @param tiempo hilo tiempo 
+     * @param t hilo que acciona tiempo 
+     * @param lblNombreLocal se muestra el nombre del equipo local
+     * @param lblNombreVisitante se muestra el nombre del equipo visitante 
+     * @param enfrentamiento ArrayList de equipos donde se guardo los dos equipos competir 
+     */
     public EventosAleatorios(JLabel lblEntrada, JLabel lblOut, JLabel lblStrike, JLabel lblBola, JLabel MarcadorLocal, JLabel MarcadorVisitante, JLabel lblTiempo, JTable tblEventosAleatorios, DefaultTableModel MtblEventosAleatorios, Timer tiempo, Thread t, JLabel lblNombreLocal, JLabel lblNombreVisitante, ArrayList<Equipo> enfrentamiento) {
         this.lblEntrada = lblEntrada;
         this.lblOut = lblOut;
@@ -52,7 +67,9 @@ public class EventosAleatorios implements Runnable {
         this.lblNombreVisitante = lblNombreVisitante;
         this.enfrentamiento = enfrentamiento;
     }
-
+    /**
+     * metodo Runneable
+     */
     @Override
     public void run() {
         int out = 0;
@@ -255,7 +272,11 @@ public class EventosAleatorios implements Runnable {
             }
 
     }
-
+    
+    /**
+     * con este metodo de cambian el tipo de entrada
+     * @param out el numero outs que lleva el equipo 
+     */
     public void CambiarEntradas(int out) {
         if (lblEntrada.getText().equals("Alta")) {
             if (out == 3) {
@@ -268,7 +289,15 @@ public class EventosAleatorios implements Runnable {
         }
     }
 
-
+    /**
+     * con este metodo simulamos la cancha y el recorrido de los Jugadores por las bases hasta llegar a HOME
+     * @param jugador1 jugador que empieza la carrera
+     * @param base1 jugador que va a correr hacia base 2
+     * @param base2 jugador que va a correr hacia base 3
+     * @param base3 jugador que va a correr hacia base HOME
+     * @param carrera el numero de carreras que incrementara
+     * @param Marcador donde se mostraran las carreras que acumulen
+     */
     public void RecorrerBases(Jugador jugador1, Jugador base1, Jugador base2, Jugador base3, int carrera, JLabel Marcador) {
         //home
         if (base3.getNumero() != 0) {
