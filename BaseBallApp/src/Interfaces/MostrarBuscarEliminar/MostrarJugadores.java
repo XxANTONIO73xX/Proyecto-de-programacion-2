@@ -96,6 +96,11 @@ public class MostrarJugadores extends javax.swing.JDialog {
 
         jButton1.setBackground(new java.awt.Color(51, 255, 51));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconfinder_search_322497 (1).png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         tblJugadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -208,6 +213,12 @@ public class MostrarJugadores extends javax.swing.JDialog {
         cargarTabla();
 
     }//GEN-LAST:event_cbxEquipoItemStateChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cbxEquipo;

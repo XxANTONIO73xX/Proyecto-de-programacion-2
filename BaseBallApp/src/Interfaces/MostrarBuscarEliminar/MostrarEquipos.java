@@ -1,7 +1,9 @@
 package Interfaces.MostrarBuscarEliminar;
 
+import MetodosEstructura.Busqueda;
 import MetodosEstructura.Ordenar;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import objetos.Equipo;
 
@@ -19,7 +21,7 @@ public class MostrarEquipos extends javax.swing.JDialog {
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     DefaultTableModel MtblMostrasEquipos;
     Ordenar ordenar = new Ordenar();
-
+    Busqueda busqueda = new Busqueda();
     public MostrarEquipos(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos) {
         super(parent, modal);
         /**
@@ -29,7 +31,7 @@ public class MostrarEquipos extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.equipos = equipos;
         MtblMostrasEquipos = (DefaultTableModel) tblEquipo.getModel();
-//        ordenar.quickSort(this.equipos, 0, (this.equipos.size() - 1));
+        ordenar.quickSort(this.equipos, 0, (this.equipos.size() - 1));
         vaciarTabla();
         cargarTabla();
         //System.out.println(equipos.size());
@@ -56,7 +58,7 @@ public class MostrarEquipos extends javax.swing.JDialog {
         jPanel25 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txfJugadorAbuscar = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEquipo = new javax.swing.JTable();
@@ -76,10 +78,15 @@ public class MostrarEquipos extends javax.swing.JDialog {
         jLabel15.setFocusable(false);
         jLabel15.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txfJugadorAbuscar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jButton1.setBackground(new java.awt.Color(51, 255, 51));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconfinder_search_322497 (1).png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         tblEquipo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -107,7 +114,7 @@ public class MostrarEquipos extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel25Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txfJugadorAbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel14)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -126,7 +133,7 @@ public class MostrarEquipos extends javax.swing.JDialog {
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txfJugadorAbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,6 +179,17 @@ public class MostrarEquipos extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+       try{
+        Equipo encontrado = busqueda.busquedaLineal(equipos, equipos.size(),txfJugadorAbuscar.getText());
+        vaciarTabla();
+        MtblMostrasEquipos.addRow(new Object[]{encontrado.getId(), encontrado.getNombre(), encontrado.getEstadio(), encontrado.getCoach().getNombre()});
+       }catch(Exception e){
+           JOptionPane.showMessageDialog(this, "El Equipo no existe!!");
+       }
+    }//GEN-LAST:event_jButton1ActionPerformed
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel13;
@@ -180,7 +198,7 @@ public class MostrarEquipos extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel25;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tblEquipo;
+    private javax.swing.JTextField txfJugadorAbuscar;
     // End of variables declaration//GEN-END:variables
 }
