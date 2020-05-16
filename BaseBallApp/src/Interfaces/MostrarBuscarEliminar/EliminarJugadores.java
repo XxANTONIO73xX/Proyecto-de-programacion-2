@@ -20,7 +20,6 @@ public class EliminarJugadores extends javax.swing.JDialog {
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     Equipo equipoSeleccionado = new Equipo();
     DefaultTableModel MtblJugadores;
-    Ordenar ordenar = new Ordenar();
 
     public EliminarJugadores(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos) {
         super(parent, modal);
