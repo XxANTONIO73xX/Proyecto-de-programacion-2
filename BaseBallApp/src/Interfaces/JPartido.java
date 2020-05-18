@@ -5,6 +5,7 @@ import Interfaces.MostrarBuscarEliminar.EliminarJugadores;
 import Interfaces.MostrarBuscarEliminar.MostrarEquipos;
 import Interfaces.MostrarBuscarEliminar.MostrarJugadores;
 import Interfaces.agregar.JEquipos;
+import MetodosEstructura.Ordenar;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -30,7 +31,7 @@ public class JPartido extends javax.swing.JFrame {
     Thread t;
     EventosAleatorios eventosAleatorios;
     Thread EA;
-
+    Ordenar ordenar;
     //Equipo predeterminado 1
     ArrayList<Jugador> Equipo1 = new ArrayList<Jugador>();
     Coach coach1 = new Coach(null, "Jose", "Salazar", 35, (float) 1.80, 85);
@@ -51,6 +52,7 @@ public class JPartido extends javax.swing.JFrame {
         MtblEventosAleatorios = (DefaultTableModel) tblEventosAleatorios.getModel();
         tiempo = new Timer(lbltiempo);
         t = new Thread(tiempo);
+        ordenar = new Ordenar();
         eventosAleatorios = new EventosAleatorios(lblEntrada, lblOut, lblStrike, lblBola, lblMarcadorLocal, lblMarcadorVisitante, lbltiempo, tblEventosAleatorios, MtblEventosAleatorios, tiempo, t, lblNombreLocal, lblNombreVisitante, enfrentamiento);
         EA = new Thread(eventosAleatorios);
         //agrega jugadores de forma predeterminada al equipo predeterminado1
@@ -657,6 +659,7 @@ public class JPartido extends javax.swing.JFrame {
 
     private void jMenuMostrarEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMostrarEquiposActionPerformed
         //En este espacio se ejecutan las acciones correspondientes al botón de MOSTRAR EQUIPO para mostrar su respectiva ventana.
+        ordenar.quickSort(this.equipos, 0, (this.equipos.size() - 1));
         MostrarEquipos mostrasEquipo = new MostrarEquipos(this, true, equipos);
         mostrasEquipo.setVisible(true);
     }//GEN-LAST:event_jMenuMostrarEquiposActionPerformed

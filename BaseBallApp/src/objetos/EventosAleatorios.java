@@ -25,14 +25,14 @@ public class EventosAleatorios implements Runnable {
     private JLabel MarcadorVisitante;
     private JLabel lblTiempo;
     private JTable tblEventosAleatorios;
-    DefaultTableModel MtblEventosAleatorios;
-    Jugador base1;
-    Jugador base2;
-    Jugador base3;
-    Jugador auxiliar1 = new Jugador("", "", 0, "", "", 0, 0, 0);
-    Jugador auxiliar2 = new Jugador("", "", 0, "", "", 0, 0, 0);
-    Timer tiempo;
-    Thread t;
+    private DefaultTableModel MtblEventosAleatorios;
+    private Jugador base1;
+    private Jugador base2;
+    private Jugador base3;
+    private Jugador auxiliar1 = new Jugador("", "", 0, "", "", 0, 0, 0);
+    private Jugador auxiliar2 = new Jugador("", "", 0, "", "", 0, 0, 0);
+    private Timer tiempo;
+    private Thread t;
     
     /**
      * constructor de los eventos aleatorios 
