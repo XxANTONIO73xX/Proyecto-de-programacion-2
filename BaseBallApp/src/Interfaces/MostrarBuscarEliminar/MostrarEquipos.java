@@ -16,7 +16,6 @@ import objetos.Equipo;
 public class MostrarEquipos extends javax.swing.JDialog {
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     DefaultTableModel MtblMostrasEquipos;
-    Ordenar ordenar = new Ordenar();
     Busqueda busqueda = new Busqueda();
    /**
     * constructor de este JDialog
@@ -30,7 +29,6 @@ public class MostrarEquipos extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.equipos = equipos;
         MtblMostrasEquipos = (DefaultTableModel) tblEquipo.getModel();
-        ordenar.quickSort(this.equipos, 0, (this.equipos.size() - 1));
         vaciarTabla();
         cargarTabla();
     }

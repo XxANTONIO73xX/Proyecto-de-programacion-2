@@ -5,6 +5,7 @@ import Interfaces.MostrarBuscarEliminar.EliminarJugadores;
 import Interfaces.MostrarBuscarEliminar.MostrarEquipos;
 import Interfaces.MostrarBuscarEliminar.MostrarJugadores;
 import Interfaces.agregar.JEquipos;
+import MetodosEstructura.Ordenar;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -657,6 +658,8 @@ public class JPartido extends javax.swing.JFrame {
 
     private void jMenuMostrarEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMostrarEquiposActionPerformed
         //En este espacio se ejecutan las acciones correspondientes al botón de MOSTRAR EQUIPO para mostrar su respectiva ventana.
+        Ordenar ordenar = new Ordenar();
+        ordenar.quickSort(this.equipos, 0, (this.equipos.size() - 1));
         MostrarEquipos mostrasEquipo = new MostrarEquipos(this, true, equipos);
         mostrasEquipo.setVisible(true);
     }//GEN-LAST:event_jMenuMostrarEquiposActionPerformed
