@@ -287,8 +287,10 @@ public class EliminarEquipos extends javax.swing.JDialog {
                     vaciarTabla();
                     cargarTabla();
                     JOptionPane.showMessageDialog(this, "El equipo fue eliminado");
+                    break;
                 }else{
                     JOptionPane.showMessageDialog(this, "La acción fue cancelada");
+                    break;
                 }
             }
         }
