@@ -47,52 +47,30 @@ public class Ordenar {
     }
     
     /**
-     * con este metodo empleas el metodo de ordenamiento QuickSort
-     * @param vector ArrayList a ordenar 
-     * @param primero el primer elemento 
-     * @param ultimo el ultimo elemento
+     * este metodo sirve para acomodar los equipos de menor a mayor
+     * @param vector el Array a acomodar
+     * @param nElementos el numero de elementos dentro del array
      */
-    public void quickSort(ArrayList<Equipo> vector, int primero, int ultimo) {
-        
+        public void insertionSort(ArrayList<Equipo> vector, int nElementos) {
+
         /*
-        Es uno de los métodos más rápidos y más frecuentemente utilizados. 
-        Cuenta con pequeño código y excelente velocidad de ejecución.
-        */
-        
-        int i = primero; 
-        int j = ultimo;
-        //int pivote = vector[(primero + ultimo) / 2];
-        Equipo pivote = vector.get((primero + ultimo) / 2);
-        Equipo auxiliar;
+        Este método esta basado en la técnica utilizada por los jugadores de cartas para clasificar sus cartas. 
+        El jugador va colocando (insertando) cada carta en su posición correcta.
+        Este método se basa en considerar una parte de la lista ya ordenada y situar cada uno de los elementos 
+        restantes insertándolos en el lugar que le corresponda por su valor, todos los valores a la derecha se desplazan una posición para dejar espacio.
+         */
+        for (int i = 1; i < nElementos; i++) {
 
-        do {
-            //vector[i] < pivote
-            while (vector.get(i).getId() < pivote.getId()) {
-                i++;
-            }
-            //vector[j] > pivote
-            while (vector.get(i).getId() > pivote.getId()) {
-                j--;
+            Equipo aux = vector.get(i);
+            int j;
+
+            for (j = i - 1; j >= 0 && vector.get(j).getId() > aux.getId(); j--) {
+                //vector[j + 1] = vector[j];
+                vector.set(j + 1, vector.get(j));
+                //vector[j] = aux;
+                vector.set(j, aux);
             }
 
-            if (i <= j) {
-                //auxiliar = vector[j];
-                auxiliar = vector.get(j);
-                //vector[j] = vector[i];
-                vector.set(j, vector.get(i));
-                //vector[i] = auxiliar;
-                vector.set(i, auxiliar);
-                i++;
-                j--;
-            }
-
-        } while (i <= j);
-
-        if (primero < j) {
-            quickSort(vector, primero, j);
-        }
-        if (ultimo > i) {
-            quickSort(vector, i, ultimo);
         }
     }
 }
