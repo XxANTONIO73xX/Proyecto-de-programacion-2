@@ -7,7 +7,8 @@ import objetos.Equipo;
 import objetos.Timer;
 
 /**
- * Este JDialog sirve para los preparativos del JPartido para iniciar el enfrentamiento y seleccionar a los equipos.
+ * Este JDialog sirve para los preparativos del JPartido para iniciar el
+ * enfrentamiento y seleccionar a los equipos.
  *
  * @author Equipo Maravilla Z
  * @version 16/05/2020
@@ -16,13 +17,15 @@ public class JEnfrentamientos extends javax.swing.JDialog {
 
     ArrayList<Equipo> equipos;
     ArrayList<Equipo> enfrentamiento;
-    
+
     /**
-     * constructor para instanciar este JDialog 
+     * constructor para instanciar este JDialog
+     *
      * @param parent Atributo heredado del JDialog
      * @param modal Atributo heredado del JDialog
      * @param equipos ArrayList de equipos que seleccionaras
-     * @param enfrentamiento ArrayList donde se guardaran los dos Equipos proximos a enfrentarse 
+     * @param enfrentamiento ArrayList donde se guardaran los dos Equipos
+     * proximos a enfrentarse
      */
     public JEnfrentamientos(java.awt.Frame parent, boolean modal, ArrayList<Equipo> equipos, ArrayList<Equipo> enfrentamiento) {
         super(parent, modal);
@@ -33,16 +36,20 @@ public class JEnfrentamientos extends javax.swing.JDialog {
         cbxLocal();
         cbxVisitante();
     }
+
     /**
-     * este metodo sirve para cargar el ComboBox en donde se seleccionara el equipo Local
+     * este metodo sirve para cargar el ComboBox en donde se seleccionara el
+     * equipo Local
      */
     public void cbxLocal() {
         for (Equipo e : equipos) {
             cbxLocal.addItem(e.getNombre());
         }
     }
+
     /**
-     * este metodo sirve para cargar el ComboBox en donde se seleccionara el equipo Visitante
+     * este metodo sirve para cargar el ComboBox en donde se seleccionara el
+     * equipo Visitante
      */
     public void cbxVisitante() {
         for (Equipo e : equipos) {
@@ -213,12 +220,6 @@ public class JEnfrentamientos extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // En esta accion se comenzaran los preparativos para el enfrentamiento
         for (Equipo e : equipos) {
-            if (e.getNombre().equals(cbxLocal.getSelectedItem().toString())) {
-                enfrentamiento.add(0, e);
-            }
-        }
-        
-        for(Equipo e: equipos){
             if (e.getNombre().equals(cbxVisitante.getSelectedItem().toString())) {
                 enfrentamiento.add(1, e);
             }
@@ -228,6 +229,12 @@ public class JEnfrentamientos extends javax.swing.JDialog {
 
     private void cbxLocalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxLocalItemStateChanged
         // TODO add your handling code here:
+        for (Equipo e : equipos) {
+            if (e.getNombre().equals(cbxLocal.getSelectedItem().toString())) {
+                enfrentamiento.add(0, e);
+            }
+        }
+        lblestadioDeEnfrentamiento.setText(enfrentamiento.get(0).getEstadio());
     }//GEN-LAST:event_cbxLocalItemStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
