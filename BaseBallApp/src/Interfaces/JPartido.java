@@ -7,6 +7,7 @@ import Interfaces.MostrarBuscarEliminar.MostrarJugadores;
 import Interfaces.agregar.JEquipos;
 import MetodosEstructura.Ordenar;
 import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import objetos.Coach;
@@ -26,7 +27,7 @@ public class JPartido extends javax.swing.JFrame {
     ArrayList<Equipo> equipos;
     ArrayList<Equipo> enfrentamiento;
     DefaultTableModel MtblEventosAleatorios;
-    int i = 1;
+    int i = 0;
     Timer tiempo;
     Thread t;
     EventosAleatorios eventosAleatorios;
@@ -68,6 +69,7 @@ public class JPartido extends javax.swing.JFrame {
         //se añaden ambos equipos al ArrayList
         equipos.add(Predeterminado1);
         equipos.add(Predeterminado2);
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -649,6 +651,10 @@ public class JPartido extends javax.swing.JFrame {
         i++; //3
         JEquipos team = new JEquipos(equipos, i);
         team.setVisible(true);
+        Random alea = new Random();
+        int n = 1 + alea.nextInt(4);
+        equipos.get(0).setId(equipos.get(0).getId() + n);
+        equipos.get(1).setId(equipos.get(1).getId() + n);
     }//GEN-LAST:event_jMenuAgregarEquipoActionPerformed
 
     private void jMenuMostrarJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMostrarJugadoresActionPerformed
@@ -659,7 +665,7 @@ public class JPartido extends javax.swing.JFrame {
 
     private void jMenuMostrarEquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMostrarEquiposActionPerformed
         //En este espacio se ejecutan las acciones correspondientes al botón de MOSTRAR EQUIPO para mostrar su respectiva ventana.
-        ordenar.quickSort(this.equipos, 0, (this.equipos.size() - 1));
+        ordenar.insertionSort(equipos, equipos.size());
         MostrarEquipos mostrasEquipo = new MostrarEquipos(this, true, equipos);
         mostrasEquipo.setVisible(true);
     }//GEN-LAST:event_jMenuMostrarEquiposActionPerformed
