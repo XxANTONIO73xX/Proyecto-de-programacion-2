@@ -30,7 +30,8 @@ public class Jugador extends Persona {
         this.posicion = posicion;
         this.brazo = brazo;
         this.numero = numero;
-    }    
+    }
+    
     //Getters And Seters.
     public String getPosicion() {
         return posicion;
@@ -56,7 +57,7 @@ public class Jugador extends Persona {
         this.numero = numero;
     }
     
-    public static boolean agregarJugador(String posicion, String brazo, int numero, String nombre, String apellido, int edad, float altura, float peso, ArrayList<Equipo> equipo, ArrayList<Jugador> jugadores){
+    public static boolean agregarJugador(String posicion, String brazo, int numero, String nombre, String apellido, int edad, float altura, float peso, ArrayList<Jugador> jugadores){
         try {
         Jugador jugador = new Jugador(posicion, brazo, numero, nombre, apellido, edad, altura, peso);
         jugadores.add(jugador);
