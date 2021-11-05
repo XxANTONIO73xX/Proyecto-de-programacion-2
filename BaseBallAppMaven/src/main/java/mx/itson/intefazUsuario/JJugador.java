@@ -310,17 +310,11 @@ public class JJugador extends javax.swing.JDialog {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // Con esta acción creas un objeto de tipo Jugador y le ingresas los valores de este JDialog.
-        Jugador jugador = new Jugador(cbxPosicion.getSelectedItem().toString(),
-                cbxBrazo.getSelectedItem().toString(),
-                Integer.parseInt(txfNumero.getText()),
-                txfNombre.getText(),
-                txfApellido.getText(),
-                Integer.parseInt(txfEdad.getText()),
-                Float.parseFloat(txfAltura.getText()),
-                Float.parseFloat(txfPeso.getText()));
-        //Agregas Jugador al Array de jugadores.        
-        jugadores.add(jugador);
-        JOptionPane.showMessageDialog(this, "Jugador agregado");
+        if(Jugador.agregarJugador(cbxPosicion.getSelectedItem().toString(), cbxBrazo.getSelectedItem().toString(), Integer.parseInt(txfNumero.getText()), txfNombre.getText(), txfApellido.getText(), Integer.parseInt(txfEdad.getText()), Float.parseFloat(txfAltura.getText()), Float.parseFloat(txfPeso.getText()), equipos, jugadores)){    
+           JOptionPane.showMessageDialog(this, "Jugador agregado");
+        }else{
+           JOptionPane.showMessageDialog(this, "Ha sucedido un error, verifique los datos"); 
+        }
         equipo.setJugadores(jugadores);
     }//GEN-LAST:event_btnAgregarActionPerformed
 

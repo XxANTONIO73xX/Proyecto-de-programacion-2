@@ -1,5 +1,7 @@
 package mx.itson.objetos;
 
+import java.util.ArrayList;
+
 /**
  * En esta clase se van a crear los jugadores heredando atributos de la clasepersona.
  * @author equipo Maravilla Z
@@ -28,7 +30,7 @@ public class Jugador extends Persona {
         this.posicion = posicion;
         this.brazo = brazo;
         this.numero = numero;
-    }
+    }    
     //Getters And Seters.
     public String getPosicion() {
         return posicion;
@@ -52,6 +54,16 @@ public class Jugador extends Persona {
 
     public void setNumero(int numero) {
         this.numero = numero;
+    }
+    
+    public static boolean agregarJugador(String posicion, String brazo, int numero, String nombre, String apellido, int edad, float altura, float peso, ArrayList<Equipo> equipo, ArrayList<Jugador> jugadores){
+        try {
+        Jugador jugador = new Jugador(posicion, brazo, numero, nombre, apellido, edad, altura, peso);
+        jugadores.add(jugador);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 
 }
