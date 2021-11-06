@@ -327,25 +327,21 @@ public class JCoach extends javax.swing.JDialog {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         //En este espacio se ejecutan las acciones correspondientes al botón de AGREGAR, para agregar los datos puestos al ArrayList.
-        Coach coach = new Coach(estrategiasDelCoach,
-                txfNombre.getText(),
-                txfApellido.getText(),
-                Integer.parseInt(txfEdad.getText()),
-                Float.parseFloat(txfAltura.getText()),
-                Float.parseFloat(txfPeso.getText()));
-        equipo.setCoach(coach);
-        JOptionPane.showMessageDialog(this, "el coach fue agregado");
+        if(Coach.Agregar(estrategiasDelCoach, txfNombre.getText(), txfApellido.getText(), Integer.parseInt(txfEdad.getText()), Float.parseFloat(txfAltura.getText()), Float.parseFloat(txfPeso.getText()), equipo)){
+         JOptionPane.showMessageDialog(this, "el coach fue agregado");   
+        }else{
+            JOptionPane.showMessageDialog(this, "Ha sucedido un error, verifique los datos");
+        }
         this.dispose();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnAgregarEstrategiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEstrategiaActionPerformed
 //En este espacio se ejecutan las acciones correspondientes al botón de AGREGAR ESTRATEGIA, para agregar los datos puestos al ArrayList.
         String nombreEstrategia = cbxEstrategias.getSelectedItem().toString();
-        for (Estrategia e : estrategias) {
-            if (nombreEstrategia.equals(e.getNombreEstrategia())) {
-                estrategiasDelCoach.add(e);
-                JOptionPane.showMessageDialog(this, "Estrategia agregada a este coach...");
-            }
+        if(Estrategia.Agregar(estrategias, estrategiasDelCoach, nombreEstrategia)){
+            JOptionPane.showMessageDialog(this, "La Estrategia se ha agregado al coach");
+        }else{
+            JOptionPane.showMessageDialog(this, "Ha sucedido un error, verifique los datos"); 
         }
     }//GEN-LAST:event_btnAgregarEstrategiaActionPerformed
 

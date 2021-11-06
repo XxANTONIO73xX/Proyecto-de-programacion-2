@@ -1,5 +1,7 @@
 package mx.itson.objetos;
 
+import java.util.ArrayList;
+
 /**
  * Esta se usará como base para las estrategias del coach.
  *
@@ -38,5 +40,18 @@ public class Estrategia {
     public void setDescripcion(String Descripcion) {
         this.Descripcion = Descripcion;
     }
-
+    
+    public static boolean Agregar(ArrayList<Estrategia> estrategias, ArrayList<Estrategia> estrategiasDelCoach, String nombre){
+        boolean fueAgreado = false;
+        try {
+            for(Estrategia e: estrategias){
+                if(e.getNombreEstrategia().equals(nombre)){
+                    estrategiasDelCoach.add(e);
+                }
+            }
+        } catch (Exception e) {
+            return false;
+        }
+        return fueAgreado;
+    }
 }

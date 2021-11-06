@@ -42,5 +42,16 @@ public class Coach extends Persona {
     public void setEstrategias(ArrayList<Estrategia> estrategias) {
         this.estrategias = estrategias;
     }
-
+    
+    public static boolean Agregar(ArrayList<Estrategia> estrategiasDelCoach, String nombre, String apellido, int edad, float altura, float peso, Equipo equipo){
+        boolean fueAgregado = false;
+        try {
+            Coach coach = new Coach(estrategiasDelCoach, nombre, apellido, edad, altura, peso);
+            equipo.setCoach(coach);
+            fueAgregado = true;
+        } catch (Exception e) {
+            return false;
+        }
+        return fueAgregado;
+    }
 }
