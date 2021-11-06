@@ -2,6 +2,7 @@ package mx.itson.intefazUsuario;
 
 import mx.itson.intefazUsuario.JCoach;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import mx.itson.objetos.Equipo;
 import mx.itson.objetos.Estrategia;
@@ -289,12 +290,11 @@ public class JEquipos extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         //En este espacio se ejecutan las acciones correspondientes al botón de AGREGAR, para agregar los datos puestos al ArrayList.
-        equipo.setId(i);
-        equipo.setNombre(txfNombreEquipo.getText());
-        equipo.setEstadio(txfEstadio.getText());
-        
-        equipos.add(equipo);
-        
+        if (Equipo.Agregar(i, txfNombreEquipo.getText(), txfEstadio.getText(), equipo.getJugadores(), equipo.getCoach(), equipos)){
+           JOptionPane.showMessageDialog(this, "El equipo fue Agregado");
+        }else{
+           JOptionPane.showMessageDialog(this, "Ha sucedido un error, verifique los datos"); 
+        }
         this.dispose();
     }//GEN-LAST:event_btnAgregarActionPerformed
 

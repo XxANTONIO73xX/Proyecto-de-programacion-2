@@ -81,5 +81,16 @@ public class Equipo {
     public void setId(int id) {
         this.id = id;
     }
-
+    
+    public static boolean Agregar(int id, String nombre, String estadio, ArrayList<Jugador> jugadores, Coach coach, ArrayList<Equipo> equipos){
+        boolean fueAgregado = false;
+        try {
+            Equipo equipo = new Equipo(id, nombre, estadio, jugadores, coach);
+            equipos.add(equipo);
+            fueAgregado = true;
+        } catch (Exception e) {
+            return false;
+        }
+        return fueAgregado;
+    }
 }
