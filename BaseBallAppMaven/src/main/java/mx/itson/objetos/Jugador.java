@@ -31,6 +31,11 @@ public class Jugador extends Persona {
         this.brazo = brazo;
         this.numero = numero;
     }
+
+    public Jugador() {
+        super(null, null, 0, 0, 0);
+    }
+    
     
     //Getters And Seters.
     public String getPosicion() {
@@ -65,6 +70,30 @@ public class Jugador extends Persona {
             return false;
         }
         return true;
+    }
+    
+    public static Jugador buscarJugador(String nombre, ArrayList<Jugador> jugadores){
+        Jugador jugador = new Jugador();
+        for(Jugador j : jugadores){
+            if(j.getNombre().equals(nombre)){
+                jugador = j;
+            }else{
+                jugador = null;
+            }
+        }
+        return jugador;
+        
+    }
+    
+    public static boolean eliminarJugador(Jugador jugador, ArrayList<Jugador> jugadores){
+        boolean fueEliminado = false;
+        try{
+            jugadores.remove(jugador);
+            fueEliminado = true;
+        }catch (Exception ex){
+            return false;
+        }
+        return fueEliminado;
     }
 
 }

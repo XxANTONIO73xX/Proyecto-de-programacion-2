@@ -15,6 +15,7 @@ import mx.itson.objetos.Equipo;
  * @version 16/05/2020 
  */
 public class EliminarJugadores extends javax.swing.JDialog {
+    ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
     ArrayList<Equipo> equipos = new ArrayList<Equipo>();
     Equipo equipoSeleccionado = new Equipo();
     DefaultTableModel MtblJugadores;
@@ -210,17 +211,11 @@ public class EliminarJugadores extends javax.swing.JDialog {
     }//GEN-LAST:event_txfEliminarJugadorActionPerformed
 
     private void btnEliminarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarJugadorActionPerformed
-       //en este espacio haces la accion de eliminar el jugador de su seleccion
-        Busqueda busqueda = new Busqueda();
-        Jugador eliminado = busqueda.busquedaBinaria(equipoSeleccionado.getJugadores(), equipoSeleccionado.getJugadores().size(), Integer.parseInt(txfEliminarJugador.getText()));
-        int n = JOptionPane.showConfirmDialog(this, "Esta seguro de eliminar: " + eliminado.getNombre() + "  " + eliminado.getNumero(), "¿estas seguro?", JOptionPane.YES_NO_OPTION);
-        if (n == JOptionPane.YES_OPTION) {
-            equipoSeleccionado.getJugadores().remove(eliminado);
-            vaciarTabla();
-            cargarTabla();
-            JOptionPane.showMessageDialog(this, "El Jugador fue eliminado");
-        } else {
-            JOptionPane.showMessageDialog(this, "Accion cancelada");
+       Jugador judgadorEliminado = Jugador.buscarJugador(txfEliminarJugador.getText(), jugadores);
+        if(Jugador.eliminarJugador(judgadorEliminado, jugadores)){
+           JOptionPane.showMessageDialog(this, "Jugador Eliminado");
+        }else{
+           JOptionPane.showMessageDialog(this, "Ha ocurrido un error");
         }
     }//GEN-LAST:event_btnEliminarJugadorActionPerformed
 

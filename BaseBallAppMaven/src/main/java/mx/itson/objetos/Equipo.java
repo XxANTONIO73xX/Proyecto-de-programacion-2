@@ -33,6 +33,14 @@ public class Equipo {
         this.jugadores = jugadores;
         this.coach = coach;
     }
+
+    public Equipo(int id, String nombre, String estadio) {
+        this.id = id;
+        this.nombre = nombre;
+        this.estadio = estadio;
+    }
+    
+    
     
     /**
      * sobrecarga de equipo
@@ -92,5 +100,28 @@ public class Equipo {
             return false;
         }
         return fueAgregado;
+    }
+    
+    public static Equipo buscarEquipo(String nombre, ArrayList<Equipo> equipos){
+        Equipo equipo = new Equipo();
+        for(Equipo e : equipos){
+            if(e.getNombre().equals(nombre)){
+                equipo = e;
+            }else{
+                equipo = null;
+            }
+        }
+        return equipo;
+    }
+    
+    public static boolean eliminarEquipo(Equipo equipo, ArrayList<Equipo> equipos){
+       boolean fueEliminado = false;
+       try{
+           equipos.remove(equipo);
+           fueEliminado = true;
+       }catch (Exception ex){
+           return false;
+       }
+       return fueEliminado;
     }
 }

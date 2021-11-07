@@ -277,25 +277,12 @@ public class EliminarEquipos extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEquipoActionPerformed
-        //Cambia el texto de txfEliminarEquipo a null.
-        for (Equipo e : equipos) {
-            //Si el nombre del equipo coincide con alguno dentro del ArrayList, este se elimina.
-            if (e.getNombre().equals(txfEliminarEquipo.getText())) {
-                int n = JOptionPane.showConfirmDialog(this, "Esta seguro de eliminar: " + e.getNombre(), "¿estas seguro?", JOptionPane.YES_NO_OPTION);
-                if (n == JOptionPane.YES_OPTION) {
-                    equipos.remove(e);
-                    vaciarTabla();
-                    cargarTabla();
-                    JOptionPane.showMessageDialog(this, "El equipo fue eliminado");
-                    break;
-                }else{
-                    JOptionPane.showMessageDialog(this, "La acción fue cancelada");
-                    break;
-                }
-            }
+        Equipo equipoEliminar = Equipo.buscarEquipo(txfEliminarEquipo.getText(), equipos);
+        if(Equipo.eliminarEquipo(equipoEliminar, equipos)){
+            JOptionPane.showMessageDialog(this, "Equipo Eliminado");
+        }else{
+            JOptionPane.showMessageDialog(this, "Ha ocurrido un error");
         }
-
-
     }//GEN-LAST:event_btnEliminarEquipoActionPerformed
 
     private void txfEliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfEliminarEquipoActionPerformed
