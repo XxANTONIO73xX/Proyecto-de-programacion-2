@@ -71,7 +71,7 @@ public class CoachTest {
     @Test
     public void testAgregar() {
         System.out.println("Agregar");
-        ArrayList<Estrategia> estrategiasDelCoach = null;
+        ArrayList<Estrategia> estrategiasDelCoach = new ArrayList<Estrategia>();
         String nombre = "Jose";
         String apellido = "Campa";
         int edad = 22;
